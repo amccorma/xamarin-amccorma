@@ -11,14 +11,13 @@ using GitHub.Library;
 [assembly: ExportRenderer (typeof (GitHub.Controls.MyEntry), typeof (GitHub.Android.MyEntryRenderer))]
 namespace GitHub.Android
 {
-
 	public class MyEntryRenderer : EntryRenderer
 	{
 		private MyEntry source;
 		private EntryEditText native;
 		private List<MaskRules> rules;
 		private SelectionPoint pt;
-		private char[] Mask = null;
+		private char[] FormatCharacters = null;
 
 		protected override void OnElementChanged (ElementChangedEventArgs<Entry> e)
 		{
@@ -30,14 +29,14 @@ namespace GitHub.Android
 
 				// INIT defaults
 				rules = source.Mask;
-				Mask = source.MaskPlaceHolders.ToCharArray ();
+				FormatCharacters = source.FormatCharacters.ToCharArray ();
 
-				if (Mask != null && String.IsNullOrEmpty(source.Text) == false) {
+				if (FormatCharacters != null && String.IsNullOrEmpty(source.Text) == false) {
 					ApplyDefaultRule ();
 				}	
 
 				native.AfterTextChanged += (object sender, global::Android.Text.AfterTextChangedEventArgs e2) => {
-					if (pt != null && Mask != null)
+					if (pt != null && FormatCharacters != null)
 					{
 						if (pt.Start != -1) {
 							if (pt.End != -1) {
@@ -61,7 +60,7 @@ namespace GitHub.Android
 										for (int i = 0; i < text.Length; i++)
 										{
 											string c = text[i].ToString();
-											if (Mask.Where(ch => ch.ToString() == c.ToString()).Count() <= 0)
+											if (FormatCharacters.Where(ch => ch.ToString() == c.ToString()).Count() <= 0)
 											{
 												// no placeholder1
 												if (before[0].ToString() == c)
@@ -162,7 +161,7 @@ namespace GitHub.Android
 		private void ApplyDefaultRule()
 		{
 			source.Locked = true;
-			var text = native.Text.Replace (Mask, "");
+			var text = native.Text.Replace (FormatCharacters, "");
 			var len = text.Length;
 
 			if (rules != null) {
@@ -196,8 +195,8 @@ namespace GitHub.Android
 			base.OnElementPropertyChanged (sender, e);
 			if (e.PropertyName == "SetSelection") {
 				pt = source.SetSelection;
-			} else if (e.PropertyName == "MaskPlaceHolders") {
-				this.Mask = source.MaskPlaceHolders.ToCharArray ();
+			} else if (e.PropertyName == "FormatCharacters") {
+				this.FormatCharacters = source.FormatCharacters.ToCharArray ();
 			}
 		}
 	}

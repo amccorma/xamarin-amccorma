@@ -51,26 +51,26 @@ namespace GitHub.Controls
 		{
 			this.TextChanged += (object sender, TextChangedEventArgs e) => {
 
-				if (this.Locked == false && (this.LastText != this.Text) && String.IsNullOrEmpty(this.Text))
+				if (this.Locked == false && (this.LastText != this.Text) && String.IsNullOrEmpty(this.Text) == false)
 				{
 					this.Locked = true;
 					Int32 adjustedStart = 0;
 					this.Locked = true;
 					var start = this.SelectionStart;
-					var text = this.Text.Replace(this.MaskPlaceHolders.ToCharArray(), "");
+					var text = this.Text.Replace(this.FormatCharacters.ToCharArray(), "");
 					var len = text.Length;
 					var middle = false;
 					if (Delete && start > 0)
 					{
 						adjustedStart = adjustedStart -1;
-						BeforeChars = this.Text.Substring(0, start-1).Replace(this.MaskPlaceHolders.ToCharArray(), "");
+						BeforeChars = this.Text.Substring(0, start-1).Replace(this.FormatCharacters.ToCharArray(), "");
 					}
 					else
 					{
 						if (start != this.Text.Length -1)
 						{
 							middle = true;
-							BeforeChars = this.Text.Substring(0, start+1).Replace(this.MaskPlaceHolders.ToCharArray(), "");
+							BeforeChars = this.Text.Substring(0, start+1).Replace(this.FormatCharacters.ToCharArray(), "");
 						}
 					}
 
@@ -127,7 +127,7 @@ namespace GitHub.Controls
 							}
 						}
 					}   
-			
+
 					this.Locked = false;
 					this.SetSelection = new SelectionPoint(start + adjustedStart);	
 				}
@@ -135,7 +135,7 @@ namespace GitHub.Controls
 		}
 
 		public string BeforeChars {get;set;}
-			
+
 
 		public void Validate(string prop, string message)
 		{
@@ -173,7 +173,7 @@ namespace GitHub.Controls
 		public static readonly BindableProperty MaxLengthProperty =
 			BindableProperty.Create<MyEntry, Int32>(
 				p => p.MaxLength, -1);
-				
+
 		public static readonly BindableProperty	LockedProperty =
 			BindableProperty.Create<MyEntry, bool>( 
 				p => p.Locked, false);
@@ -182,9 +182,9 @@ namespace GitHub.Controls
 			BindableProperty.Create<MyEntry, bool>( 
 				p => p.Delete, false);
 
-		public static readonly BindableProperty MaskPlaceHoldersProperty =
+		public static readonly BindableProperty FormatCharactersProperty =
 			BindableProperty.Create<MyEntry, string>( 
-				p => p.MaskPlaceHolders, "");
+				p => p.FormatCharacters, "");
 
 		public List<MaskRules> Mask {
 			get { return (List<MaskRules>)GetValue (MaskProperty); }
@@ -201,7 +201,7 @@ namespace GitHub.Controls
 			get { return (Int32)GetValue(MaxLengthProperty); }
 			set { SetValue(MaxLengthProperty, value); }
 		}
-			
+
 		public bool Delete {
 			get { return (bool)GetValue (DeleteProperty); }
 			set { SetValue (DeleteProperty, value); }
@@ -227,9 +227,9 @@ namespace GitHub.Controls
 			set { SetValue (SelectionEndProperty, value); }
 		}
 
-		public string MaskPlaceHolders {
-			get { return (string)GetValue (MaskPlaceHoldersProperty); }
-			set { SetValue (MaskPlaceHoldersProperty, value); }
+		public string FormatCharacters {
+			get { return (string)GetValue (FormatCharactersProperty); }
+			set { SetValue (FormatCharactersProperty, value); }
 		}
 
 		public string LastText {
