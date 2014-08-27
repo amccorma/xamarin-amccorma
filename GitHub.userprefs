@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Android\Controls\MyEntryRenderer.cs">
+    <Files>
+      <File FileName="GitHub\MyMask.cs" Line="13" Column="13" />
+      <File FileName="GitHub\Controls\MyEntry.cs" Line="7" Column="7" />
+      <File FileName="GitHub\Library\MaskRules.cs" Line="11" Column="11" />
+      <File FileName="Android\Controls\MyEntryRenderer.cs" Line="49" Column="49" />
+      <File FileName="GitHub\Library\Exts.cs" Line="4" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
