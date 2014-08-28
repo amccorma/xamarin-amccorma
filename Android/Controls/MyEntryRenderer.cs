@@ -85,59 +85,62 @@ namespace GitHub.Android
 				};
 
 				native.KeyPress += (object sender, KeyEventArgs args) => {
-					var len = native.Text.Length;
-					if (args.KeyCode == global::Android.Views.Keycode.Back ||
-						args.KeyCode == global::Android.Views.Keycode.Del)
+					if (args.Event.Action == global::Android.Views.KeyEventActions.Down )
 					{
-						// do test cleanup
-						if (source.Locked == false && args.Event.Action == global::Android.Views.KeyEventActions.Down && source.Mask != null)
+						var len = native.Text.Length;
+						if (args.KeyCode == global::Android.Views.Keycode.Back ||
+							args.KeyCode == global::Android.Views.Keycode.Del)
 						{
-							source.Delete = true;
-							args.Handled = false;
+							// do test cleanup
+							if (source.Locked == false && source.Mask != null)
+							{
+								source.Delete = true;
+								args.Handled = false;
+							}
+							else if(source.MaxLength > 0)
+							{
+								args.Handled = false;
+							}
+							else
+							{
+								args.Handled = false;
+							}
+						}
+						else if (source.Locked == false && source.Mask != null)
+						{
+							source.Delete = false;
+							var start = native.SelectionStart;
+							if (start < len)
+							{
+								var evt = args.Event;
+								var act = evt.Action;
+								var newChar = ((char)evt.UnicodeChar).ToString();
+								//var newChar = ((char)args.KeyCode.ConvertToString()).ToString();
+
+								native.Text = native.Text.Insert(start, newChar);
+								args.Handled = true;
+							}
+							else
+							{
+								args.Handled = false;
+							}
 						}
 						else if(source.MaxLength > 0)
 						{
-							args.Handled = false;
+							if (len+1 > source.MaxLength)
+							{
+								args.Handled = true;
+								source.Validate("MAX", "Max length is " + source.MaxLength);
+							}
+							else
+							{
+								args.Handled = false;
+							}
 						}
 						else
 						{
 							args.Handled = false;
 						}
-					}
-					else if (source.Locked == false && args.Event.Action == global::Android.Views.KeyEventActions.Down && source.Mask != null)
-					{
-						source.Delete = false;
-						var start = native.SelectionStart;
-						if (start < len)
-						{
-							var evt = args.Event;
-							var act = evt.Action;
-							var newChar = ((char)evt.UnicodeChar).ToString();
-							//var newChar = ((char)args.KeyCode.ConvertToString()).ToString();
-
-							native.Text = native.Text.Insert(start, newChar);
-							args.Handled = true;
-						}
-						else
-						{
-							args.Handled = false;
-						}
-					}
-					else if(source.MaxLength > 0)
-					{
-						if (len+1 > source.MaxLength)
-						{
-							args.Handled = true;
-							source.Validate("MAX", "Max length is " + source.MaxLength);
-						}
-						else
-						{
-							args.Handled = false;
-						}
-					}
-					else
-					{
-						args.Handled = false;
 					}
 				};
 
