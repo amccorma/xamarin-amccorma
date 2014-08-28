@@ -51,85 +51,88 @@ namespace GitHub.Controls
 		{
 			this.TextChanged += (object sender, TextChangedEventArgs e) => {
 
-				if (this.Locked == false && (this.LastText != this.Text) && String.IsNullOrEmpty(this.Text) == false)
+				if (this.Mask != null)
 				{
-					this.Locked = true;
-					Int32 adjustedStart = 0;
-					this.Locked = true;
-					var start = this.SelectionStart;
-					var text = this.Text.Replace(this.FormatCharacters.ToCharArray(), "");
-					var len = text.Length;
-					var middle = false;
-					if (Delete && start > 0)
+					if (this.Locked == false && (this.LastText != this.Text) && String.IsNullOrEmpty(this.Text) == false)
 					{
-						adjustedStart = adjustedStart -1;
-						BeforeChars = this.Text.Substring(0, start-1).Replace(this.FormatCharacters.ToCharArray(), "");
-					}
-					else
-					{
-						if (start != this.Text.Length -1)
+						this.Locked = true;
+						Int32 adjustedStart = 0;
+						this.Locked = true;
+						var start = this.SelectionStart;
+						var text = this.Text.Replace(this.FormatCharacters.ToCharArray(), "");
+						var len = text.Length;
+						var middle = false;
+						if (Delete && start > 0)
 						{
-							middle = true;
-							BeforeChars = this.Text.Substring(0, start+1).Replace(this.FormatCharacters.ToCharArray(), "");
-						}
-					}
-
-
-					var rule = this.Mask.FirstOrDefault(r => r.End >= len);
-					if (rule == null)
-					{
-						var temp = text.Substring(0, text.Length - 1);
-						this.Text = temp;
-						//native.SetSelection(native.Text.Length);
-					}
-					else
-					{
-						if (rule.Mask != "")
-						{
-							var temp = ReFractor(text, rule);
-							if (! Delete)
-							{
-								if (middle)
-								{
-									adjustedStart = 1;
-								}
-								else
-								{
-									if (temp.Length > e.OldTextValue.Length)
-									{
-										adjustedStart = temp.Length - e.OldTextValue.Length;
-									}
-									else
-									{
-										adjustedStart = 0;
-										start = temp.Length;
-									}
-								}
-							}
-							this.Text = temp;
-							//var next = temp[start + adjustedStart-1];
-							this.LastText = temp;
-						}
-						else if (rule.Mask == "" && this.Delete)
-						{
-							this.Text = text;
-							this.LastText = text;
+							adjustedStart = adjustedStart -1;
+							BeforeChars = this.Text.Substring(0, start-1).Replace(this.FormatCharacters.ToCharArray(), "");
 						}
 						else
 						{
-							if (e.NewTextValue.Length > e.OldTextValue.Length)
+							if (start != this.Text.Length -1)
 							{
-								adjustedStart++;
+								middle = true;
+								BeforeChars = this.Text.Substring(0, start+1).Replace(this.FormatCharacters.ToCharArray(), "");
+							}
+						}
+
+
+						var rule = this.Mask.FirstOrDefault(r => r.End >= len);
+						if (rule == null)
+						{
+							var temp = text.Substring(0, text.Length - 1);
+							this.Text = temp;
+							//native.SetSelection(native.Text.Length);
+						}
+						else
+						{
+							if (rule.Mask != "")
+							{
+								var temp = ReFractor(text, rule);
+								if (! Delete)
+								{
+									if (middle)
+									{
+										adjustedStart = 1;
+									}
+									else
+									{
+										if (temp.Length > e.OldTextValue.Length)
+										{
+											adjustedStart = temp.Length - e.OldTextValue.Length;
+										}
+										else
+										{
+											adjustedStart = 0;
+											start = temp.Length;
+										}
+									}
+								}
+								this.Text = temp;
+								//var next = temp[start + adjustedStart-1];
+								this.LastText = temp;
+							}
+							else if (rule.Mask == "" && this.Delete)
+							{
+								this.Text = text;
+								this.LastText = text;
 							}
 							else
 							{
-								adjustedStart--;
+								if (e.NewTextValue.Length > e.OldTextValue.Length)
+								{
+									adjustedStart++;
+								}
+								else
+								{
+									adjustedStart--;
+								}
 							}
-						}
-					}   
+						}   
 
-					this.Locked = false;
-					this.SetSelection = new SelectionPoint(start + adjustedStart);	
+						this.Locked = false;
+						this.SetSelection = new SelectionPoint(start + adjustedStart);	
+					}
 				}
 			};
 		}

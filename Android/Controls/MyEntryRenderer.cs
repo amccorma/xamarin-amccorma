@@ -99,10 +99,12 @@ namespace GitHub.Android
 						{
 							args.Handled = false;
 						}
-
-						return;
+						else
+						{
+							args.Handled = false;
+						}
 					}
-					if (source.Locked == false && args.Event.Action == global::Android.Views.KeyEventActions.Down && source.Mask != null)
+					else if (source.Locked == false && args.Event.Action == global::Android.Views.KeyEventActions.Down && source.Mask != null)
 					{
 						source.Delete = false;
 						var start = native.SelectionStart;
