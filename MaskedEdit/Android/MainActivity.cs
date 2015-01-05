@@ -11,9 +11,9 @@ using Android.OS;
 using Xamarin.Forms.Platform.Android;
 
 
-namespace GitHub.Android
+namespace Masked.Android
 {
-	[Activity (Label = "GitHub.Android.Android", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Masked.Android", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : AndroidActivity
 	{
 		protected override void OnCreate (Bundle bundle)

@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace GitHub
+namespace Masked
 {
 	public class App
 	{

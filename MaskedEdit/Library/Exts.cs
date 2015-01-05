@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace GitHub.Library
+namespace Masked.Library
 {
 	public static class Exts
 	{

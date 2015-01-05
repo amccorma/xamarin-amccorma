@@ -4,11 +4,5 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
-    <Watch file="G:\Downloads\alpha-mobile-psea\Mobile1\PSEA.Mobile.Pages\ViewModel\RegionLocationsViewModel.cs" line="84" offsetX="305" offsetY="1328" expression="data" liveUpdate="False" />
-    <Watch file="G:\Downloads\alpha-mobile-psea\Mobile1\Startup\PSEA.Mobile.Droid\Helpers.cs" line="48" offsetX="606" offsetY="752" expression="obj" liveUpdate="False" />
-    <Watch file="G:\Downloads\alpha-mobile-psea\Mobile1\Device\PSEA.DROID.LIBRARY\Device\MyDevice.cs" line="105" offsetX="207" offsetY="1664" expression="d" liveUpdate="False" />
-    <Watch file="G:\Downloads\alpha-mobile-psea\Mobile1\PSEA.Mobile.Data\REST\ServiceExecute.cs" line="106" offsetX="613" offsetY="1680" expression="this.RestClient" liveUpdate="False" />
-    <Watch file="G:\Downloads\alpha-mobile-psea\Mobile1\PSEA.Mobile.Pages\ViewModel\AdvocacyViewModel.cs" line="99" offsetX="564" offsetY="1568" expression="data2" liveUpdate="False" />
-  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

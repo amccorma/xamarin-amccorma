@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GitHub.Library
+namespace Masked.Library
 {
 	public class MaskRules
 	{

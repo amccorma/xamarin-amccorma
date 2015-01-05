@@ -1,9 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
-using GitHub.Controls;
-using GitHub.Library;
+using Masked.Controls;
+using Masked.Library;
 
-namespace GitHub
+namespace Masked
 {
 	public class MyMask : ContentPage
 	{

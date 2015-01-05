@@ -5,11 +5,11 @@ using Android.Widget;
 using Android.Graphics;
 using System.Linq;
 using System.Collections.Generic;
-using GitHub.Controls;
-using GitHub.Library;
+using Masked.Controls;
+using Masked.Library;
 
-[assembly: ExportRenderer (typeof (GitHub.Controls.MyEntry), typeof (GitHub.Android.MyEntryRenderer))]
-namespace GitHub.Android
+[assembly: ExportRenderer(typeof(Masked.Controls.MyEntry), typeof(Masked.Android.Controls.MyEntryRenderer))]
+namespace Masked.Android.Controls
 {
 	public class MyEntryRenderer : EntryRenderer
 	{
@@ -130,7 +130,7 @@ namespace GitHub.Android
 							if (len+1 > source.MaxLength)
 							{
 								args.Handled = true;
-								source.Validate("MAX", "Max length is " + source.MaxLength);
+								//source.Validate("MAX", "Max length is " + source.MaxLength);
 							}
 							else
 							{
