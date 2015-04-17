@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleShortVersionString</key>
+	<string>1.02</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>MinimumOSVersion</key>
+	<string>8.0</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>CFBundleDisplayName</key>
+	<string>PSEA</string>
+	<key>Assets</key>
+	<string>Assets</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon-Small</string>
+		<string>Icon-Small@2x</string>
+		<string>Icon-Small-40@2x</string>
+		<string>Icon-60@2x</string>
+		<string>Icon</string>
+		<string>Icon@2x</string>
+	</array>
+	<key>CFBundleIdentifier</key>
+	<string>psea.mobile.app.ios</string>
+</dict>
+</plist>

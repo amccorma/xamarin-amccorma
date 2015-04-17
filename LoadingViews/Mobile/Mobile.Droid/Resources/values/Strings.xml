@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">PSEA.Mobile.Droid</string>
+	<string name="skipsplash">1</string>
+	<string name="databaseVersion">1.0</string>
+</resources>

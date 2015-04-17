@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="Mobile/Mobile.Page/mobile.models.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../Downloads/Mobile-loading/Mobile/Base/PSEA.Mobile.Page\ViewModel\LocalInfoViewModel.cs" line="256" offsetX="305" offsetY="4080" expression="obj" liveUpdate="False" />
+    <Watch file="../../Downloads/Mobile-loading/Mobile/Base/PSEA.Mobile.Page\ViewModel\TabPages\RegionLocationsViewModel.cs" line="26" offsetX="277" offsetY="400" expression="this.Local" liveUpdate="False" />
+    <Watch file="../../Downloads/Mobile-loading/Mobile/Base/PSEA.Mobile.Data\Managers\DBManager.cs" line="271" offsetX="522" offsetY="4320" expression="obj" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <DisabledProjects>
+    <String>Mobile/Mobile.Forms/Mobile.Forms.Release/mobile.pages.csproj</String>
+    <String>Mobile/Startup/PSEA.Mobile.IOS/psea.mobile.app.ios.csproj</String>
+    <String>Mobile/Startup/PSEA.Mobile.Droid/overlay.mobile.droid.csproj</String>
+  </DisabledProjects>
+</Properties>

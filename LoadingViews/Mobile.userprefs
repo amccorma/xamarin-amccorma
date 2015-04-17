@@ -1,0 +1,61 @@
+﻿<Properties StartupItem="Device/PSEA.APPLE.LIBRARY/PSEA.APPLE.Library.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Startup/PSEA.Mobile.IOS/Resources/Images.xcassets/LaunchImage.launchimage/Contents.json">
+    <Files>
+      <File FileName="Startup/PSEA.Mobile.IOS/Resources/Images.xcassets/AppIcons.appiconset/Contents.json" />
+      <File FileName="Startup/PSEA.Mobile.IOS/Resources/Images.xcassets/LaunchImage.launchimage/Contents.json" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Devices" expanded="True" />
+          <Node name="Extra" expanded="True">
+            <Node name="Graphics" expanded="True">
+              <Node name="Apple" expanded="True" />
+            </Node>
+          </Node>
+          <Node name="Startup" expanded="True">
+            <Node name="PSEA.Mobile.IOS" expanded="True">
+              <Node name="Resources" expanded="True">
+                <Node name="Images.xcassets" expanded="True">
+                  <Node name="AppIcons.appiconset" expanded="True" />
+                  <Node name="LaunchImage.launchimage" expanded="True">
+                    <Node name="Contents.json" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\Mobile.Forms\Mobile.Forms.Testing\Application\App.xaml.cs" line="76" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\Device\PSEA.DROID.LIBRARY\IOC\IocContainer.cs" line="105" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\Device\PSEA.DROID.LIBRARY\IOC\IocContainer.cs" line="114" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="206" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="205" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="173" column="31" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="176" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="164" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="228" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="226" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="185" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="186" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="189" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="191" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="195" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="201" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Page\Managers\AppStartupManager.cs" line="196" column="1" />
+      <Breakpoint file="D:\TFS\WebApps\Mobile\Base\Mobile\PSEA.Mobile.Data\Managers\DBManager.cs" line="282" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="PSEA.Mobile.Page\ViewModel\LocalInfoViewModel.cs" line="256" offsetX="305" offsetY="4080" expression="obj" liveUpdate="False" />
+    <Watch file="PSEA.Mobile.Page\ViewModel\TabPages\RegionLocationsViewModel.cs" line="26" offsetX="277" offsetY="400" expression="this.Local" liveUpdate="False" />
+    <Watch file="PSEA.Mobile.Data\Managers\DBManager.cs" line="271" offsetX="522" offsetY="4320" expression="obj" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.ItemProperties.Startup.PSEA.Mobile.Droid MonoForAntroid.PreferredDevice="Nexus 4" />
+</Properties>

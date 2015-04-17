@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<common:BasePage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:common="clr-namespace:mobile.models.Controls;assembly=mobile.models"
+	x:Class="mobile.pages.RegionOfficersPage"
+	x:Name="pOfficersPage">
+	<common:BasePage.ToolbarItems>
+		<ToolbarItem Text="Load" Command="{Binding ShowLoadingPanel}"></ToolbarItem>
+		<ToolbarItem Text="Error" Command="{Binding ShowErrorPanel}"></ToolbarItem>
+		<ToolbarItem Text="Hide" Command="{Binding HideAll}"></ToolbarItem>
+	</common:BasePage.ToolbarItems>
+	<ContentPage.Content>
+	 <StackLayout
+			VerticalOptions="Fill"
+			HorizontalOptions="Fill">
+     	<Label Text="RegionOfficersPage Page Content"></Label>
+     	<Button Text="1" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="10" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="11" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="12" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="13" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="17" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="199" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="1990" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="END" HorizontalOptions="FillAndExpand"></Button>
+	</StackLayout>
+	</ContentPage.Content>
+</common:BasePage>
