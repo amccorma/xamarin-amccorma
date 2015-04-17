@@ -19,14 +19,10 @@ namespace PickerToButton.Droid
 		{
 			base.OnElementPropertyChanged (sender, e);
 			if (e.PropertyName == MyPicker.PickItemsProperty.PropertyName) {
-
-				// unsure how to invoke the click event in iOS.
-				// on Android it is performClick
-
-				// this does not work
 				Device.BeginInvokeOnMainThread (() => {
+                    this.Control.BecomeFirstResponder();
 					this.Control.SendActionForControlEvents (UIKit.UIControlEvent.TouchDown);
-					this.Control.PerformSelector(new ObjCRuntime.Selector("Click"), this.Control);
+					//this.Control.PerformSelector(new ObjCRuntime.Selector("Click"), this.Control);
 				});
 			}
 		}
