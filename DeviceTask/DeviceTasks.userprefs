@@ -1,0 +1,20 @@
+﻿<Properties StartupItem="Droid/DeviceTask.Droid.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Andrew's iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeviceTask.iOS/Service/iOSTasks.cs">
+    <Files>
+      <File FileName="DeviceTask.iOS/AppDelegate.cs" Line="27" Column="2" />
+      <File FileName="DeviceTask.iOS/Service/iOSTasks.cs" Line="105" Column="39" />
+      <File FileName="tempVisibleAndroid/Page1.cs" Line="131" Column="15" />
+      <File FileName="tempVisibleAndroid/Service/AppTask.cs" Line="15" Column="43" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="..\..\..\TFS\WebApps\Mobile\Base\PSEA.Mobile.Page\ViewModel\LocalInfoViewModel.cs" line="256" offsetX="305" offsetY="4080" expression="obj" liveUpdate="False" />
+    <Watch file="..\..\..\TFS\WebApps\Mobile\Base\PSEA.Mobile.Page\ViewModel\TabPages\RegionLocationsViewModel.cs" line="26" offsetX="277" offsetY="400" expression="this.Local" liveUpdate="False" />
+    <Watch file="..\..\..\TFS\WebApps\Mobile\Base\PSEA.Mobile.Data\Managers\DBManager.cs" line="271" offsetX="522" offsetY="4320" expression="obj" liveUpdate="False" />
+    <Watch file="..\..\..\TFS\WebApps\Mobile\Base\Mobile\Mobile.Forms\Mobile.Forms.Release\Pages\Calendar\EventCalendarListPage.cs" line="214" offsetX="522" offsetY="3408" expression="temp.SelectedDate.Date" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+</Properties>
