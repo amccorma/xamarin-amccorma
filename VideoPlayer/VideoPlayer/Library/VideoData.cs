@@ -1,10 +1,10 @@
 ﻿using System;
-
 using Xamarin.Forms;
+using VideoSamples.Library;
 
-namespace LabSamples
+namespace VideoSamples
 {
-	public class VideoData : ContentPage
+	public class VideoData
 	{
 		public VideoData()
 		{
@@ -23,15 +23,24 @@ namespace LabSamples
 		/// <value>The duration.</value>
 		public double Duration {get;set;}
 
-		/// <summary>
-		/// in Milliseconds
-		/// </summary>
-		/// <value>The position.</value>
-		public double Position { get; set; }
+		public VideoState State { get; set; }
+
+		public override bool Equals (object obj)
+		{
+			var t = obj as VideoData;
+			if (t == null)
+				return false;
+
+			if (t.At == this.At && t.Duration == this.Duration && State == t.State) {
+				return true;
+			}
+
+			return false;
+		}
 
 		public override string ToString ()
 		{
-			return string.Format ("[VideoData: At={0}, Duration={1}, Position={2}]", At, Duration, Position);
+			return string.Format ("[VideoData: At={0}, Duration={1}, State={2}]", At, Duration, State);
 		}
 	}
 }

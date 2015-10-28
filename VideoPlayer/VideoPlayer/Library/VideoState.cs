@@ -1,17 +1,15 @@
 ﻿using System;
 
-namespace LabSamples.Library
+namespace VideoSamples.Library
 {
-	public class VideoState
+	public enum VideoState
 	{
-		public const string ActionSTOP = "STOP";
-
-		public const string ActionPause = "PAUSE";
-
-		public const string ActionPlay = "PLAY";
-
-		public const string ActionEnded = "END";
-
+		STOP,
+		RESTART,
+		PAUSE,
+		PLAY,
+		ENDED,
+		NONE
 	}
 }
 

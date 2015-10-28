@@ -1,17 +1,9 @@
-﻿/** 
- * 
-TODO:  Add property for Play and Pause Button Images
-TEST Portrait mode and update layout
-RECALACULATE Play Button Height, or assign property
-*/
-
-using System;
+﻿using System;
 using Xamarin.Forms;
 using System.Linq.Expressions;
-using LabSamples.Controls;
-using LabSamples.EXT;
+using VideoSamples.Controls;
 
-namespace LabSamples.Views
+namespace VideoSamples.Views
 {
 	public class VideoPlayerView : ContentView
 	{
@@ -26,11 +18,6 @@ namespace LabSamples.Views
 			}
 		}
 
-		public Image PlayButton {
-			get;
-			set;
-		}
-
 		public VideoPlayerView ()
 		{
             this._VideoPlayer = new MyVideoPlayer();
@@ -39,22 +26,6 @@ namespace LabSamples.Views
 
 			this.Content = this._VideoPlayer;
 		}
-
-		protected override void OnParentSet ()
-		{
-			base.OnParentSet ();
-            this.VideoPlayer.FileSource = FileSource;
-		}
-
-		public static readonly BindableProperty FileSourceProperty = 
-			BindableProperty.Create<VideoPlayerView,string>(
-				p => p.FileSource, "");
-
-		public string FileSource {
-			get { return (string)GetValue (FileSourceProperty); }
-			set { SetValue (FileSourceProperty, value); }
-		}
-
 	}
 }
 

@@ -5,7 +5,7 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
-namespace LabSamples.iOS
+namespace VideoSamples.iOS
 {
     public class Application
     {

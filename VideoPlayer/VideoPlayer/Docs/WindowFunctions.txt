@@ -1,0 +1,48 @@
+﻿IWindowManager windowManager = Context.GetSystemService (Android.App.Service.WindowService).JavaCast<IWindowManager> ();
+	var p = (LinearLayout.LayoutParams)this._MyVideoView.LayoutParameters;
+	DisplayMetrics display = new DisplayMetrics();
+	windowManager.DefaultDisplay.GetMetrics(display);
+	var width = display.WidthPixels;
+	var height = display.HeightPixels;
+	var holder = this._MyVideoView.Holder;
+
+
+	this._MyVideoView.Measure(width, height);
+	holder.SetFixedSize(width, height);
+
+	var a = this.Context as Activity;
+	a.ActionBar.Hide();
+
+	p.Width = width;
+	p.Height = height;
+	this._MainLayout.LayoutParameters = p;
+
+	this._MyVideoView.SetMediaController(this._MCController);
+	a.Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
+
+
+
+	IWindowManager windowManager = Context.GetSystemService (Android.App.Service.WindowService).JavaCast<IWindowManager> ();
+	DisplayMetrics display = new DisplayMetrics();
+	windowManager.DefaultDisplay.GetMetrics(display);
+
+	var a2 = a.Window;
+	a2.WindowManager.DefaultDisplay.GetRealMetrics (display);
+	var a4 = display.HeightPixels;
+
+	var a5 = a2.DecorView;
+
+	Rect rect2 = new Rect ();
+	a5.GetWindowVisibleDisplayFrame (rect2);
+
+	var w4 = rect2.Width();
+	var w8 = rect2.Height();
+
+	var width = display.WidthPixels;
+	var height = (this.Element.ActionBarHide) ? rect2.Height : (int)this.Element.ContentHeight; 
+	var holder = this._MyVideoView.Holder;
+
+	p.Height = height;
+	p.Width = width;
+
+	holder.SetFixedSize (width, height);

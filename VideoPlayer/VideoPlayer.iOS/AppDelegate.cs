@@ -7,7 +7,7 @@ using MonoTouch.UIKit;
 
 using Xamarin.Forms;
 
-namespace LabSamples.iOS
+namespace VideoSamples.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
