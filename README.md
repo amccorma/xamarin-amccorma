@@ -14,3 +14,5 @@ iOSMarqueeLabel:  renderer for Marquee label in iOS
 DeviceTask:  Finite Length Task and Android Service for Xamarin Forms.
 
 VideoPlayer: iOS / Android Xamarin
+
+TopAlert: iOS /Android.  Top Bar Alerts
