@@ -16,3 +16,5 @@ DeviceTask:  Finite Length Task and Android Service for Xamarin Forms.
 VideoPlayer: iOS / Android Xamarin
 
 TopAlert: iOS /Android.  Top Bar Alerts
+
+Android Permissions:  Android-M / Mashmellow Xamarin Forms Permission Layer (uses Task and await pattern)

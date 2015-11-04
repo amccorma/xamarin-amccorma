@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="Droid/AndroidPermissions.Droid.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.10.71.34.101:5555" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AndroidPermissions/App.cs">
+    <Files>
+      <File FileName="Droid/MainActivity.cs" Line="52" Column="1" />
+      <File FileName="Droid/SetPermissions.cs" Line="35" Column="1" />
+      <File FileName="AndroidPermissions/App.cs" Line="42" Column="31" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/mccorma/Projects/AndroidPermissions/Droid/MainActivity.cs" line="52" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.AndroidPermissions.Droid AndroidDesignerPreferredDevice="Nexus 4" />
+</Properties>
