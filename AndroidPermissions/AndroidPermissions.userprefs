@@ -1,10 +1,11 @@
 ﻿<Properties StartupItem="Droid/AndroidPermissions.Droid.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.10.71.34.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AndroidPermissions/App.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus_5_API_23_x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/Resources/values/style.xml">
     <Files>
-      <File FileName="Droid/MainActivity.cs" Line="52" Column="1" />
-      <File FileName="Droid/SetPermissions.cs" Line="35" Column="1" />
-      <File FileName="AndroidPermissions/App.cs" Line="42" Column="31" />
+      <File FileName="Droid/MainActivity.cs" Line="1" Column="1" />
+      <File FileName="Droid/SetPermissions.cs" Line="157" Column="41" />
+      <File FileName="AndroidPermissions/App.cs" Line="38" Column="39" />
+      <File FileName="Droid/Resources/values/style.xml" Line="3" Column="87" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

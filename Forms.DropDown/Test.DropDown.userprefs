@@ -1,0 +1,23 @@
+﻿<Properties StartupItem="DropDown.Forms/DropDown.Forms.csproj" RefactoringSettings.EnableRefactorings="True">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="PSEA.iOS.DropDown/Table/DropDownTable.cs">
+    <Files>
+      <File FileName="PSEA.iOS.DropDown/Table/DropDownTable.cs" Line="25" Column="35" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/mccorma/Projects/Test.DropDown/PSEA.Android/MaterialDropDownRender.cs" line="139" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../Desktop/Mobile TFS1/PSEA.Mobile.Page\ViewModel\LocalInfoViewModel.cs" line="256" offsetX="305" offsetY="4080" expression="obj" liveUpdate="False" />
+    <Watch file="../../Desktop/Mobile TFS1/PSEA.Mobile.Page\ViewModel\TabPages\RegionLocationsViewModel.cs" line="26" offsetX="277" offsetY="400" expression="this.Local" liveUpdate="False" />
+    <Watch file="../../Desktop/Mobile TFS1/PSEA.Mobile.Data\Managers\DBManager.cs" line="271" offsetX="522" offsetY="4320" expression="obj" liveUpdate="False" />
+    <Watch file="../../Desktop/Mobile TFS1/Mobile\Mobile.Forms\Mobile.Forms.Release\Pages\Calendar\EventCalendarListPage.cs" line="214" offsetX="522" offsetY="3408" expression="temp.SelectedDate.Date" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <DisabledProjects>
+    <String>Test.DropDown/Test.DropDown.csproj</String>
+    <String>PSEA.iOS.DropDown/DropDown.iOS.Control.csproj</String>
+  </DisabledProjects>
+</Properties>
