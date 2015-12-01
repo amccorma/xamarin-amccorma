@@ -1,0 +1,11 @@
+/Users/mccorma/Desktop/MaskedEditAndroid/MaskedEditAndroid/obj/Debug/assemblies/MaskedEditAndroid.dll
+/Users/mccorma/Desktop/MaskedEditAndroid/MaskedEditAndroid/obj/Debug/assemblies/System.dll
+/Users/mccorma/Desktop/MaskedEditAndroid/MaskedEditAndroid/obj/Debug/assemblies/System.Xml.dll
+/Users/mccorma/Desktop/MaskedEditAndroid/MaskedEditAndroid/obj/Debug/assemblies/Mono.Android.dll
+/Users/mccorma/Desktop/MaskedEditAndroid/MaskedEditAndroid/obj/Debug/assemblies/Xamarin.Android.Support.v4.dll
+/Users/mccorma/Desktop/MaskedEditAndroid/MaskedEditAndroid/obj/Debug/assemblies/Xamarin.Android.Support.v7.AppCompat.dll
+/Users/mccorma/Desktop/MaskedEditAndroid/MaskedEditAndroid/obj/Debug/assemblies/Xamarin.Android.Support.Design.dll
+/Users/mccorma/Desktop/MaskedEditAndroid/MaskedEditAndroid/obj/Debug/assemblies/System.Core.dll
+/Users/mccorma/Desktop/MaskedEditAndroid/MaskedEditAndroid/obj/Debug/assemblies/mscorlib.dll
+/Users/mccorma/Desktop/MaskedEditAndroid/MaskedEditAndroid/obj/Debug/assemblies/System.Runtime.Serialization.dll
+/Users/mccorma/Desktop/MaskedEditAndroid/MaskedEditAndroid/obj/Debug/assemblies/System.ServiceModel.Internals.dll

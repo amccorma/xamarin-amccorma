@@ -1,4 +1,14 @@
 
+UNDER DEVELOPMENT.  Does not work
+-----------------------------------------------------------------------
+
+MaskedEditAndroid: Android only Masked Edit (fixing BUGS)
+
+
+
+
+RELEASE
+-----------------------------------------------------------------------
 DeviceEncryption: iOS / Android
 
 MaskedEdit: iOS / Android
@@ -20,3 +30,4 @@ TopAlert: iOS /Android.  Top Bar Alerts
 Android Permissions:  Android-M / Mashmellow Xamarin Forms Permission Layer (uses Task and await pattern)
 
 DropDown: iOS / Android.  Xamarin Forms.
+
