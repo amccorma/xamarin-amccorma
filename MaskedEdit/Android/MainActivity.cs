@@ -13,8 +13,8 @@ using Xamarin.Forms.Platform.Android;
 
 namespace Masked.Android
 {
-    [Activity(Label = "Masked.Android", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-	public class MainActivity : AndroidActivity
+	[Activity(Label = "Masked.Android", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	public class MainActivity : Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -22,7 +22,7 @@ namespace Masked.Android
 
 			Xamarin.Forms.Forms.Init (this, bundle);
 
-			SetPage (App.GetMainPage ());
+			LoadApplication (new App ());
 		}
 	}
 }

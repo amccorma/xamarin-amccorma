@@ -180,6 +180,13 @@ namespace Masked.Android.Controls
 				if (rule.Mask != "") {
 					native.Text = native.Text = source.ReFractor (text, rule);
 				}
+
+				// check length of last Mask and set MaxLength of not set already
+				// this will set a MaxLength value to stop the mask
+				var l = rules.Last ().End;
+				if (source.MaxLength < 0) {
+					source.MaxLength = l;
+				}
 			}
 			else if (source.MaxLength > -1) {
 				if (len > source.MaxLength) {

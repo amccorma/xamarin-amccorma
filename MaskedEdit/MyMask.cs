@@ -3,6 +3,9 @@ using Xamarin.Forms;
 using Masked.Controls;
 using Masked.Library;
 
+/// <summary>
+/// https://forums.xamarin.com/discussion/comment/168327
+/// </summary>
 namespace Masked
 {
 	public class MyMask : ContentPage
