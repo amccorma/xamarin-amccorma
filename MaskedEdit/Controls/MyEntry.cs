@@ -281,6 +281,8 @@ namespace Masked.Controls
 			set { SetValue(LockedProperty, value); }
 		}
 
+		private Int32 MaxLengthFromMask = 0;
+
 
 		public MyEntry()
 		{
@@ -335,6 +337,13 @@ namespace Masked.Controls
 							}
 						}
 
+						// check MaxLength for Mask
+						if (this.MaxLengthFromMask <= 0)
+						{
+							// check length of last Mask and set MaxLength of not set already
+							// this will set a MaxLength value to stop the mask
+							this.MaxLengthFromMask = this.Mask.Last ().End;
+						}
 
 						var rule = this.Mask.FirstOrDefault(r => r.End >= len);
 						if (rule == null)
@@ -422,7 +431,10 @@ namespace Masked.Controls
 			string temp = "";
 			if (rule.Mask != "")
 			{
-
+				if (text.Length > this.MaxLengthFromMask)
+				{
+					text.Substring (0, this.MaxLengthFromMask);
+				}
 				var result = System.Text.RegularExpressions.Regex.Match(rule.Mask, CV_defaultMask);
 				temp = rule.Mask;
 				do

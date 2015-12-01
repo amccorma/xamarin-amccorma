@@ -3,11 +3,11 @@ using Xamarin.Forms;
 
 namespace Masked
 {
-	public class App
+	public class App : Application
 	{
-		public static Page GetMainPage ()
+		public App()
 		{	
-			return new NavigationPage (new MyMask ());
+			this.MainPage = new NavigationPage (new MyMask ());
 		}
 	}
 }
