@@ -1,6 +1,6 @@
 ﻿<Properties StartupItem="Android/Masked.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="App.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Android/MainActivity.cs">
     <Files>
       <File FileName="Android/MainActivity.cs" Line="1" Column="1" />
       <File FileName="MyMask.cs" Line="1" Column="1" />

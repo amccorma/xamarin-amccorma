@@ -1,9 +1,9 @@
-﻿<Properties StartupItem="MaskedEditAndroid/MaskedEditAndroid.csproj">
+﻿<Properties StartupItem="MaskedEditAndroid/MaskedEditAndroid.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
   <MonoDevelop.Ide.Workbench ActiveDocument="MaskedEditAndroid/MyEntryEditText.cs">
     <Files>
-      <File FileName="MaskedEditAndroid/MyEntryEditText.cs" Line="47" Column="1" />
-      <File FileName="MaskedEditAndroid/MainActivity.cs" Line="21" Column="35" />
+      <File FileName="MaskedEditAndroid/MyEntryEditText.cs" Line="50" Column="16" />
+      <File FileName="MaskedEditAndroid/MainActivity.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

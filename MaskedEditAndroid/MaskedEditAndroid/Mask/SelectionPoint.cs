@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MaskedEditAndroid
+namespace MaskedEditAndroid.Mask
 {
 	public class SelectionPoint
 	{

@@ -7,13 +7,31 @@
         android:id="@+id/myButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
-    <MaskedEditAndroid.MyEntryEditText
+        android:text="Test SetError" />
+    <TextView
+        android:text="Masked Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <MaskedEditAndroid.Mask.Control.MaskEdit
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
+        android:minHeight="40dp"
+        android:gravity="center_vertical" />
+    <TextView
+        android:text="Normal Edit Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:text="Sample Input EditText"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
         android:minHeight="40dp"
         android:gravity="center_vertical" />
 </LinearLayout>
