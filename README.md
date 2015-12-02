@@ -1,10 +1,16 @@
-
-UNDER DEVELOPMENT.  Does not work
+Xamarin iOS and Android
 -----------------------------------------------------------------------
 
-MaskedEditAndroid: Android only Masked Edit (fixing BUGS)
+List of projects I have coded.  
 
+Each project has a sample project and a zip file to download.
 
+Last tested: 12/02/2015.  If you find BUGs, report them and I update the code. 
+
+BETA
+-----------------------------------------------------------------------
+
+MaskedEditAndroid: Android - Masked Edit
 
 
 RELEASE
