@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-
 using Xamarin.Forms;
 using Masked;
 
@@ -14,29 +12,17 @@ namespace App1.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : UIApplicationDelegate
-    {
-        // class-level declarations
-        UIWindow window;
+	public class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+	{
 
-        //
-        // This method is invoked when the application has loaded and is ready to run. In this 
-        // method you should instantiate the window, load the UI into it and then make the window
-        // visible.
-        //
-        // You have 17 seconds to return from this method, or iOS will terminate your application.
-        //
-        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
-        {
-            Forms.Init();
+		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
+		{
+			global::Xamarin.Forms.Forms.Init ();
 
-            window = new UIWindow(UIScreen.MainScreen.Bounds);
+			LoadApplication (new App ());
 
-            window.RootViewController = App.GetMainPage().CreateViewController();
+			return base.FinishedLaunching (app, options);
+		}
 
-            window.MakeKeyAndVisible();
-
-            return true;
-        }
-    }
+	}
 }

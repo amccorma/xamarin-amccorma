@@ -1,13 +1,27 @@
-﻿<Properties StartupItem="Android/Masked.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controls/MyEntry.cs">
+﻿<Properties StartupItem="IOS/Masked.IOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Android/MainActivity.cs">
     <Files>
-      <File FileName="Android/MainActivity.cs" Line="1" Column="1" />
+      <File FileName="Android/MainActivity.cs" Line="26" Column="1" />
       <File FileName="MyMask.cs" Line="1" Column="1" />
       <File FileName="Controls/MyEntry.cs" Line="321" Column="53" />
-      <File FileName="Android/Controls/MyEntryRenderer.cs" Line="190" Column="5" />
+      <File FileName="Android/Controls/MyEntryRenderer.cs" Line="1" Column="1" />
       <File FileName="App.cs" Line="1" Column="1" />
+      <File FileName="IOS/AppDelegate.cs" Line="27" Column="37" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="GitHub" expanded="True">
+            <Node name="Masked" expanded="True" />
+            <Node name="Masked.Android" expanded="True">
+              <Node name="MainActivity.cs" selected="True" />
+            </Node>
+            <Node name="Masked.IOS" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
