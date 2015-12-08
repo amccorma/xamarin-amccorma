@@ -16,7 +16,6 @@ namespace Masked.Android.Controls
 		private MyEntry source;
 		private EntryEditText native;
 		private SelectionPoint pt;
-		private char[] FormatCharacters = null;
 
 		protected override void Dispose (bool disposing)
 		{
@@ -52,7 +51,7 @@ namespace Masked.Android.Controls
 
 		void Native_AfterTextChanged (object sender, global::Android.Text.AfterTextChangedEventArgs e)
 		{
-			if (pt != null && FormatCharacters != null)
+			if (pt != null && source.FormatCharacters != null)
 			{
 				var temp = pt;
 				pt = null;
@@ -79,7 +78,7 @@ namespace Masked.Android.Controls
 								for (int i = 0; i < text.Length; i++)
 								{
 									string c = text[i].ToString();
-									if (FormatCharacters.Where(ch => ch.ToString() == c.ToString()).Count() <= 0)
+									if (source.FormatCharacters.Where(ch => ch.ToString() == c.ToString()).Count() <= 0)
 									{
 										// no placeholder1
 										if (before[0].ToString() == c)
@@ -194,7 +193,7 @@ namespace Masked.Android.Controls
 
 			var chars = source.FormatCharacters.ToCharArray ();
 
-			var text = native.Text.Replace (FormatCharacters, "");
+			var text = native.Text.Replace (chars, "");
 
 			if (String.IsNullOrEmpty (source.FormatCharacters) == false)
 				text = text.Replace (chars, "");
@@ -244,8 +243,6 @@ namespace Masked.Android.Controls
 			base.OnElementPropertyChanged (sender, e);
 			if (e.PropertyName == "SetSelection") {
 				pt = source.SetSelection;
-			} else if (e.PropertyName == "FormatCharacters") {
-				this.FormatCharacters = source.FormatCharacters.ToCharArray ();
 			}
 		}
 	}
