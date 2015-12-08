@@ -7,7 +7,7 @@ Each project has a sample project and a zip file to download.
 
 Last tested: 12/02/2015.  If you find BUGs, report them and I update the code. 
 
-Xamarin Android
+Xamarin Android  ** BETA **
 -----------------------------------------------------------------------
 
 MaskedEditAndroid: Android - Masked Edit
