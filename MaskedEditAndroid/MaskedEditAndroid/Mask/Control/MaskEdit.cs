@@ -119,6 +119,13 @@ namespace MaskedEditAndroid.Mask.Control
 		/// </summary>
 		private bool Delete { get; set; }
 
+		/// <summary>
+		/// Text without formating characters
+		/// </summary>
+		/// <value>The raw text.</value>
+		public string RawText { get; set; }
+
+
 		#region "Event Handlers"
 
 		private void EditTextChanged(object sender, Android.Text.TextChangedEventArgs e)
@@ -154,14 +161,17 @@ namespace MaskedEditAndroid.Mask.Control
 				System.Diagnostics.Debug.WriteLine ("cursor position: " + start);
 				System.Diagnostics.Debug.WriteLine ("before change:= " + BeforeCount + ", after change:=" + AfterCount);
 
-				var text = InputText.Replace (this.Properties.FormatCharacters.ToCharArray (), "");
+				var chars = this.Properties.FormatCharacters.ToCharArray ();
+				var text = InputText.Replace (chars, "");
 				var len = text.Length;
+
 				var middle = false;
 				System.Diagnostics.Debug.WriteLine ("in editext");
 				if (this.Delete && start > 0) {					
 					adjustedStart = adjustedStart - 1;
 					System.Diagnostics.Debug.WriteLine ("start:= " + start + ", adjustedStart:= " + adjustedStart);
-					this.BeforeChars = InputText.Substring (0, e.Start).Replace (this.Properties.FormatCharacters.ToCharArray (), "");
+					this.BeforeChars = InputText.Substring (0, e.Start).Replace (chars, "");
+
 				} else {
 					if (start != InputText.Length - 1)
 					{
@@ -173,7 +183,7 @@ namespace MaskedEditAndroid.Mask.Control
 						}
 						else
 						{
-							this.BeforeChars = InputText.Substring(0, start + 1).Replace(this.Properties.FormatCharacters.ToCharArray(), "");
+							this.BeforeChars = InputText.Substring(0, start + 1).Replace(chars, "");
 						}
 					}
 				}
@@ -212,6 +222,10 @@ namespace MaskedEditAndroid.Mask.Control
 								System.Diagnostics.Debug.WriteLine ("e");
 							}
 						}
+					} else {
+						// delete?
+						var l = temp.Length;
+						temp = temp.Substring (0, l - 1) + (chars.Any (x => x == temp [l - 1]) ? "" : temp [l - 1].ToString());
 					}
 					this.Text = temp;
 					//var next = temp[start + adjustedStart-1];
@@ -230,7 +244,7 @@ namespace MaskedEditAndroid.Mask.Control
 						System.Diagnostics.Debug.WriteLine ("3");
 					}
 				}
-
+				this.RawText = this.Text.Replace (chars, "");
 				UpdatSelectionPoint (new SelectionPoint (start + adjustedStart));
 				this.Locked = false;
 			}
@@ -357,10 +371,11 @@ namespace MaskedEditAndroid.Mask.Control
 				this.Properties.FormatCharacters = "";
 			}
 
+			var chars = this.Properties.FormatCharacters.ToCharArray ();
 			this.Locked = true;
 			var text = "";
 			if (String.IsNullOrEmpty (this.Properties.FormatCharacters) == false)
-				text = this.Text.Replace (this.Properties.FormatCharacters, "");
+				text = this.Text.Replace (chars, "");
 			else
 				text = this.Text;
 
@@ -400,7 +415,7 @@ namespace MaskedEditAndroid.Mask.Control
 				this.Text = text.Substring (0, this.Properties.MaxLength);
 			}
 
-
+			this.RawText = this.Text.Replace (chars, "");
 			this.Locked = false;
 		}
 
@@ -418,7 +433,8 @@ namespace MaskedEditAndroid.Mask.Control
 		private Int32[] ConvertMatch(string match)
 		{
 			match = match.Replace("{", "").Replace("}", "");
-			return match.Split(new char[] { ':' }).Select(s => (s == "") ? 0 : int.Parse(s)).ToArray();
+			var result = match.Split(new char[] { ':' }).Select(s => (s == "") ? 0 : int.Parse(s)).ToArray();		
+			return result;
 		}
 
 		public string ApplyMask(string text, MaskRules rule)
@@ -436,17 +452,29 @@ namespace MaskedEditAndroid.Mask.Control
 				temp = rule.Mask;
 				do
 				{
-					if (System.Text.RegularExpressions.Regex.Match(result.Value, CV_defaultOneMask).Success)
+					if (System.Text.RegularExpressions.Regex.Match(result.Value, CV_defaultOneMask).Success || String.IsNullOrEmpty(result.Value))
 					{
+						// result is an empty string. return. done parsing
+						if (String.IsNullOrEmpty(result.Value)) break;
+
 						// end match                            
 						var obj = ConvertMatch(result.Value);
 						temp = temp.Replace(result.Value, text.Substring(obj[0]));
 						break;
 					}
 					else
-					{
+					{						
 						var obj = ConvertMatch(result.Value);
-						temp = temp.Replace(result.Value, text.Substring(obj[0], obj[1]));
+						if (obj[0] + obj[1] >= text.Length)
+						{
+							// keeping format character at end??
+							var t = result.Value[result.Value.Length-1];
+							temp = temp.Replace(result.Value, text.Substring(obj[0])); 
+						}
+						else
+						{
+							temp = temp.Replace(result.Value, text.Substring(obj[0], obj[1]));
+						}
 						result = result.NextMatch();
 					}
 				} while (true);

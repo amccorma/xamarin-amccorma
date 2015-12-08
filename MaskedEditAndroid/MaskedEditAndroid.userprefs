@@ -1,18 +1,13 @@
 ﻿<Properties StartupItem="MaskedEditAndroid/MaskedEditAndroid.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MaskedEditAndroid/Mask/Control/MaskEdit.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MaskedEditAndroid/MainActivity.cs">
     <Files>
-      <File FileName="MaskedEditAndroid/Mask/Control/MaskEdit.cs" Line="9" Column="1" />
-      <File FileName="MaskedEditAndroid/Mask/Control/TextHolder.cs" Line="28" Column="3" />
+      <File FileName="MaskedEditAndroid/Mask/Control/MaskEdit.cs" Line="418" Column="43" />
+      <File FileName="MaskedEditAndroid/MainActivity.cs" Line="99" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="I:\My Folders\Documents\Projects\MaskedEditAndroid\MaskedEditAndroid\MyEntryEditText.cs" line="150" column="1" />
-      <Breakpoint file="I:\My Folders\Documents\Projects\MaskedEditAndroid\MaskedEditAndroid\MyEntryEditText.cs" line="88" column="1" />
-      <Breakpoint file="I:\My Folders\Documents\Projects\MaskedEditAndroid\MaskedEditAndroid\MyEntryEditText.cs" line="205" column="1" />
-      <Breakpoint file="I:\My Folders\Documents\Projects\MaskedEditAndroid\MaskedEditAndroid\MyEntryEditText.cs" line="30" column="23" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MaskedEditAndroid AndroidDesignerPreferredDevice="Nexus 4" />

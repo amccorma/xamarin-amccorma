@@ -43,13 +43,16 @@
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
     <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\packages\Xamarin.Android.Support.v4.23.0.1.3\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Android.Support.v4.23.1.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.v7.AppCompat">
-      <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.23.0.1.3\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.23.1.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.RecyclerView.23.1.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.Design">
-      <HintPath>..\packages\Xamarin.Android.Support.Design.23.0.1.3\lib\MonoAndroid403\Xamarin.Android.Support.Design.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Android.Support.Design.23.1.1.0\lib\MonoAndroid403\Xamarin.Android.Support.Design.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +73,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-mdpi\Icon.png" />
@@ -78,11 +80,13 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable\error1.png" />
+    <AndroidResource Include="Resources\layout\Main.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Mask\" />
     <Folder Include="Mask\Control\" />
+    <Folder Include="Resources\layout\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

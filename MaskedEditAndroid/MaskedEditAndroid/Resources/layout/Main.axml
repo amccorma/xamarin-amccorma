@@ -21,6 +21,11 @@
         android:id="@+id/textView1"
         android:minHeight="40dp"
         android:gravity="center_vertical" />
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mask Results" />
     <TextView
         android:text="Normal Edit Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
