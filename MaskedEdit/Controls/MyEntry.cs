@@ -97,6 +97,10 @@ namespace Masked.Controls
 			BindableProperty.Create<MyEntry, string>(
 				p => p.FormatCharacters, "");
 
+		public static readonly BindableProperty RawTextProperty =
+			BindableProperty.Create<MyEntry, string>(
+				p => p.RawText, "");
+
 		public List<MaskRules> Mask
 		{
 			get { return (List<MaskRules>)GetValue(MaskProperty); }
@@ -111,26 +115,6 @@ namespace Masked.Controls
 			set { SetValue(SetSelectionProperty, value); }
 		}
 
-		/// <summary>
-		/// The font name property.
-		/// </summary>
-		public static readonly BindableProperty FontNameProperty =
-			BindableProperty.Create<MyEntry, string>(
-				p => p.FontName, string.Empty);
-
-		/// <summary>
-		/// The is bold property.
-		/// </summary>
-		public static readonly BindableProperty IsBoldProperty =
-			BindableProperty.Create<MyEntry, bool>(
-				p => p.IsBold, false);
-
-		/// <summary>
-		/// The padding property.
-		/// </summary>
-		public static readonly BindableProperty PaddingProperty =
-			BindableProperty.Create<MyEntry, Thickness>(
-				p => p.Padding, new Thickness(-1, -1, -1, -1));
 
 		/// <summary>
 		/// Gets or sets the length of the text.
@@ -189,73 +173,6 @@ namespace Masked.Controls
 		}
 
 		/// <summary>
-		/// Gets or sets the name of the font.
-		/// </summary>
-		/// <value>The name of the font.</value>
-		public Thickness Padding
-		{
-			get { return (Thickness)GetValue(PaddingProperty); }
-			set { SetValue(PaddingProperty, value); }
-		}
-
-
-		/// <summary>
-		/// Gets or sets the name of the font.
-		/// </summary>
-		/// <value>The name of the font.</value>
-		public bool IsBold
-		{
-			get { return (bool)GetValue(IsBoldProperty); }
-			set { SetValue(IsBoldProperty, value); }
-		}
-
-		/// <summary>
-		/// Gets or sets the Font
-		/// </summary>
-		public Font Font
-		{
-			get { return (Font)GetValue(FontProperty); }
-			set { SetValue(FontProperty, value); }
-		}
-
-		/// <summary>
-		/// Gets or sets the X alignment of the text
-		/// </summary>
-		public TextAlignment XAlign
-		{
-			get { return (TextAlignment)GetValue(XAlignProperty); }
-			set { SetValue(XAlignProperty, value); }
-		}
-
-		/// <summary>
-		/// Gets or sets if the border should be shown or not
-		/// </summary>
-		public bool HasBorder
-		{
-			get { return (bool)GetValue(HasBorderProperty); }
-			set { SetValue(HasBorderProperty, value); }
-		}
-
-		/// <summary>
-		/// Sets color for placeholder text
-		/// </summary>
-		public Color PlaceholderTextColor
-		{
-			get { return (Color)GetValue(PlaceholderTextColorProperty); }
-			set { SetValue(PlaceholderTextColorProperty, value); }
-		}
-
-		/// <summary>
-		/// Gets or sets the name of the font.
-		/// </summary>
-		/// <value>The name of the font.</value>
-		public string FontName
-		{
-			get { return (string)GetValue(FontNameProperty); }
-			set { SetValue(FontNameProperty, value); }
-		}
-
-		/// <summary>
 		/// Gets or sets the before chars.
 		/// </summary>
 		/// <value>The before chars.</value>
@@ -281,26 +198,23 @@ namespace Masked.Controls
 			set { SetValue(LockedProperty, value); }
 		}
 
-		private Int32 MaxLengthFromMask = 0;
+		public Int32 MaxLengthFromMask {
+			get;
+			set;
+		}
 
+		/// <summary>
+		/// Text without formating characters
+		/// </summary>
+		/// <value>The raw text.</value>
+		public string RawText
+		{
+			get { return (string)GetValue(RawTextProperty); }
+			set { SetValue(RawTextProperty, value); }
+		}
 
 		public MyEntry()
 		{
-			Device.OnPlatform(
-				() =>
-				{
-				},
-				() =>
-				{
-					this.Padding = new Thickness(8, 0, 8, 0);
-				},
-				() =>
-				{
-				},
-				() =>
-				{
-				});
-
 
 			this.TextChanged += (object sender, TextChangedEventArgs e) =>
 			{
@@ -309,6 +223,13 @@ namespace Masked.Controls
 					if (this.Locked == false && (this.LastText != this.Text) && String.IsNullOrEmpty(this.Text) == false)
 					{
 						this.Locked = true;
+
+						if (this.FormatCharacters == null) {
+							this.Locked = false;
+							return;
+						}
+
+						var chars = this.FormatCharacters.ToCharArray ();
 						Int32 adjustedStart = 0;
 						this.Locked = true;
 						var start = this.SelectionStart;
@@ -318,7 +239,7 @@ namespace Masked.Controls
 						if (Delete && start > 0)
 						{
 							adjustedStart = adjustedStart - 1;
-							BeforeChars = this.Text.Substring(0, start - 1).Replace(this.FormatCharacters.ToCharArray(), "");
+							BeforeChars = this.Text.Substring(0, start - 1).Replace(chars, "");
 						}
 						else
 						{
@@ -332,7 +253,7 @@ namespace Masked.Controls
 								}
 								else
 								{
-									BeforeChars = this.Text.Substring(0, start + 1).Replace(this.FormatCharacters.ToCharArray(), "");
+									BeforeChars = this.Text.Substring(0, start + 1).Replace(chars, "");
 								}
 							}
 						}
@@ -345,69 +266,63 @@ namespace Masked.Controls
 							this.MaxLengthFromMask = this.Mask.Last ().End;
 						}
 
+						var finalText = "";
 						var rule = this.Mask.FirstOrDefault(r => r.End >= len);
 						if (rule == null)
 						{
-							var temp = text.Substring(0, text.Length - 1);
-							this.Text = temp;
-							//IOS
-							//this.LastText = temp;
-							//native.SetSelection(native.Text.Length);
+							// no rules found. get last rule
+							rule = this.Mask.Last();
 						}
-						else
+
+						
+						if (rule.Mask != "")
 						{
-							if (rule.Mask != "")
+							var temp = ApplyMask(text, rule);
+							if (!Delete)
 							{
-								var temp = ReFractor(text, rule);
-								if (!Delete)
+								if (middle)
 								{
-									if (middle)
-									{
-										adjustedStart = 1;
-									}
-									else
-									{
-										if (temp.Length > e.OldTextValue.Length)
-										{
-											adjustedStart = temp.Length - e.OldTextValue.Length;
-										}
-										else
-										{
-											adjustedStart = 0;
-											start = temp.Length;
-										}
-									}
-								}
-								this.Text = temp;
-								//var next = temp[start + adjustedStart-1];
-								this.LastText = temp;
-							}
-							else if (rule.Mask == "" && this.Delete)
-							{
-								this.Text = text;
-								this.LastText = text;
-							}
-							else
-							{
-								if (e.NewTextValue.Length > e.OldTextValue.Length)
-								{
-									adjustedStart++;
+									adjustedStart = 1;
 								}
 								else
 								{
-									adjustedStart--;
+									if (temp.Length > e.OldTextValue.Length)
+									{
+										adjustedStart = temp.Length - e.OldTextValue.Length;
+									}
+									else
+									{
+										adjustedStart = 0;
+										start = temp.Length;
+									}
 								}
 							}
+							finalText = temp;
+							//var next = temp[start + adjustedStart-1];
+							this.LastText = temp;
+						}
+						else if (rule.Mask == "" && this.Delete)
+						{
+							finalText = text;
+							this.LastText = text;
+						}
+						else
+						{
+							if (e.NewTextValue.Length > e.OldTextValue.Length)
+							{
+								adjustedStart++;
+							}
+							else
+							{
+								adjustedStart--;
+							}
+							finalText = this.Text.Replace (chars, "");
 						}
 
-						Device.OnPlatform(() =>
-							{
-							},
-							() =>
-							{
-								this.Locked = false;
-							});
-						this.SetSelection = new SelectionPoint(start + adjustedStart);
+						this.RawText = this.Text.Replace (chars, "");
+						var pt = new SelectionPoint(start + adjustedStart);
+						pt.Text = finalText;
+						SetSelection = pt;
 					}
 				}
 			};
@@ -426,30 +341,44 @@ namespace Masked.Controls
 			return match.Split(new char[] { ':' }).Select(s => (s == "") ? 0 : int.Parse(s)).ToArray();
 		}
 
-		public string ReFractor(string text, MaskRules rule)
+		public string ApplyMask(string text, MaskRules rule)
 		{
 			string temp = "";
 			if (rule.Mask != "")
 			{
+				// adjust length of greater than last mask entry
 				if (text.Length > this.MaxLengthFromMask)
 				{
-					text.Substring (0, this.MaxLengthFromMask);
+					text = text.Substring (0, this.MaxLengthFromMask);
 				}
+
 				var result = System.Text.RegularExpressions.Regex.Match(rule.Mask, CV_defaultMask);
 				temp = rule.Mask;
 				do
 				{
-					if (System.Text.RegularExpressions.Regex.Match(result.Value, CV_defaultOneMask).Success)
+					if (System.Text.RegularExpressions.Regex.Match(result.Value, CV_defaultOneMask).Success || String.IsNullOrEmpty(result.Value))
 					{
+						// result is an empty string. return. done parsing
+						if (String.IsNullOrEmpty(result.Value)) break;
+
 						// end match                            
 						var obj = ConvertMatch(result.Value);
 						temp = temp.Replace(result.Value, text.Substring(obj[0]));
 						break;
 					}
 					else
-					{
+					{						
 						var obj = ConvertMatch(result.Value);
-						temp = temp.Replace(result.Value, text.Substring(obj[0], obj[1]));
+						if (obj[0] + obj[1] >= text.Length)
+						{
+							// keeping format character at end??
+							var t = result.Value[result.Value.Length-1];
+							temp = temp.Replace(result.Value, text.Substring(obj[0])); 
+						}
+						else
+						{
+							temp = temp.Replace(result.Value, text.Substring(obj[0], obj[1]));
+						}
 						result = result.NextMatch();
 					}
 				} while (true);
@@ -457,8 +386,6 @@ namespace Masked.Controls
 			}
 			return text;
 		}
-
-
 	}
 }
 

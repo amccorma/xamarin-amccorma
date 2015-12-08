@@ -14,7 +14,6 @@ namespace Masked.iOS.Controls
 	public class MyEntryRenderer : EntryRenderer
 	{
 		private MyEntry source;
-		private List<MaskRules> rules;
 		private SelectionPoint pt;
 		private char[] FormatCharacters = null;
 		private UITextField native;
@@ -39,11 +38,7 @@ namespace Masked.iOS.Controls
 				var control = (MyEntry)this.Element;
 				native = this.Control as UITextField;
 
-				// INIT defaults
-				rules = source.Mask;
-				FormatCharacters = source.FormatCharacters.ToCharArray ();
-
-				if (FormatCharacters != null && String.IsNullOrEmpty (source.Text) == false) {
+				if (source.FormatCharacters != null && String.IsNullOrEmpty (source.Text) == false) {
 					ApplyDefaultRule ();
 				}	
 
@@ -57,26 +52,58 @@ namespace Masked.iOS.Controls
 			if (replacementString == "") {
 				source.Delete = true;
 			}
+			else if (textField.Text.Length > source.MaxLengthFromMask && source.MaxLengthFromMask > 0) {
+				return false;
+			}
+
 			if (source.Locked) {
 				return false;
-			} else if (source.Mask != null) {
+			}
+			else if (source.Mask != null) {
 				source.SelectionStart = (int)textField.GetOffsetFromPosition (textField.BeginningOfDocument, textField.SelectedTextRange.Start);
 				source.SelectionEnd = (int)textField.GetOffsetFromPosition (textField.BeginningOfDocument, textField.SelectedTextRange.End);
 				source.TextLength = native.Text.Length;
 			} else {
-					return true;
+				return true;
 			}
 
 			return true;
 		}
 
-		private void ApplyDefaultRule()
+		protected internal void ApplyDefaultRule()
 		{
 			source.Locked = true;
-			var text = native.Text.Replace(FormatCharacters.ToString(), "");
+			if (String.IsNullOrEmpty (native.Text)) {
+				return;
+			}
+
+			if (String.IsNullOrEmpty (source.FormatCharacters)) {
+				source.FormatCharacters = "";
+			}
+
+			var chars = source.FormatCharacters.ToCharArray ();
+
+			var text = native.Text.Replace (FormatCharacters, "");
+
+			if (String.IsNullOrEmpty (source.FormatCharacters) == false)
+				text = text.Replace (chars, "");
+
 			var len = text.Length;
 
+			// update MaxLength
+			if (source.MaxLength <= 0 && source.Mask != null) {
+				source.MaxLength = source.Mask.LastOrDefault ().End;
+			}
+
+			if (source.MaxLength > -1) {
+				if (len > source.MaxLength) {
+					text = text.Substring (0, source.MaxLength);
+				}
+			}
+
+			var rules = source.Mask;
 			if (rules != null) {
+
 				var rule = rules.FirstOrDefault (r => r.End >= len);
 				if (rule == null) {
 					rule = rules.Find (r => r.End == rules.Max (m => m.End));
@@ -85,21 +112,18 @@ namespace Masked.iOS.Controls
 
 				// text trimmed
 				if (rule.Mask != "") {
-					native.Text = native.Text = source.ReFractor (text, rule);
+
+					// check max length
+					if (source.MaxLengthFromMask <= 0) {
+						source.MaxLengthFromMask = source.Mask.LastOrDefault ().End;
+					}
+					native.Text = source.ApplyMask (text, rule);
 				}
-			}
-			else if (source.MaxLength > -1) {
-				if (len > source.MaxLength) {
-					native.Text = native.Text.Substring (0, source.MaxLength);
-				} else {
-					native.Text = text;
-				}
-			}
-			else			
-			{
-				native.Text = text;
+			} else if (source.MaxLength > 0) {
+				native.Text = text.Substring (0, source.MaxLength);
 			}
 
+			source.RawText = source.Text.Replace (chars, "");
 			source.Locked = false;
 		}
 
@@ -108,85 +132,52 @@ namespace Masked.iOS.Controls
 			base.OnElementPropertyChanged (sender, e);
 			if (e.PropertyName == "SetSelection") {
 				pt = source.SetSelection;
-				if (pt != null && FormatCharacters != null) {
-					if (pt.Start != -1) {
-						if (pt.End != -1) {
-							var positionToSet = native.GetPosition (native.BeginningOfDocument, pt.Start);
+				if (pt != null && source.FormatCharacters != null) {
+					var temp = pt;
+					pt = null;
+					native.Text = temp.Text;
+					if (temp.Start != -1) {
+						if (temp.End != -1) {
+							var positionToSet = native.GetPosition (native.BeginningOfDocument, temp.Start);
 							native.SelectedTextRange = native.GetTextRange (positionToSet, positionToSet);
-							//native.SetSelection (pt.Start, pt.End);
 						} else {
-							if (pt.Start >= native.Text.Length) {
-								pt.Start = native.Text.Length;
+							if (temp.Start >= native.Text.Length) {
+								temp.Start = native.Text.Length;
 							} else {
 								var before = source.BeforeChars;
 								if (before == "") {
-									pt.Start = 1;
+									temp.Start = 1;
 								} else {
 									var text = native.Text;
 
-									for (int i = 0; i < text.Length; i++) {
-										string c = text [i].ToString ();
-										if (FormatCharacters.Where (ch => ch.ToString () == c.ToString ()).Count () <= 0) {
+									for (int i = 0; i < text.Length; i++)
+									{
+										string c = text[i].ToString();
+										if (source.FormatCharacters.Where(ch => ch.ToString() == c.ToString()).Count() <= 0)
+										{
 											// no placeholder1
-											//if (before [0].ToString () == c) {
-											//	before = before.Substring (1);												
-											//}
+											if (before[0].ToString() == c)
+											{
+												before = before.Substring(1);												
+											}
 
-											//if (String.IsNullOrEmpty (before)) {
-											//	pt.Start = i + 1;
-											//	break;
-											//}
+											if (String.IsNullOrEmpty(before))
+											{
+												temp.Start = i+1;
+												break;
+											}
 										}
 									}
 								}	
 							}
-							//var getPos =native.GetOffsetFromPosition(native.BeginningOfDocument,native.SelectedTextRange.Start);
-							//var positionToSet = native.GetPosition (native.BeginningOfDocument, getPos);
-							if (source.Locked && source.Delete) {
-								if (source.SelectionStart - 1 < native.Text.Length) {
-									lastPos = source.SelectionStart;
-									ifIsInside = true;
-
-
-								}
-
-							} else if (source.Locked && !source.Delete) {
-								if (source.SelectionStart < native.Text.Length-1) {
-									ifIsInside = true;
-								} else {
-									ifIsInside = false;
-								}
-
-							} else {
-
-							}
-							//native.SetSelection(pt.Start);
+							var positionToSet = native.GetPosition (native.BeginningOfDocument, temp.Start);
+							native.SelectedTextRange = native.GetTextRange (positionToSet, positionToSet);
 						}
 					}
-					pt = null;
-					//source.Delete = false;
-					source.Locked = false;
 				}
+				source.Locked = false;
 			} else if (e.PropertyName == "FormatCharacters") {
 				this.FormatCharacters = source.FormatCharacters.ToCharArray ();
-			}
-			else if (e.PropertyName == "Text") {
-				pt = source.SetSelection;
-				if (source.Delete) {
-					//if (isSecond) {
-					if (ifIsInside) {
-						//if (lastPos < source.SelectionStart) {
-						var positionToSet = native.GetPosition (native.BeginningOfDocument, source.SelectionStart - 1);
-						native.SelectedTextRange = native.GetTextRange (positionToSet, positionToSet);
-						//}
-						//isSecond = false;
-					}
-				} else {
-					if (ifIsInside) {
-						var positionToSet = native.GetPosition (native.BeginningOfDocument, source.SelectionStart + 1);
-						native.SelectedTextRange = native.GetTextRange (positionToSet, positionToSet);
-					}
-				}		 
 			}
 		}
 	}

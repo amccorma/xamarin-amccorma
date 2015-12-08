@@ -15,9 +15,18 @@ namespace Masked.Android.Controls
 	{
 		private MyEntry source;
 		private EntryEditText native;
-		private List<MaskRules> rules;
 		private SelectionPoint pt;
 		private char[] FormatCharacters = null;
+
+		protected override void Dispose (bool disposing)
+		{
+			if (native != null) {
+				native.AfterTextChanged -= Native_AfterTextChanged;
+				native.KeyPress -= Native_KeyPress;
+				native.BeforeTextChanged -= Native_BeforeTextChanged;
+			}
+			base.Dispose (disposing);
+		}
 
 		protected override void OnElementChanged (ElementChangedEventArgs<Entry> e)
 		{
@@ -27,149 +36,185 @@ namespace Masked.Android.Controls
 				source = e.NewElement as MyEntry;
 				native = this.Control as EntryEditText;
 
-				// INIT defaults
-				rules = source.Mask;
-				FormatCharacters = source.FormatCharacters.ToCharArray ();
-
-				if (FormatCharacters != null && String.IsNullOrEmpty(source.Text) == false) {
+				if (source.FormatCharacters != null && String.IsNullOrEmpty(source.Text) == false) {
 					ApplyDefaultRule ();
 				}	
 
-				native.AfterTextChanged += (object sender, global::Android.Text.AfterTextChangedEventArgs e2) => {
-					if (pt != null && FormatCharacters != null)
-					{
-						if (pt.Start != -1) {
-							if (pt.End != -1) {
-								native.SetSelection (pt.Start, pt.End);
-							} 
-							else {
-								if (pt.Start >= native.Text.Length) {
-									pt.Start = native.Text.Length;
-								}
-								else
-								{
-									var before = source.BeforeChars;
-									if (before == "")
-									{
-										pt.Start = 1;
-									}
-									else
-									{
-										var text = native.Text;
+				native.AfterTextChanged += Native_AfterTextChanged;
 
-										for (int i = 0; i < text.Length; i++)
-										{
-											string c = text[i].ToString();
-											if (FormatCharacters.Where(ch => ch.ToString() == c.ToString()).Count() <= 0)
-											{
-												// no placeholder1
-												if (before[0].ToString() == c)
-												{
-													before = before.Substring(1);												
-												}
+				native.KeyPress += Native_KeyPress;
 
-												if (String.IsNullOrEmpty(before))
-												{
-													pt.Start = i+1;
-													break;
-												}
-											}
-										}
-									}	
-								}
-								native.SetSelection(pt.Start);
-							}
-						}
-						pt = null;
-					}
-				};
-
-				native.KeyPress += (object sender, KeyEventArgs args) => {
-					if (args.Event.Action == global::Android.Views.KeyEventActions.Down )
-					{
-						var len = native.Text.Length;
-						if (args.KeyCode == global::Android.Views.Keycode.Back ||
-							args.KeyCode == global::Android.Views.Keycode.Del)
-						{
-							// do test cleanup
-							if (source.Locked == false && source.Mask != null)
-							{
-								source.Delete = true;
-								args.Handled = false;
-							}
-							else if(source.MaxLength > 0)
-							{
-								args.Handled = false;
-							}
-							else
-							{
-								args.Handled = false;
-							}
-						}
-						else if (source.Locked == false && source.Mask != null)
-						{
-							source.Delete = false;
-							var start = native.SelectionStart;
-							if (start < len)
-							{
-								var evt = args.Event;
-								var act = evt.Action;
-								var newChar = ((char)evt.UnicodeChar).ToString();
-								//var newChar = ((char)args.KeyCode.ConvertToString()).ToString();
-
-								native.Text = native.Text.Insert(start, newChar);
-								args.Handled = true;
-							}
-							else
-							{
-								args.Handled = false;
-							}
-						}
-						else if(source.MaxLength > 0)
-						{
-							if (len+1 > source.MaxLength)
-							{
-								args.Handled = true;
-								//source.Validate("MAX", "Max length is " + source.MaxLength);
-							}
-							else
-							{
-								args.Handled = false;
-							}
-						}
-						else
-						{
-							args.Handled = false;
-						}
-					}
-				};
-
-				native.BeforeTextChanged += (object sender, global::Android.Text.TextChangedEventArgs e2) => {
-					if (source.Locked == false && source.Mask != null)
-					{
-						source.SelectionStart = native.SelectionStart;
-						source.SelectionEnd = native.SelectionEnd;
-						source.TextLength = native.Text.Length;
-					}
-					else if(source.Mask == null)
-					{
-						source.SelectionStart = native.SelectionStart;
-						source.SelectionEnd = native.SelectionEnd;
-						source.TextLength = native.Text.Length;
-					}
-				};
+				native.BeforeTextChanged += Native_BeforeTextChanged;
 
 				SetNativeControl(native);
 			}
 		}
 
-		private void ApplyDefaultRule()
+		void Native_AfterTextChanged (object sender, global::Android.Text.AfterTextChangedEventArgs e)
+		{
+			if (pt != null && FormatCharacters != null)
+			{
+				var temp = pt;
+				pt = null;
+				native.Text = temp.Text;
+				if (temp.Start != -1) {
+					if (temp.End != -1) {
+						native.SetSelection (temp.Start, temp.End);
+					} 
+					else {
+						if (temp.Start >= native.Text.Length) {
+							temp.Start = native.Text.Length;
+						}
+						else
+						{
+							var before = source.BeforeChars;
+							if (before == "")
+							{
+								temp.Start = 1;
+							}
+							else
+							{
+								var text = native.Text;
+
+								for (int i = 0; i < text.Length; i++)
+								{
+									string c = text[i].ToString();
+									if (FormatCharacters.Where(ch => ch.ToString() == c.ToString()).Count() <= 0)
+									{
+										// no placeholder1
+										if (before[0].ToString() == c)
+										{
+											before = before.Substring(1);												
+										}
+
+										if (String.IsNullOrEmpty(before))
+										{
+											temp.Start = i+1;
+											break;
+										}
+									}
+								}
+							}	
+						}
+						native.SetSelection(temp.Start);
+					}
+				}
+				pt = null;
+				source.Locked = false;
+			}
+		}
+
+		void Native_BeforeTextChanged (object sender, global::Android.Text.TextChangedEventArgs e)
+		{
+			if (source.Locked == false && source.Mask != null)
+			{
+				source.SelectionStart = native.SelectionStart;
+				source.SelectionEnd = native.SelectionEnd;
+				source.TextLength = native.Text.Length;
+			}
+			else if(source.Mask == null)
+			{
+				source.SelectionStart = native.SelectionStart;
+				source.SelectionEnd = native.SelectionEnd;
+				source.TextLength = native.Text.Length;
+			}
+		}
+
+		void Native_KeyPress (object sender, KeyEventArgs args)
+		{
+			if (args.Event.Action == global::Android.Views.KeyEventActions.Down )
+			{
+				var len = native.Text.Length;
+				if (args.KeyCode == global::Android.Views.Keycode.Back ||
+					args.KeyCode == global::Android.Views.Keycode.Del)
+				{
+					// do test cleanup
+					if (source.Locked == false && source.Mask != null)
+					{
+						source.Delete = true;
+						args.Handled = false;
+					}
+					else if(source.MaxLength > 0)
+					{
+						args.Handled = false;
+					}
+					else
+					{
+						args.Handled = false;
+					}
+				}
+				else if (source.Locked == false && source.Mask != null)
+				{
+					source.Delete = false;
+					var start = native.SelectionStart;
+					if (start < len)
+					{
+						var evt = args.Event;
+						var act = evt.Action;
+						var newChar = ((char)evt.UnicodeChar).ToString();
+						//var newChar = ((char)args.KeyCode.ConvertToString()).ToString();
+
+						native.Text = native.Text.Insert(start, newChar);
+						args.Handled = true;
+					}
+					else
+					{
+						args.Handled = false;
+					}
+				}
+				else if(source.MaxLength > 0)
+				{
+					if (len+1 > source.MaxLength)
+					{
+						args.Handled = true;
+						//source.Validate("MAX", "Max length is " + source.MaxLength);
+					}
+					else
+					{
+						args.Handled = false;
+					}
+				}
+				else
+				{
+					args.Handled = false;
+				}
+			}
+		}
+
+		protected internal void ApplyDefaultRule()
 		{
 			source.Locked = true;
+			if (String.IsNullOrEmpty (native.Text)) {
+				return;
+			}
+
+			if (String.IsNullOrEmpty (source.FormatCharacters)) {
+				source.FormatCharacters = "";
+			}
+
+			var chars = source.FormatCharacters.ToCharArray ();
+
 			var text = native.Text.Replace (FormatCharacters, "");
+
+			if (String.IsNullOrEmpty (source.FormatCharacters) == false)
+				text = text.Replace (chars, "");
+
 			var len = text.Length;
 
+			// update MaxLength
+			if (source.MaxLength <= 0 && source.Mask != null) {
+				source.MaxLength = source.Mask.LastOrDefault ().End;
+			}
+
+			if (source.MaxLength > -1) {
+				if (len > source.MaxLength) {
+					text = text.Substring (0, source.MaxLength);
+				}
+			}
+
+			var rules = source.Mask;
 			if (rules != null) {
+
 				var rule = rules.FirstOrDefault (r => r.End >= len);
 				if (rule == null) {
 					rule = rules.Find (r => r.End == rules.Max (m => m.End));
@@ -178,20 +223,19 @@ namespace Masked.Android.Controls
 
 				// text trimmed
 				if (rule.Mask != "") {
-					native.Text = native.Text = source.ReFractor (text, rule);
+
+					// check max length
+					if (source.MaxLengthFromMask <= 0) {
+						source.MaxLengthFromMask = source.Mask.LastOrDefault ().End;
+					}
+					native.Text = source.ApplyMask (text, rule);
+					native.SetSelection (native.Text.Length);
 				}
+			} else if (source.MaxLength > 0) {
+				native.Text = text.Substring (0, source.MaxLength);
 			}
-			else if (source.MaxLength > -1) {
-				if (len > source.MaxLength) {
-					native.Text = native.Text.Substring (0, source.MaxLength);
-				} else {
-					native.Text = text;
-				}
-			}
-			else			
-			{
-				native.Text = text;
-			}
+
+			source.RawText = source.Text.Replace (chars, "");
 			source.Locked = false;
 		}
 

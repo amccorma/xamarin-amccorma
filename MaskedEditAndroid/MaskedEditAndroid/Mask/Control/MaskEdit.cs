@@ -138,11 +138,12 @@ namespace MaskedEditAndroid.Mask.Control
 			if (this.Locked == false && (this.LastText != this.Text) && String.IsNullOrEmpty (InputText) == false) {
 				this.Locked = true;
 				Int32 adjustedStart = 0;
-				this.Locked = true;
 
 
-				if (this.Properties.FormatCharacters == null || this.Properties.Mask == null)
+				if (this.Properties.FormatCharacters == null || this.Properties.Mask == null) {
+					this.Locked = false;
 					return;
+				}
 
 				var holder = this.Tag as TextHolder;
 				var BeforeCount = (holder == null) ? 0 : holder.Text.Length - 1;

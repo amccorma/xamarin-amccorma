@@ -25,6 +25,12 @@ namespace Masked.Library
 			get;
 			set;
 		}
+
+		public string Text
+		{
+			get;
+			set;
+		}
 	}
 }
 
