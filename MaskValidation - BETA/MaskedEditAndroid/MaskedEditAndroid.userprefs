@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="MaskedEditAndroid/MaskedEditAndroid.csproj" RefactoringSettings.EnableRefactorings="True">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MaskedEditAndroid/Mask/Control/MaskEdit.cs">
+    <Files>
+      <File FileName="MaskedEditAndroid/Mask/Control/MaskEdit.cs" Line="308" Column="9" />
+      <File FileName="MaskedEditAndroid/MainActivity.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MaskedEditAndroid AndroidDesignerPreferredDevice="Nexus 4" />
+</Properties>

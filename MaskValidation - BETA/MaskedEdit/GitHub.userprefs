@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="Android/Masked.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Validators.cs">
+    <Files>
+      <File FileName="Library/Exts.cs" Line="1" Column="1" />
+      <File FileName="MyMask.cs" Line="17" Column="38" />
+      <File FileName="Controls/MyEntry.cs" Line="247" Column="6" />
+      <File FileName="IOS/Controls/MyEntryRenderer.cs" Line="178" Column="5" />
+      <File FileName="Android/Controls/MyEntryRenderer.cs" Line="1" Column="1" />
+      <File FileName="Validators.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
