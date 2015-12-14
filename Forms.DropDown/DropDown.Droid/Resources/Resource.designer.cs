@@ -3427,11 +3427,11 @@ namespace DropDown.Droid
 			// aapt resource value: 0x7f0a0082
 			public const int Lspinner = 2131361922;
 			
-			// aapt resource value: 0x7f0a0084
-			public const int SpinnerLayout = 2131361924;
-			
 			// aapt resource value: 0x7f0a0085
-			public const int SpinnerTextView = 2131361925;
+			public const int SpinnerLayout = 2131361925;
+			
+			// aapt resource value: 0x7f0a0086
+			public const int SpinnerTextView = 2131361926;
 			
 			// aapt resource value: 0x7f0a0075
 			public const int action0 = 2131361909;
@@ -3661,6 +3661,9 @@ namespace DropDown.Droid
 			// aapt resource value: 0x7f0a0010
 			public const int parallax = 2131361808;
 			
+			// aapt resource value: 0x7f0a0083
+			public const int parentLayoutSpinner = 2131361923;
+			
 			// aapt resource value: 0x7f0a0043
 			public const int parentPanel = 2131361859;
 			
@@ -3745,8 +3748,8 @@ namespace DropDown.Droid
 			// aapt resource value: 0x7f0a002a
 			public const int showTitle = 2131361834;
 			
-			// aapt resource value: 0x7f0a0086
-			public const int sliding_tabs = 2131361926;
+			// aapt resource value: 0x7f0a0087
+			public const int sliding_tabs = 2131361927;
 			
 			// aapt resource value: 0x7f0a0066
 			public const int snackbar_action = 2131361894;
@@ -3754,8 +3757,14 @@ namespace DropDown.Droid
 			// aapt resource value: 0x7f0a0065
 			public const int snackbar_text = 2131361893;
 			
-			// aapt resource value: 0x7f0a0083
-			public const int spinner2 = 2131361923;
+			// aapt resource value: 0x7f0a0084
+			public const int spinner2 = 2131361924;
+			
+			// aapt resource value: 0x7f0a0089
+			public const int spinnerl1 = 2131361929;
+			
+			// aapt resource value: 0x7f0a008a
+			public const int spinnerl2 = 2131361930;
 			
 			// aapt resource value: 0x7f0a0009
 			public const int split_action_bar = 2131361801;
@@ -3808,8 +3817,8 @@ namespace DropDown.Droid
 			// aapt resource value: 0x7f0a0045
 			public const int title_template = 2131361861;
 			
-			// aapt resource value: 0x7f0a0087
-			public const int toolbar = 2131361927;
+			// aapt resource value: 0x7f0a0088
+			public const int toolbar = 2131361928;
 			
 			// aapt resource value: 0x7f0a001b
 			public const int top = 2131361819;

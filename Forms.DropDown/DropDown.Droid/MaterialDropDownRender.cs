@@ -8,6 +8,9 @@ using Android.Runtime;
 using Android.App;
 using System;
 using DropDown.Forms;
+using Android.Graphics.Drawables;
+using Android.Graphics.Drawables.Shapes;
+using Android.Graphics;
 
 [assembly: ExportRenderer(typeof(DropDownPicker), typeof(DropDown.Droid.MaterialDropDownRenderer))]
 namespace DropDown.Droid
@@ -83,11 +86,26 @@ namespace DropDown.Droid
 				var inflater = (global::Android.Views.LayoutInflater)Xamarin.Forms.Forms.Context.GetSystemService (global::Android.App.Service.LayoutInflaterService);
 				var layout = inflater.Inflate (Resource.Layout.spinner, null).JavaCast<LinearLayout> ();
 
+
+				var parentl = layout.FindViewById<LinearLayout> (Resource.Id.parentLayoutSpinner);
+
+				// spinner border color.
+				parentl.Background = RectBorder(this.Element.BorderColor.ToAndroid(), 5);
+
 				this._SpinnerControl = layout.FindViewById<MyAppCompatSpinner> (Resource.Id.spinner2);
 				this._SpinnerControl.FormsElement = this.Element;
 				this._SpinnerControl.OnItemSelectedListener = this;
-
 				this._SpinnerControl.LayoutChange += SpinnerLayoutChange;
+
+				// spinner arrow color
+				Drawable spinnerDrawable = _SpinnerControl.Background.GetConstantState ().NewDrawable();
+				spinnerDrawable.SetColorFilter (this.Element.ArrowColor.ToAndroid(), PorterDuff.Mode.SrcAtop);
+
+				if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.JellyBean) {
+					_SpinnerControl.SetBackground(spinnerDrawable);
+				}else{
+					_SpinnerControl.SetBackgroundDrawable(spinnerDrawable);
+				}
 
 				SetAdapter ();
 				this._Adapter.SelectedText = Element.SelectedText;
@@ -101,6 +119,16 @@ namespace DropDown.Droid
 				DropDownPicker.OnMessageTo += AddMessageTO;
             }
         }
+
+		public ShapeDrawable RectBorder(Android.Graphics.Color borderColor, float borderWidth)
+		{
+			ShapeDrawable shape = new ShapeDrawable(new RectShape());
+			shape.Paint.Color = borderColor;
+			shape.Paint.SetStyle (Paint.Style.Stroke);
+			shape.Paint.StrokeWidth = borderWidth;
+			return shape;
+		}
+
 
 		private void SpinnerLayoutChange(object sender, LayoutChangeEventArgs e2)
 		{

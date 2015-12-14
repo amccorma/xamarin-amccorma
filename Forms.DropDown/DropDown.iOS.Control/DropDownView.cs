@@ -36,35 +36,38 @@ namespace DropDown.iOS.Control
 		private string _Title;
 		protected internal nfloat _CellHeight;
 		private string _SelectedText;
-		private bool _IsShowing;
+		private bool IsShowing;
 
 		public DropDownView (string Title, IList<string> data, nfloat fSize) : 
-		this (Title, data, fSize, 0, 0, null, null)
+		this (Title, data, fSize, 0, 0, null, null, UIColor.Black)
 		{
 
 		}
 
-		public DropDownView (string Title, IList<string> data, nfloat fSize, nfloat cellHeight) : 
-		this (Title, data, fSize, cellHeight, 0, null, null)
+		public DropDownView (string Title, IList<string> data, nfloat fSize, nfloat cellHeight, UIColor borderColor) : 
+		this (Title, data, fSize, cellHeight, 0, null, null, borderColor)
 		{
 
 		}
 
-		public DropDownView (string Title, IList<string> data, nfloat fSize, nfloat cellHeight, UIColor cellSelectedBackgroundColor, UIColor cellSelectedTextColor) :
-		this(Title, data, fSize, cellHeight, 0, cellSelectedBackgroundColor, cellSelectedTextColor)
+		public DropDownView (string Title, IList<string> data, nfloat fSize, nfloat cellHeight, UIColor cellSelectedBackgroundColor, 
+			UIColor cellSelectedTextColor, UIColor borderColor) :
+		this(Title, data, fSize, cellHeight, 0, cellSelectedBackgroundColor, cellSelectedTextColor, borderColor)
 		{
 
 		}
 
-		public DropDownView (string Title, IList<string> data, nfloat fSize, nfloat cellHeight, float layoutHeight) :
-		this(Title, data, fSize, cellHeight, layoutHeight, null, null)
+		public DropDownView (string Title, IList<string> data, nfloat fSize, nfloat cellHeight, float layoutHeight, UIColor borderColor) :
+		this(Title, data, fSize, cellHeight, layoutHeight, null, null, borderColor)
 		{
 
 		}
 
 		public DropDownView (string Title, IList<string> data, nfloat fSize, 
-			nfloat cellHeight, float layoutHeight, UIColor cellSelectedBackgroundColor, UIColor cellSelectedTextColor)
+			nfloat cellHeight, float layoutHeight, UIColor cellSelectedBackgroundColor, UIColor cellSelectedTextColor,
+			UIColor borderColor)
 		{
+			BorderColor = borderColor;
 			NSNotificationCenter.DefaultCenter.AddObserver(UIDevice.OrientationDidChangeNotification, OrientationChanged);
 			this.Title = Title;
 			this._CellHeight = cellHeight;
@@ -78,7 +81,7 @@ namespace DropDown.iOS.Control
 			// DropDown PopupView
 			this._MainView = new UIView ();
 			this._MainView.Layer.MasksToBounds = false;
-			this._MainView.Layer.BorderColor = UIColor.Black.CGColor;
+			this._MainView.Layer.BorderColor = this.BorderColor.CGColor;
 			this._MainView.Layer.BorderWidth = 1;
 
 			_MainView.UserInteractionEnabled = true;
@@ -118,13 +121,9 @@ namespace DropDown.iOS.Control
 			}
 		}
 
-		public bool IsShowing {
-			get { return this._IsShowing; }
-			set
-			{
-				this._IsShowing = value;
-				FireChanged();
-			}
+		public UIColor BorderColor {
+			get;
+			set;
 		}
 
 		public nfloat PopupHeight {

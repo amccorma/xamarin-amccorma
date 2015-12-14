@@ -46,7 +46,9 @@ namespace DropDown.Forms
 				FontSize = Device.OnPlatform(10, 14, 10),
 				CellHeight = 20,
 				SelectedBackgroundColor = Color.FromRgb (0, 70, 172),
-				SelectedTextColor = Color.White
+				SelectedTextColor = Color.White,
+				BorderColor = Color.Purple,
+				ArrowColor = Color.Blue
 			};
 
 			this._Drop2 = new DropDownPicker

@@ -180,6 +180,32 @@ namespace DropDown.Forms
 			BindableProperty.Create<DropDownPicker, IList<string>>(o => o.Source, null, 
 				propertyChanged: new BindableProperty.BindingPropertyChangedDelegate<IList<string>>(DropDownPicker.OnItemsSourceChanged));
 
+		/// <summary>
+		/// Border Color
+		/// </summary>
+		public static readonly BindableProperty BorderColorProperty =
+			BindableProperty.Create<DropDownPicker, Xamarin.Forms.Color>(
+				p => p.BorderColor, Color.Black);
+
+		/// <summary>
+		/// Arrow Color, Android: Dropdown Arrow color
+		/// </summary>
+		public static readonly BindableProperty ArrowColorProperty =
+			BindableProperty.Create<DropDownPicker, Xamarin.Forms.Color>(
+				p => p.ArrowColor, Color.Black);
+		
+		public Xamarin.Forms.Color BorderColor
+		{
+			get { return (Xamarin.Forms.Color)GetValue(BorderColorProperty); }
+			set { SetValue(BorderColorProperty, value); }
+		}
+
+		public Xamarin.Forms.Color ArrowColor
+		{
+			get { return (Xamarin.Forms.Color)GetValue(ArrowColorProperty); }
+			set { SetValue(ArrowColorProperty, value); }
+		}
+
 		public IList<string> Source
 		{
 			get { return (IList<string>)GetValue(SourceProperty); }

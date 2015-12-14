@@ -40,7 +40,7 @@ namespace DropDown.iOS.Control
 
 			this._DropDownView = new UIView ();
 			this._DropDownView.Layer.MasksToBounds = false;
-			this._DropDownView.Layer.BorderColor = UIColor.Black.CGColor;
+			this._DropDownView.Layer.BorderColor = view.BorderColor.CGColor;
 			this._DropDownView.Layer.BorderWidth = 1;
 			this._DropDownView.BackgroundColor = UIColor.FromRGB (0, 175, 63);
 
@@ -98,9 +98,9 @@ namespace DropDown.iOS.Control
 			this.Frame = rect;
 
 			this._Button1.Frame = new CoreGraphics.CGRect (rect.X, rect.Y, width - 25, rect.Height);
-			this._Button1.AddBorder(UIRectEdge.Top, UIColor.Black, 1);
-			this._Button1.AddBorder(UIRectEdge.Left, UIColor.Black, 1);
-			this._Button1.AddBorder(UIRectEdge.Bottom, UIColor.Black, 1);
+			this._Button1.AddBorder(UIRectEdge.Top, Parent.BorderColor, 1);
+			this._Button1.AddBorder(UIRectEdge.Left, Parent.BorderColor, 1);
+			this._Button1.AddBorder(UIRectEdge.Bottom, Parent.BorderColor, 1);
 
 			this._DropDownView.Frame = new CGRect (width - 25, rect.Y, 25, rect.Height);
 		}

@@ -36,9 +36,11 @@ namespace DropDown.iOS
 				DropDownView view;
 				if (this.Element.SelectedBackgroundColor != Xamarin.Forms.Color.Transparent) {
 					view = new DropDownView (this.Element.Title, this.Element.Source, this.Element.FontSize, this.Element.CellHeight,
-						this.Element.SelectedBackgroundColor.ToUIColor (), this.Element.SelectedTextColor.ToUIColor ());
+						this.Element.SelectedBackgroundColor.ToUIColor (), this.Element.SelectedTextColor.ToUIColor (),
+						this.Element.BorderColor.ToUIColor());
 				} else {
-					view = new DropDownView (this.Element.Title, this.Element.Source, this.Element.FontSize, this.Element.CellHeight);
+					view = new DropDownView (this.Element.Title, this.Element.Source, this.Element.FontSize, this.Element.CellHeight,
+						this.Element.BorderColor.ToUIColor());
 				}
 				view.PopupHeight = this.Element.DropDownHeight;
 				view.SelectedText = (x) => {

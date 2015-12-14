@@ -1,12 +1,6 @@
 ﻿<Properties StartupItem="Android/Masked.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Android/Controls/MyEntryRenderer.cs">
-    <Files>
-      <File FileName="MyMask.cs" Line="17" Column="1" />
-      <File FileName="App.cs" Line="1" Column="1" />
-      <File FileName="Android/Controls/MyEntryRenderer.cs" Line="134" Column="25" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -83,11 +83,11 @@ namespace DropDown.Droid
 			if (position == 0) {
 				holder.Text.Text = this._Title;
 			} else {
-				if (SelectedText == item && this._NoSelectedColor == false) {									
-					holder.Layout.SetBackgroundDrawable (new RectBorder (3, 
-						global::Android.Graphics.Color.Black, this._SelectedBackColor));
-					holder.Text.SetTextColor (this._SelectedTextColor);
-				} 
+//				if (SelectedText == item && this._NoSelectedColor == false) {									
+//					holder.Layout.SetBackgroundDrawable (new RectBorder (3, 
+//						global::Android.Graphics.Color.Black, this._SelectedBackColor));
+//					holder.Text.SetTextColor (this._SelectedTextColor);
+//				} 
 				holder.Text.Text = this._Items [position];
 
 			}

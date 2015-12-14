@@ -1,0 +1,22 @@
+﻿<Properties StartupItem="DropDown.iOS/DropDown.iOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.9.2" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DropDown.iOS/DropDownViewRenderer.cs">
+    <Files>
+      <File FileName="DropDown.Droid/MaterialDropDownRender.cs" Line="73" Column="4" />
+      <File FileName="DropDown.iOS/DropDownViewRenderer.cs" Line="52" Column="4" />
+      <File FileName="DropDown.iOS.Control/DropDownView.cs" Line="60" Column="130" />
+      <File FileName="DropDown.iOS.Control/DropDownControl.cs" Line="103" Column="53" />
+      <File FileName="DropDown.iOS.Control/Table/DropDownSource.cs" Line="25" Column="17" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../Desktop/Mobile TFS1/PSEA.Mobile.Page\ViewModel\LocalInfoViewModel.cs" line="256" offsetX="305" offsetY="4080" expression="obj" liveUpdate="False" />
+    <Watch file="../../Desktop/Mobile TFS1/PSEA.Mobile.Page\ViewModel\TabPages\RegionLocationsViewModel.cs" line="26" offsetX="277" offsetY="400" expression="this.Local" liveUpdate="False" />
+    <Watch file="../../Desktop/Mobile TFS1/PSEA.Mobile.Data\Managers\DBManager.cs" line="271" offsetX="522" offsetY="4320" expression="obj" liveUpdate="False" />
+    <Watch file="../../Desktop/Mobile TFS1/Mobile\Mobile.Forms\Mobile.Forms.Release\Pages\Calendar\EventCalendarListPage.cs" line="214" offsetX="522" offsetY="3408" expression="temp.SelectedDate.Date" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.ItemProperties.DropDown.Droid AndroidDesignerPreferredDevice="Nexus 4" />
+</Properties>
