@@ -1,0 +1,21 @@
+﻿<Properties StartupItem="iOSMaskedEdit/iOSMaskedEdit.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.9.2" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOSMaskedEdit/Mask/Control/MaskEdit.cs">
+    <Files>
+      <File FileName="iOSMaskedEdit/Mask/MaskRules.cs" Line="3" Column="24" />
+      <File FileName="iOSMaskedEdit/Mask/Control/MaskEdit.cs" Line="17" Column="47" />
+      <File FileName="iOSMaskedEdit/Mask/Control/TextHolder.cs" Line="3" Column="24" />
+      <File FileName="iOSMaskedEdit/Exts.cs" Line="3" Column="1" />
+      <File FileName="iOSMaskedEdit/ViewController.cs" Line="45" Column="54" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../Desktop/Mobile TFS1/PSEA.Mobile.Page\ViewModel\LocalInfoViewModel.cs" line="256" offsetX="305" offsetY="4080" expression="obj" liveUpdate="False" />
+    <Watch file="../../Desktop/Mobile TFS1/PSEA.Mobile.Page\ViewModel\TabPages\RegionLocationsViewModel.cs" line="26" offsetX="277" offsetY="400" expression="this.Local" liveUpdate="False" />
+    <Watch file="../../Desktop/Mobile TFS1/PSEA.Mobile.Data\Managers\DBManager.cs" line="271" offsetX="522" offsetY="4320" expression="obj" liveUpdate="False" />
+    <Watch file="../../Desktop/Mobile TFS1/Mobile\Mobile.Forms\Mobile.Forms.Release\Pages\Calendar\EventCalendarListPage.cs" line="214" offsetX="522" offsetY="3408" expression="temp.SelectedDate.Date" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+</Properties>

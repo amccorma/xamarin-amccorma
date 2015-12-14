@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="roundedRect" minimumFontSize="17" id="13" customClass="MaskEdit" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="30" y="115" width="270" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Masked Text" lineBreakMode="tailTruncation" minimumFontSize="10" id="16" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="30" y="72" width="270" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="26" firstAttribute="width" constant="270"/>
+                                    <constraint id="27" firstAttribute="height" constant="21"/>
+                                </constraints>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="17" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="30" y="153" width="270" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Mask Results">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Normal Edit Text" lineBreakMode="tailTruncation" minimumFontSize="10" id="19" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="30" y="199" width="270" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="roundedRect" minimumFontSize="17" id="20" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="30" y="234" width="270" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint id="24" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" constant="20"/>
+                            <constraint id="25" firstItem="16" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="72"/>
+                            <constraint id="28" firstItem="16" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30"/>
+                            <constraint id="29" firstItem="13" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30"/>
+                            <constraint id="30" firstItem="17" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30"/>
+                            <constraint id="31" firstItem="20" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30"/>
+                            <constraint id="32" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="20" secondAttribute="trailing" constant="20"/>
+                            <constraint id="33" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="13" secondAttribute="trailing" constant="20"/>
+                            <constraint id="34" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="13" secondAttribute="trailing" constant="20"/>
+                            <constraint id="35" firstItem="13" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="95"/>
+                            <constraint id="36" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" constant="20"/>
+                            <constraint id="37" firstItem="17" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="133"/>
+                            <constraint id="38" firstItem="20" firstAttribute="top" secondItem="17" secondAttribute="bottom" constant="51"/>
+                            <constraint id="39" firstItem="8bC-Xf-vdC" firstAttribute="trailing" secondItem="20" secondAttribute="trailing" constant="20"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="maskEntry" destination="13" id="name-outlet-13"/>
+                        <outlet property="button1" destination="17" id="name-outlet-17"/>
+                        <outlet property="textView2" destination="20" id="name-outlet-20"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
