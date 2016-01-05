@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/Lspinner"
+    android:paddingLeft="5dp">
+    <LinearLayout
+        android:id="@+id/parentLayoutSpinner"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:showDividers="none">
+        <DropDown.Droid.MyAppCompatSpinner xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spinner2"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:contextClickable="false"
+            style="@style/spinner_style" />
+    </LinearLayout>
+</LinearLayout>

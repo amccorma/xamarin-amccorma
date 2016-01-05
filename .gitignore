@@ -1,0 +1,10 @@
+
+*.xbf
+
+*.dll
+
+*.nupkg
+
+*.targets
+
+*.userprefs

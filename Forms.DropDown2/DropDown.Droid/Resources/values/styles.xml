@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  	<style name="MyTheme" parent="MyTheme.Base">
+  	</style>
+
+	  <!-- Base theme applied no matter what API -->
+	  <style name="MyTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+	    
+	    <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette-->
+	    <!-- colorPrimary is used for the default action bar background -->
+	    <item name="colorPrimary">@color/window_background</item>
+	    <!-- colorPrimaryDark is used for the status bar -->
+	    <item name="colorPrimaryDark">@color/window_background</item>
+	    <!-- colorAccent is used as the default value for colorControlActivated
+	         which is used to tint widgets -->
+	    <item name="colorAccent">@color/window_background</item>
+	    <!-- You can also set colorControlNormal, colorControlActivated
+	         colorControlHighlight and colorSwitchThumbNormal. -->
+	    <item name="android:windowBackground">@color/window_background</item>
+
+	  </style>
+
+
+  	<style name="spinner_style">
+      <item name="android:layout_margin">1dp</item>
+      <item name="android:paddingLeft">1dp</item>
+      <item name="android:paddingRight">1dp</item>
+      <item name="android:paddingTop">1dp</item>
+      <item name="android:paddingBottom">1dp</item>
+      <item name="android:popupBackground">#FFFFFF</item>
+	</style>
+
+
+</resources>
+

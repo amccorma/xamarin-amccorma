@@ -36,3 +36,4 @@ Android Permissions:  Android-M / Mashmellow Xamarin Forms Permission Layer (use
 
 DropDown: iOS / Android.  Xamarin Forms.
 
+DropDown2: iOS / Android.  Xamarin Forms. Popup modal DropDown. 
