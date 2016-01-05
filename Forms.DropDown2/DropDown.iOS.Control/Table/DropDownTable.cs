@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CoreGraphics;
 using CoreAnimation;
 using System;
+using System.Linq;
 
 namespace DropDown.iOS.Control.Table
 {
@@ -24,7 +25,8 @@ namespace DropDown.iOS.Control.Table
 		/// <param name="cellSelectedBackgroundColor">Cell selected background color, Use Clear for default</param>
 		/// <param name="cellSelectedTextColor">Cell selected text color, Use Clear for default</param>
 		public DropDownTable(IList<string> data, nfloat cellHeight,
-			nfloat fSize, UIColor cellSelectedBackgroundColor, UIColor cellSelectedTextColor) : base()
+			nfloat fSize, UIColor cellSelectedBackgroundColor, UIColor cellSelectedTextColor,
+			string selectedText = "") : base()
 		{
 			CellLayoutMarginsFollowReadableWidth = false;
 			this.MultipleTouchEnabled = true;
@@ -33,10 +35,19 @@ namespace DropDown.iOS.Control.Table
 			this._CellSBackgroundColor = cellSelectedBackgroundColor;
 			this._CellSTextColor = cellSelectedTextColor;
 
-			Source = new DropDownSource (data, this._FontSize, this._CellHeight, this._CellSBackgroundColor, this._CellSTextColor);
+			Source = new DropDownSource (data, this._FontSize, this._CellHeight, this._CellSBackgroundColor, 
+				this._CellSTextColor, selectedText);
+
 			//ContentInset =  new UIEdgeInsets(0, -10, 0, 0);
 			LayoutMargins = UIEdgeInsets.Zero;
 			SeparatorInset = UIEdgeInsets.Zero;
+
+			// select default row
+			var idx = data.ToList().FindIndex(x => x == selectedText);
+			System.Diagnostics.Debug.WriteLine (idx);
+			if (idx >= 0) {
+				this.SelectRow (Foundation.NSIndexPath.FromItemSection (idx, 0), false, UITableViewScrollPosition.Top);
+			}
 
 			(Source as DropDownSource).OnSelected += RowSelected;
 		}

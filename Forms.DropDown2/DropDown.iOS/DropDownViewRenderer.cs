@@ -37,11 +37,17 @@ namespace DropDown.iOS
 				if (this.Element.SelectedBackgroundColor != Xamarin.Forms.Color.Transparent) {
 					view = new DropDownView (this.Element.Title, this.Element.Source, this.Element.FontSize, this.Element.CellHeight,
 						this.Element.SelectedBackgroundColor.ToUIColor (), this.Element.SelectedTextColor.ToUIColor (),
-						this.Element.BorderColor.ToUIColor());
+						this.Element.BorderColor.ToUIColor(),
+						this.Element.iOSHeaderText,
+						this.Element.SelectedText);
 				} else {
 					view = new DropDownView (this.Element.Title, this.Element.Source, this.Element.FontSize, this.Element.CellHeight,
-						this.Element.BorderColor.ToUIColor());
+						this.Element.BorderColor.ToUIColor(),
+						this.Element.iOSHeaderText,
+						this.Element.SelectedText);
 				}
+				view.HeaderHeight = this.Element.iOSHeaderHeight;
+				view.HeaderFontHeight = this.Element.iOSHeaderFontSize;
 				view.PopupHeight = this.Element.DropDownHeight;
 				view.SelectedText = (x) => {
 					this.Element.SelectedText = x;
@@ -65,8 +71,6 @@ namespace DropDown.iOS
 					_WindowTapped = false;
 					_Tap = null;
 				}
-			} else if (msg == DropDownPicker.AddTapMessage) {
-				HandleWindowTapped();
 			} else if (msg == DropDownPicker.CloseDropMessage) {
 				var o = sender as DropDownPicker;
 				if (this.Control != null && o != null && this.Element != null)
@@ -89,24 +93,24 @@ namespace DropDown.iOS
 
 		private void HandleWindowTapped()
 		{
-			if (_Tap == null && _WindowTapped == false) {
-
-				_WindowTapped = true;
-				_Tap = new UITapGestureRecognizer ((x) => {
-				});
-
-				// handle click outside control to close
-				var w = UIApplication.SharedApplication.KeyWindow.RootViewController.View;
-				_Tap.ShouldReceiveTouch = (recognizer, touch) => {
-					var view = UIApplication.SharedApplication.KeyWindow.RootViewController.View;
-					var pos = touch.LocationInView(view);
-
-					var args = new DropDownTapArgs((float)pos.X, (float)pos.Y);
-					DropDownPicker.SendTapMessage(args);
-					return false;
-				};
-				w.AddGestureRecognizer(_Tap);
-			}
+//			if (_Tap == null && _WindowTapped == false) {
+//
+//				_WindowTapped = true;
+//				_Tap = new UITapGestureRecognizer ((x) => {
+//				});
+//
+//				// handle click outside control to close
+//				var w = UIApplication.SharedApplication.KeyWindow.RootViewController.View;
+//				_Tap.ShouldReceiveTouch = (recognizer, touch) => {
+//					var view = UIApplication.SharedApplication.KeyWindow.RootViewController.View;
+//					var pos = touch.LocationInView(view);
+//
+//					var args = new DropDownTapArgs((float)pos.X, (float)pos.Y);
+//					DropDownPicker.SendTapMessage(args);
+//					return false;
+//				};
+//				w.AddGestureRecognizer(_Tap);
+//			}
 		}
 
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)

@@ -41,14 +41,17 @@ namespace DropDown.Forms
 				WidthRequest = Device.OnPlatform(100, 120, 100),
 				HeightRequest = 25,
 				DropDownHeight = 150,
-				Title = "Locations",
-				SelectedText = "",
+				Title = "Boston",
+				SelectedText = "Boston",
 				FontSize = Device.OnPlatform(10, 14, 10),
 				CellHeight = 20,
 				SelectedBackgroundColor = Color.FromRgb (0, 70, 172),
 				SelectedTextColor = Color.White,
 				BorderColor = Color.Black,
-				ArrowColor = Color.Blue
+				ArrowColor = Color.Blue,
+				iOSHeaderText = "Locations",
+				iOSHeaderFontSize = 20,
+				iOSHeaderHeight = 40,
 			};
 
 			this._Drop2 = new DropDownPicker
@@ -125,25 +128,12 @@ namespace DropDown.Forms
 			this._Drop1.OnSelected += Drop1Selected;
 
 			this._Drop2.OnSelected += Drop2Selected;
-
-			if (Device.OS == TargetPlatform.iOS) {
-
-				DropDownPicker.AddTapEvents ();
-				DropDownPicker.OnTapFrom += OnTapFrom;
-			}
 		}
 
 		protected override void OnDisappearing ()
 		{
-			if (Device.OS == TargetPlatform.iOS) {
-				DropDownPicker.OnTapFrom -= OnTapFrom;
-				DropDownPicker.RemoveEvents ();
-			}
-
 			this._Drop1.OnSelected -= Drop1Selected;
-
 			this._Drop2.OnSelected -= Drop2Selected;
-
 			base.OnDisappearing ();
 		}
 

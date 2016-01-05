@@ -44,8 +44,9 @@ namespace DropDown.iOS.Control.Table
 		/// <param name="cellSelectedBackgroundColor">Cell selected background color.</param>
 		/// <param name="cellSelectedTextColor">Cell selected text color.</param>
 		public DropDownSource(IList<string> data, nfloat fSize, nfloat cellHeight, 
-			UIColor cellSelectedBackgroundColor, UIColor cellSelectedTextColor)
+			UIColor cellSelectedBackgroundColor, UIColor cellSelectedTextColor, string selectedText = "")
 		{
+			this.SelectedText = selectedText;
 			this._SourceData = data;
 			this._FontSize = fSize;
 			this._CellHeight = cellHeight;
@@ -95,7 +96,6 @@ namespace DropDown.iOS.Control.Table
 				cell.SelectedBackgroundView = bgColorView;
 				cell.TextLabel.HighlightedTextColor = this._CellSTextColor;
 			}
-
 			// add text
 			cell.TextLabel.Text = this._SourceData [indexPath.Row];
 			if (this._FontSize > 1) {

@@ -57,6 +57,25 @@ namespace DropDown.Forms
 		}
 
 		/// <summary>
+		/// Header Message for Popup
+		/// </summary>
+		/// <value>The i OS header text.</value>
+		public string iOSHeaderText {
+			get;
+			set;
+		}
+
+		public Int32 iOSHeaderFontSize {
+			get;
+			set;
+		}
+
+		public Int32 iOSHeaderHeight {
+			get;
+			set;
+		}
+
+		/// <summary>
 		/// this removes the global Tap Handler.  Should be called on Disappear event or 
 		/// when there are NO instances of this control on the Page!
 		/// </summary>
@@ -159,7 +178,7 @@ namespace DropDown.Forms
 		/// iOS only. UICell height
 		/// </summary>
 		public static readonly BindableProperty CellHeightProperty =
-			BindableProperty.Create<DropDownPicker, float>(
+			BindableProperty.Create<DropDownPicker, Int32>(
 				p => p.CellHeight, 40);
 
 		/// <summary>
@@ -310,10 +329,10 @@ namespace DropDown.Forms
 			}
 		}
 
-		public float CellHeight
+		public Int32 CellHeight
 		{
-			get {
-				return (float)GetValue(CellHeightProperty); 
+			get {				
+				return (Int32)GetValue(CellHeightProperty); 
 			}
 			set {
 				this.SetValue(CellHeightProperty, value);                
@@ -359,7 +378,6 @@ namespace DropDown.Forms
 				this.SetValue(DropDownHeightProperty, value);                
 			}
 		}
-
 	}
 }
 
