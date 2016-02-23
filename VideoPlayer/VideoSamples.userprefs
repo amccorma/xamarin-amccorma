@@ -1,9 +1,11 @@
 ﻿<Properties StartupItem="VideoPlayer.iOS/VideoSamples.iOS.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.9.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="VideoPlayer/AndroidVideoPlayer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="VideoPlayer.iOS/Controls/MyPlayerView.cs">
     <Files>
-      <File FileName="VideoPlayer/iOSVideoPlayer.cs" Line="35" Column="39" />
+      <File FileName="VideoPlayer/iOSVideoPlayer.cs" Line="1" Column="1" />
       <File FileName="VideoPlayer/AndroidVideoPlayer.cs" Line="29" Column="48" />
+      <File FileName="VideoPlayer.iOS/MyVideoPlayerRenderer.cs" Line="73" Column="67" />
+      <File FileName="VideoPlayer.iOS/Controls/MyPlayerView.cs" Line="138" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

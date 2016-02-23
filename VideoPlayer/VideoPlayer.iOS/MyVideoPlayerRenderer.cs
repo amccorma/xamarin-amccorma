@@ -36,9 +36,8 @@ namespace VideoSamples.iOS.Controls
 				this._PlayerView = new MyPlayerView (this.Element);
 				SetNativeControl (this._PlayerView);
 			}
-
-			// check file
-			this._PlayerView.Load(this.Element.FileSource);
+				
+			this._PlayerView.Load(new NSString(this.Element.FileSource));
 			this._PlayerView.FitToWindow = this.Element.FitInWindow;
 			this._PlayerView.AddController = this.Element.AddVideoController;
 
@@ -71,7 +70,7 @@ namespace VideoSamples.iOS.Controls
 				if (e.PropertyName == MyVideoPlayer.SeekProperty.PropertyName) {
 					this._PlayerView.SeekTo ((int)this.Element.Seek);
 				} else if (e.PropertyName == MyVideoPlayer.FileSourceProperty.PropertyName) {
-					this._PlayerView.Load (this.Element.FileSource);
+					this._PlayerView.Load (new NSString(this.Element.FileSource));
 				} else if (e.PropertyName == MyVideoPlayer.PlayerActionProperty.PropertyName) {
 					if (source.PlayerAction == VideoState.PAUSE) {
 						this._PlayerView.Pause ();

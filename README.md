@@ -1,4 +1,16 @@
 
+Links to Other Projects
+-----------------------------------------------------------------------
+
+Android Popupwindow
+
+https://gist.github.com/libinbensin/67fcc43a7344758390c3
+
+Android App Icon Badges
+ 
+https://github.com/wcoder/ShortcutBadger
+https://github.com/leolin310148/ShortcutBadger
+
 
 Xamarin iOS - BETA 
 -----------------------------------------------------------------------

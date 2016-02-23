@@ -127,13 +127,16 @@ namespace VideoSamples.iOS
 			this._MoviePlayer.CurrentPlaybackTime = pos;
 		}
 
-		protected internal void Load(string file)
+		/// <summary>
+		/// TimBarton fix 02/2016 (https://github.com/amccorma/xamarin-amccorma/issues/1)
+		/// </summary>
+		/// <param name="file">File.</param>
+		protected internal void Load(NSString file)
 		{
 			// file must be set to Content
 			// url starts with http
 			if (String.IsNullOrEmpty (file) == false) {
-				file = file.ToLower ();
-				if (file.StartsWith ("http") == false) {
+				if (file.ToString().ToLower().StartsWith ("http") == false) {
 					this._MoviePlayer.Load (NSUrl.FromFilename (file), false);
 				} else {
 					this._MoviePlayer.Load (NSUrl.FromString (file), true);

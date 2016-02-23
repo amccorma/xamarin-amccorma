@@ -8,3 +8,7 @@
 *.targets
 
 *.userprefs
+
+*.mdb
+
+*.dll
