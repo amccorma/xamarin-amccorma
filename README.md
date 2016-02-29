@@ -12,7 +12,7 @@ https://github.com/wcoder/ShortcutBadger
 https://github.com/leolin310148/ShortcutBadger
 
 
-Xamarin iOS - BETA 
+Xamarin iOS 
 -----------------------------------------------------------------------
 
 iOSMaskedEdit: iOS - Masked Edit
@@ -26,6 +26,10 @@ MaskedEditAndroid: Android - Masked Edit
 
 Xamarin Forms: 
 -----------------------------------------------------------------------
+FrameBorder: iOS / Android
+	Borders: turn on off borders on each side, Border Color, Border Thickness, Border Radius
+	Shadow: on/off, color, radius, offset
+
 DeviceEncryption: iOS / Android
 
 MaskedEdit: iOS / Android
