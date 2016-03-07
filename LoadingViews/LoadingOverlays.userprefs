@@ -1,6 +1,13 @@
-﻿<Properties StartupItem="Mobile/Mobile.Page/mobile.models.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+﻿<Properties StartupItem="Mobile/Mobile.IOS/mobile.app.ios.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.9.2" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Mobile/Mobile.IOS/ShowOverlay.cs">
+    <Files>
+      <File FileName="Mobile/Mobile.Forms/Page1.xaml.cs" Line="21" Column="34" />
+      <File FileName="Mobile/Mobile.Forms/TabPages/Tab1Page1.xaml.cs" Line="26" Column="34" />
+      <File FileName="Mobile/Mobile.Forms/TabPages/Tab1Page2.xaml.cs" Line="21" Column="34" />
+      <File FileName="Mobile/Mobile.IOS/ShowOverlay.cs" Line="107" Column="32" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -14,4 +21,5 @@
     <String>Mobile/Startup/PSEA.Mobile.IOS/psea.mobile.app.ios.csproj</String>
     <String>Mobile/Startup/PSEA.Mobile.Droid/overlay.mobile.droid.csproj</String>
   </DisabledProjects>
+  <MonoDevelop.Ide.ItemProperties.mobile.droid AndroidDesignerPreferredDevice="Nexus 4" />
 </Properties>

@@ -10,8 +10,11 @@ namespace VideoSamples
     {
 		public App()
         {
-			//this.MainPage = new NavigationPage (new AndroidVideoPlayer ());
-			this.MainPage = new NavigationPage (new iOSVideoPlayer ());
+			if (Device.OS == TargetPlatform.Android) {
+				this.MainPage = new NavigationPage (new AndroidVideoPlayer ());
+			} else {
+				this.MainPage = new NavigationPage (new iOSVideoPlayer ());
+			}
         }
     }
 }

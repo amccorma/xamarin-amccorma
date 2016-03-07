@@ -1,11 +1,10 @@
 ﻿<Properties StartupItem="Droid/DeviceTask.Droid.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Andrew's iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DeviceTask.iOS/Service/iOSTasks.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/MainActivity.cs">
     <Files>
       <File FileName="DeviceTask.iOS/AppDelegate.cs" Line="27" Column="2" />
-      <File FileName="DeviceTask.iOS/Service/iOSTasks.cs" Line="105" Column="39" />
-      <File FileName="tempVisibleAndroid/Page1.cs" Line="131" Column="15" />
-      <File FileName="tempVisibleAndroid/Service/AppTask.cs" Line="15" Column="43" />
+      <File FileName="DeviceTask.iOS/Service/iOSTasks.cs" Line="11" Column="29" />
+      <File FileName="Droid/MainActivity.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

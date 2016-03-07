@@ -3,56 +3,72 @@ using Xamarin.Forms;
 
 namespace FrameBorder
 {
-	/// <summary>
-	/// Frame Implementation
-	/// <remarks>
-	/// Android:  	Create a Shadow effect by setting the background Color, border and Stroke properties.
-	/// 			A dropdown shadow:  border.Bottom=1, all other false. StrokeThickness: 3, OutlineColor=shadow color
-	/// 			Each border can be turned on and off.  Border Off=0, All other values on
-	/// </remarks>
-	/// </summary>
 	public class MyFrame : Frame
 	{
 		public MyFrame ()
 		{
-			this.OutlineColor = Color.Transparent;
-			this.HasShadow = false;
-			StrokeType = FrameBorder.StrokeType.Solid;
-
-			// Borders on.  Turn off set 0
-			Borders = new FrameRect (1, 1, 1, 1);
-
-			//this.Padding = new Thickness (0, 0);
-			ShadowOpacity = 0f;
+			//			this.OutlineColor = Color.Transparent;
+			//			this.HasShadow = false;
 		}
-			
+
 		/// <summary>
 		/// The stroke type property.
 		/// </summary>
-		public static readonly BindableProperty StrokeThicknessProperty = BindableProperty.Create("StrokeType", typeof(Int32), 
+		public static readonly BindableProperty StrokeThicknessProperty = BindableProperty.Create("StrokeThickness", typeof(Int32), 
 			typeof(MyFrame), 1, BindingMode.OneWay, null, null, null, null);
 
-//		/// <summary>
-//		/// <para>Android/iOS Property</para>
-//		/// <para>Android: left, top, right, bottom</para>
-//		/// <para>iOS: Left, Bottom, Ignores other values</para>
-//		/// </summary>
-//		public static new BindableProperty PaddingProperty = BindableProperty.Create("Padding", typeof(Thickness), 
-//			typeof(MyFrame), new Thickness(0,0), BindingMode.OneWay, null, null, null, null);
-
 		/// <summary>
 		/// The stroke type property.
 		/// </summary>
-		public static readonly BindableProperty StrokeTypeProperty = BindableProperty.Create("StrokeType", typeof(StrokeType), 
-			typeof(MyFrame), FrameBorder.StrokeType.Solid, BindingMode.OneWay, null, null, null, null);
-
+		public static readonly BindableProperty StrokeTypeProperty =
+			BindableProperty.Create ("StrokeType", typeof(StrokeType), typeof(MyFrame), StrokeType.Solid);
+		
 		/// <summary>
 		/// <para>Android/iOS Property</para>
 		/// <para>Android: Border/Shadow Radius</para>
 		/// <para>The Corner radius property.</para>
 		/// </summary>
-		public static readonly BindableProperty RadiusProperty = 
-			BindableProperty.Create<MyFrame, float>(p => p.Radius, 5.0f);
+		public static readonly BindableProperty RadiusProperty =
+			BindableProperty.Create ("Radius", typeof(float), typeof(MyFrame), 5.0f);
+
+
+		/// <summary>
+		/// <para>Android/iOS Property</para>
+		/// </summary>
+		public static readonly BindableProperty BordersProperty =
+			BindableProperty.Create ("Borders", typeof(FrameRect), typeof(MyFrame), new FrameRect(1,1,1,1));		
+
+		/// <summary>
+		/// <para>Android Property</para>
+		/// </summary>
+		public static readonly BindableProperty ShadowBordersProperty =
+			BindableProperty.Create ("ShadowBorders", typeof(FrameRect), typeof(MyFrame), null);
+
+		/// <summary>
+		/// <para>iOS property</para>
+		/// </summary>
+		public static readonly BindableProperty ShadowOffsetProperty =
+			BindableProperty.Create ("ShadowOffset", typeof(Point), typeof(MyFrame), new Point(0,0));
+		
+		/// <summary>
+		/// <para>iOS property</para>
+		/// </summary>
+		public static readonly BindableProperty ShadowOpacityProperty =
+			BindableProperty.Create ("ShadowOpacity", typeof(float), typeof(MyFrame), 0f);
+
+		/// <summary>
+		/// <para>Android/iOS Property</para>
+		/// </summary>
+		public static readonly BindableProperty ShadowColorProperty =
+			BindableProperty.Create ("ShadowColor", typeof(Xamarin.Forms.Color), typeof(MyFrame), Xamarin.Forms.Color.Default);
+		
+		/// <summary>
+		/// <para>Android, iOS property</para>
+		/// <para>iOS: Shadow Radius (float)</para>
+		/// <para>Android: Shadow Thickness (integer)</para>
+		/// </summary>
+		public static readonly BindableProperty ShadowRadiusProperty =
+			BindableProperty.Create ("ShadowRadius", typeof(float), typeof(MyFrame), 0f);
 
 		/// <summary>
 		/// <para>Android/iOS Property</para>
@@ -61,7 +77,15 @@ namespace FrameBorder
 		/// <para>default all borders on</para>
 		/// </summary>
 		/// <value>The borders.</value>
-		public FrameRect Borders { get; set; }
+		public FrameRect Borders
+		{
+			get {
+				return (FrameRect)base.GetValue(BordersProperty);
+			}
+			set {
+				base.SetValue(BordersProperty, value);
+			}
+		}
 
 		/// <summary>
 		/// <para>Android Property</para>
@@ -70,7 +94,15 @@ namespace FrameBorder
 		/// <para>HasShadow must be set to true</para>
 		/// </summary>
 		/// <value>The borders.</value>
-		public FrameRect ShadowBorders { get; set; }
+		public FrameRect ShadowBorders
+		{
+			get {
+				return (FrameRect)base.GetValue(ShadowBordersProperty);
+			}
+			set {
+				base.SetValue(ShadowBordersProperty, value);
+			}
+		}
 
 		/// <summary>
 		/// <para>iOS property</para>
@@ -79,7 +111,15 @@ namespace FrameBorder
 		/// <para>HasShadow need to be set to true</para>
 		/// </summary>
 		/// <value>The iOS shadow offset.</value>
-		public Point ShadowOffset { get; set; }
+		public Point ShadowOffset
+		{
+			get {
+				return (Point)base.GetValue(ShadowOffsetProperty);
+			}
+			set {
+				base.SetValue(ShadowOffsetProperty, value);
+			}
+		}
 
 		/// <summary>
 		/// <para>iOS property</para>
@@ -88,7 +128,15 @@ namespace FrameBorder
 		/// <para>HasShadow need to be set to true</para>
 		/// </summary>
 		/// <value>The iOS shadow Opacity.</value>
-		public float ShadowOpacity { get; set; }
+		public float ShadowOpacity
+		{
+			get {
+				return (float)base.GetValue(ShadowOpacityProperty);
+			}
+			set {
+				base.SetValue(ShadowOpacityProperty, value);
+			}
+		}
 
 		/// <summary>
 		/// <para>Android/iOS Property</para>
@@ -96,14 +144,31 @@ namespace FrameBorder
 		/// <para>Drop Shadow Color. HasShadow needs be true</para>
 		/// </summary>
 		/// <value>Shadow Color (iOS only).</value>
-		public Xamarin.Forms.Color ShadowColor  { get; set; }
+		public Xamarin.Forms.Color ShadowColor
+		{
+			get {
+				return (Xamarin.Forms.Color)base.GetValue(ShadowColorProperty);
+			}
+			set {
+				base.SetValue(ShadowColorProperty, value);
+			}
+		}
 
 		/// <summary>
 		/// <para>Android, iOS property</para>
-		/// <para>Shadow Radius</para>
+		/// <para>iOS: Shadow Radius (float)</para>
+		/// <para>Android: Shadow Thickness (integer)</para>
 		/// </summary>
 		/// <value>Shadow Radius</value>
-		public Int32 ShadowRadius { get; set; }
+		public float ShadowRadius
+		{
+			get {
+				return (float)base.GetValue(ShadowRadiusProperty);
+			}
+			set {
+				base.SetValue(ShadowRadiusProperty, value);
+			}
+		}
 
 		public bool AllBorders {
 			get {
@@ -111,19 +176,6 @@ namespace FrameBorder
 					return true;
 				}
 				return false;
-			}
-		}
-
-		/// <summary>
-		/// <para>Android/iOS Property</para>
-		/// </summary>
-		public new Thickness Padding
-		{
-			get {
-				return (Thickness)base.GetValue(PaddingProperty);
-			}
-			set {
-				base.SetValue(PaddingProperty, value);
 			}
 		}
 

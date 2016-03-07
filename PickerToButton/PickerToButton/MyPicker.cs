@@ -10,8 +10,7 @@ namespace PickerToButton
 		}
 
 		public static readonly BindableProperty PickItemsProperty =
-			BindableProperty.Create<MyPicker, bool>(
-				p => p.PickItems, false);
+			BindableProperty.Create ("PickItems", typeof(bool), typeof(MyPicker), false);
 
 		public bool PickItems
 		{

@@ -3,9 +3,9 @@ using Android.Views;
 using Android.Views.Animations;
 using System;
 using Xamarin.Forms.Platform.Android;
-using mobile.models.Overlay;
+using mobile.pages.Overlay;
 
-namespace PSEA.Mobile.Droid.Overlays
+namespace overlay.mobile.droid
 {
 	internal class OverLayFragments : Android.App.Fragment
 	{
@@ -36,14 +36,14 @@ namespace PSEA.Mobile.Droid.Overlays
             }
             else
             {
-               view.Background = new Android.Graphics.Drawables.ColorDrawable(ViewDetails.BackgroundColor.ToAndroid());
+               view.SetBackgroundColor(ViewDetails.BackgroundColor.ToAndroid());
             }
 
             // 1 to 255 for Android
             // 0 (fully transparent) to 255 (completely opaque)
             if (ViewDetails.Alpha != 1)
             {
-               view.Alpha = (float)(255.00 * (ViewDetails.Alpha));
+				view.Background.Alpha = (int)ViewDetails.Alpha;
             }
          }
       }

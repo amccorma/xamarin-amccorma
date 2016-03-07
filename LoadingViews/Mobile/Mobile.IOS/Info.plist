@@ -13,8 +13,6 @@
 		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
-	<key>CFBundleDisplayName</key>
-	<string>PSEA</string>
 	<key>Assets</key>
 	<string>Assets</string>
 	<key>CFBundleIconFiles</key>
@@ -27,6 +25,8 @@
 		<string>Icon@2x</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>psea.mobile.app.ios</string>
+	<string>mobile.app.ios</string>
+	<key>CFBundleName</key>
+	<string>OverLay1</string>
 </dict>
 </plist>

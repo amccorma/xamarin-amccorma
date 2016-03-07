@@ -1,3 +1,15 @@
+Updates
+-----------------------------------------------------------------------
+
+3-7-2016:
+
+	Updated Packages.  
+	Recompiled with new Xamarin Forms Release
+	Fixing Bindings, removed BindableProperty.Create<> with BindableProperty.Create()
+	Fixed Android Video Player Bug.  Video would not play
+	Updated LoadingViews
+		
+	
 
 Links to Other Projects
 -----------------------------------------------------------------------

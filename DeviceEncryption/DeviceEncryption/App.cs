@@ -3,11 +3,11 @@ using Xamarin.Forms;
 
 namespace DeviceEncryption
 {
-	public class App
+	public class App : Application
 	{
-		public static Page GetMainPage ()
-		{	
-			return new NavigationPage(new TestPage());
+		public App()
+		{
+			this.MainPage = new TestPage ();
 		}
 	}
 }

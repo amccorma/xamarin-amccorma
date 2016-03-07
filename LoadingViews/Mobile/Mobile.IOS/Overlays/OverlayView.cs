@@ -6,7 +6,7 @@ using Foundation;
 using UIKit;
 using CoreGraphics;
 using Xamarin.Forms.Platform.iOS;
-using mobile.models.Overlay;
+using mobile.pages.Overlay;
 
 namespace mobile.app.ios.Overlays
 {

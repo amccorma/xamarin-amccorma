@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="mobile.pages.Tab1Page2"
+	x:Name="pOfficersPage">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Load" Clicked="ShowLoadingPanel"></ToolbarItem>
+		<ToolbarItem Text="Error" Clicked="ShowErrorPanel"></ToolbarItem>
+		<ToolbarItem Text="Hide" Clicked="HideAll"></ToolbarItem>
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+	 <StackLayout
+			VerticalOptions="Fill"
+			HorizontalOptions="Fill">
+     	<Label Text="RegionOfficersPage Page Content"></Label>
+     	<Button Text="1" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="10" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="11" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="12" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="13" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="17" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="199" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="1990" HorizontalOptions="FillAndExpand"></Button>
+             		<Button Text="END" HorizontalOptions="FillAndExpand"></Button>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

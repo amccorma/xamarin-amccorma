@@ -30,84 +30,65 @@ namespace VideoSamples.Controls
 		}
 
 		/// <summary>
-		/// ndroid: ActionBar, iOS: StatusBar
+		/// Android: ActionBar, iOS: StatusBar
 		/// </summary>
 		public static readonly BindableProperty ActionBarHideProperty = 
-			BindableProperty.Create<MyVideoPlayer,bool>(
-				p => p.ActionBarHide, false);
-
+			BindableProperty.Create("ActionBarHide", typeof(bool), typeof(MyVideoPlayer), false);
+		
 		/// <summary>
 		/// Android only. no function on iOS
 		/// </summary>
 		public static readonly BindableProperty ContentHeightProperty = 
-			BindableProperty.Create<MyVideoPlayer,double>(
-				p => p.ContentHeight, 0);
-
+			BindableProperty.Create ("ContentHeight", typeof(double), typeof(MyVideoPlayer), 0D);
+		
 
 		/// <summary>
 		/// Android only. no function on iOS
 		/// </summary>
 		public static readonly BindableProperty ContentWidthProperty = 
-			BindableProperty.Create<MyVideoPlayer,double>(
-				p => p.ContentWidth, 0);
-
+			BindableProperty.Create("ContentWidth", typeof(double), typeof(MyVideoPlayer), 0D);
 
 		/// <summary>
 		/// Android, iOS
 		/// </summary>
 		public static readonly BindableProperty AutoPlayProperty = 
-			BindableProperty.Create<MyVideoPlayer,bool>(
-				p => p.AutoPlay, false);
+			BindableProperty.Create("AutoPlay", typeof(bool), typeof(MyVideoPlayer), false);	
 
-		/// <summary>
-		/// Android, iOS
-		/// </summary>
-		public static readonly BindableProperty FullScreenProperty = 
-			BindableProperty.Create<MyVideoPlayer,bool>(
-				p => p.FullScreen, false);
-		
 		/// <summary>
 		/// iOS only.  Android will resize video for player size
 		/// </summary>
 		public static readonly BindableProperty FitInWindowProperty = 
-			BindableProperty.Create<MyVideoPlayer,bool>(
-				p => p.FitInWindow, true);
+			BindableProperty.Create("FitInWindow", typeof(bool), typeof(MyVideoPlayer), true);
+
+		public static readonly BindableProperty FullScreenProperty = 
+			BindableProperty.Create("FullScreen", typeof(bool), typeof(MyVideoPlayer), false);
 
 		public static readonly BindableProperty HasErrorProperty = 
-			BindableProperty.Create<MyVideoPlayer,bool>(
-				p => p.HasError,false);
+			BindableProperty.Create("HasError", typeof(bool), typeof(MyVideoPlayer), false);
 
 		public static readonly BindableProperty ErrorMessageProperty = 
-			BindableProperty.Create<MyVideoPlayer,string>(
-				p => p.ErrorMessage, "");
-
-		public static readonly BindableProperty AddVideoControllerProperty = 
-			BindableProperty.Create<MyVideoPlayer,bool>(
-				p => p.AddVideoController,false);
+			BindableProperty.Create("ErrorMessage", typeof(string), typeof(MyVideoPlayer), "");		
 		
-		public static readonly BindableProperty FileSourceProperty = 
-			BindableProperty.Create<MyVideoPlayer,string>(
-				p => p.FileSource, "");
+		public static readonly BindableProperty AddVideoControllerProperty = 
+			BindableProperty.Create("AddVideoController", typeof(bool), typeof(MyVideoPlayer), false);
 
+		public static readonly BindableProperty FileSourceProperty = 
+			BindableProperty.Create("FileSource", typeof(string), typeof(MyVideoPlayer), "");
+		
 		public static readonly BindableProperty StateProperty = 
-			BindableProperty.Create<MyVideoPlayer,VideoState>(
-				p => p.State, VideoState.NONE);
+			BindableProperty.Create("State", typeof(VideoState), typeof(MyVideoPlayer), VideoState.NONE);
 
 		public static readonly BindableProperty SeekProperty = 
-			BindableProperty.Create<MyVideoPlayer,double>(
-				p => p.Seek,-1D);
+			BindableProperty.Create("Seek", typeof(double), typeof(MyVideoPlayer), -1D);
 
 		public static readonly BindableProperty InfoProperty = 
-			BindableProperty.Create<MyVideoPlayer,VideoData>(
-				p => p.Info, null, BindingMode.OneWay);		
+			BindableProperty.Create("Info", typeof(VideoData), typeof(MyVideoPlayer),  null, BindingMode.OneWay);
 
 		/// <summary>
 		/// Sends command to the player
 		/// </summary>
 		public static readonly BindableProperty PlayerActionProperty = 
-			BindableProperty.Create<MyVideoPlayer,VideoState>(
-				p => p.PlayerAction, VideoState.NONE);	
-
+			BindableProperty.Create("PlayerAction", typeof(VideoState), typeof(MyVideoPlayer), VideoState.NONE);
 
 		/// <summary>
 		/// Android only. no function on iOS

@@ -1,10 +1,9 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone5.8.0" />
+﻿<Properties StartupItem="Android/DeviceEncryption.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
   <MonoDevelop.Ide.Workbench ActiveDocument="iOS/AppDelegate.cs">
     <Files>
-      <File FileName="DeviceEncryption/TestPage.cs" Line="4" Column="4" />
-      <File FileName="DeviceEncryption/App.cs" Line="8" Column="8" />
-      <File FileName="iOS/AppDelegate.cs" Line="13" Column="13" />
+      <File FileName="Android/MainActivity.cs" Line="1" Column="14" />
+      <File FileName="iOS/AppDelegate.cs" Line="5" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

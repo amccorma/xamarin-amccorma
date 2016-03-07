@@ -125,10 +125,18 @@ namespace VideoSamples.Droid
 		private void ResizeScreen(bool fullscreen)
 		{
 			var a = this.Context as Activity;
-			if (this.Element.ActionBarHide) {
-				a.ActionBar.Hide ();
+			//getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+			//getActionBar().hide();
+
+			//a.Window.RequestFeature (WindowFeatures.ActionBar);
+			if (a.ActionBar != null) {
+				if (this.Element.ActionBarHide) {
+					a.ActionBar.Hide ();
+				} else {
+					a.ActionBar.Show ();
+				}
 			} else {
-				a.ActionBar.Show ();
+				this.Element.ActionBarHide = true;
 			}
 			if (fullscreen) {
 				var p = this._MyVideoView.LayoutParameters as Android.Widget.RelativeLayout.LayoutParams;

@@ -2,8 +2,8 @@
 using Xamarin.Forms;
 using UIKit;
 using System.Linq;
-using PSEA.Mobile.IOS.Overlays;
-using mobile.models.Overlay;
+using mobile.pages.Overlay;
+using mobile.app.ios.Overlays;
 
 [assembly: Dependency(typeof(mobile.app.ios.ShowOverlay))]
 namespace mobile.app.ios
@@ -78,6 +78,7 @@ namespace mobile.app.ios
 				WriteMessage ("ShowLoadingScreen");
 				var view = new LoadingView (details);
 				view.Tag = LoadingOverLay;
+				view.Alpha = details.Alpha;
 				MainWindow.AddSubview(view);
 				HideAll (this.LoadingOverLay);				
 			}
@@ -90,6 +91,7 @@ namespace mobile.app.ios
 				WriteMessage ("ShowDisabledScreen");
 				var view = new DisabledView (details);
 				view.Tag = DisabledOverLay;
+				view.Alpha = details.Alpha;
 				MainWindow.AddSubview(view);
 				HideAll(this.DisabledOverLay);
 			}
@@ -102,6 +104,7 @@ namespace mobile.app.ios
 				var view = new BlankView (details);
 				view.Tag = BlankOverLay;
 				MainWindow.AddSubview(view);
+				view.Alpha = details.Alpha;
 				HideAll(this.BlankOverLay);
 			}
 		}

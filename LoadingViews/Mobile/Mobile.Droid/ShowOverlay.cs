@@ -3,11 +3,10 @@ using Android.App;
 using Android.OS;
 using Android.Support.V4.App;
 using Xamarin.Forms;
-using PSEA.Mobile.Droid.Overlays;
-using mobile.models.Overlay;
+using mobile.pages.Overlay;
 
-[assembly: Dependency(typeof(PSEA.Mobile.Droid.ShowOverlay))]
-namespace PSEA.Mobile.Droid
+[assembly: Dependency(typeof(overlay.mobile.droid.ShowOverlay))]
+namespace overlay.mobile.droid
 {
 	public class ShowOverlay : IShowOverLay
 	{
@@ -96,7 +95,7 @@ namespace PSEA.Mobile.Droid
 			if (IsActive(this.DisabledOverLay) == false) {
             var frag = DisabledFragment.NewInstance(details); 
 				using (var manager = Current.FragmentManager.BeginTransaction ()) {
-               manager.Add(Android.Resource.Id.Content, frag, this.DisabledOverLay);
+               	manager.Add(Android.Resource.Id.Content, frag, this.DisabledOverLay);
 					HideAll (manager, this.DisabledOverLay);
 					manager.Commit ();
 				}

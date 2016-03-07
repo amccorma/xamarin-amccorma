@@ -3,10 +3,10 @@ using Android.Views;
 using Android.OS;
 using Android.App;
 using Xamarin.Forms.Platform.Android;
-using mobile.models.Overlay;
 using overlay.mobile.droid;
+using mobile.pages.Overlay;
 
-namespace PSEA.Mobile.Droid.Overlays
+namespace overlay.mobile.droid
 {
 	internal class DisabledFragment: OverLayFragments
 	{
@@ -29,7 +29,6 @@ namespace PSEA.Mobile.Droid.Overlays
 
          	SetView(view, activity); 
 
-			var prog = view.FindViewById (Resource.Id.progressBar1);
 			return view;
 		}
 	}

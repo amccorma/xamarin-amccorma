@@ -77,14 +77,14 @@ namespace VideoSamples
 
 			// heightRequest must be set it not full screen
 			player.HeightRequest = 200;
-			player.VideoPlayer.AddVideoController = false;
+			player.VideoPlayer.AddVideoController = true;
 
 
-			// location in Assets folder.  file marked as Asset, NOT Resource
+			// location in Raw folder. no extension
 			player.VideoPlayer.FileSource = "sample";
 
 			// autoplay video
-			//player.VideoPlayer.AutoPlay = true;
+			player.VideoPlayer.AutoPlay = true;
 
 			this.Content = new StackLayout
 			{				

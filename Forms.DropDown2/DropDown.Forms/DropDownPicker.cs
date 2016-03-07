@@ -150,78 +150,73 @@ namespace DropDown.Forms
 		/// iOS only, no function in Android
 		/// </summary>
 		public static readonly BindableProperty FrameProperty =
-			BindableProperty.Create<DropDownPicker, Rectangle>(
-				p => p.Frame, new Rectangle(0,0,0,0));
-
+			BindableProperty.Create ("Frame", typeof(Rectangle), typeof(DropDownPicker), new Rectangle(0,0,0,0));
+		
 		/// <summary>
 		/// iOS only. To set Android Height, use FontSize
 		/// </summary>
 		public static readonly BindableProperty DropDownHeightProperty =
-			BindableProperty.Create<DropDownPicker, Int32>(
-				p => p.DropDownHeight, 100);
+			BindableProperty.Create ("DropDownHeight", typeof(Int32), typeof(DropDownPicker), 100);
 
 		/// <summary>
 		/// SelectedText
 		/// </summary>
 		public static readonly BindableProperty SelectedTextProperty =
-			BindableProperty.Create<DropDownPicker, string>(
-				p => p.SelectedText, "", BindingMode.OneWay);
+			BindableProperty.Create ("SelectedText", typeof(string), typeof(DropDownPicker), "", BindingMode.OneWay);
 
 		/// <summary>
 		/// Font Size of DropDown
 		/// </summary>
 		public static readonly BindableProperty FontSizeProperty =
-			BindableProperty.Create<DropDownPicker, float>(
-				p => p.FontSize, 0);
+			BindableProperty.Create ("FontSize", typeof(float), typeof(DropDownPicker), 0f);
 
 		/// <summary>
 		/// iOS only. UICell height
 		/// </summary>
 		public static readonly BindableProperty CellHeightProperty =
-			BindableProperty.Create<DropDownPicker, Int32>(
-				p => p.CellHeight, 40);
+			BindableProperty.Create ("CellHeight", typeof(Int32), typeof(DropDownPicker), 40);
 
 		/// <summary>
 		/// Is the DropDown open
 		/// </summary>
 		public static readonly BindableProperty IsShowingProperty =
-			BindableProperty.Create<DropDownPicker, bool>(
-				p => p.IsShowing, false);
+			BindableProperty.Create ("IsShowing", typeof(bool), typeof(DropDownPicker), false);
 
 		/// <summary>
 		/// selectedBackground Color of picker item selected
 		/// </summary>
 		public static readonly BindableProperty SelectedBackgroundColorProperty =
-			BindableProperty.Create<DropDownPicker, Xamarin.Forms.Color>(
-				p => p.SelectedBackgroundColor, Xamarin.Forms.Color.Transparent);
+			BindableProperty.Create ("SelectedBackgroundColor", typeof(Xamarin.Forms.Color), typeof(DropDownPicker), Xamarin.Forms.Color.Transparent);
+
 
 		/// <summary>
 		/// SelectedText Color of picker item selected
 		/// </summary>
 		public static readonly BindableProperty SelectedTextColorProperty =
-			BindableProperty.Create<DropDownPicker, Xamarin.Forms.Color>(
-				p => p.SelectedTextColor, Xamarin.Forms.Color.Transparent);
+			BindableProperty.Create ("SelectedTextColor", typeof(Xamarin.Forms.Color), typeof(DropDownPicker), Xamarin.Forms.Color.Transparent);
 
 		/// <summary>
 		/// Item source property
 		/// </summary>
-		public static BindableProperty SourceProperty =
-			BindableProperty.Create<DropDownPicker, IList<string>>(o => o.Source, null, 
-				propertyChanged: new BindableProperty.BindingPropertyChangedDelegate<IList<string>>(DropDownPicker.OnItemsSourceChanged));
+		public static readonly BindableProperty SourceProperty =
+			BindableProperty.Create ("Source", 
+				typeof(IList<string>), 
+				typeof(DropDownPicker),
+				null,
+				propertyChanged: DropDownPicker.OnItemsSourceChanged);
 
 		/// <summary>
 		/// Border Color
 		/// </summary>
 		public static readonly BindableProperty BorderColorProperty =
-			BindableProperty.Create<DropDownPicker, Xamarin.Forms.Color>(
-				p => p.BorderColor, Color.Black);
+			BindableProperty.Create ("BorderColor", typeof(Xamarin.Forms.Color), typeof(DropDownPicker), Color.Black);
 
 		/// <summary>
 		/// Arrow Color, Android: Dropdown Arrow color
 		/// </summary>
 		public static readonly BindableProperty ArrowColorProperty =
-			BindableProperty.Create<DropDownPicker, Xamarin.Forms.Color>(
-				p => p.ArrowColor, Color.Black);
+			BindableProperty.Create ("ArrowColor", typeof(Xamarin.Forms.Color), typeof(DropDownPicker), Color.Black);
+
 		
 		public Xamarin.Forms.Color BorderColor
 		{
@@ -270,15 +265,16 @@ namespace DropDown.Forms
 		/// <param name="bindable">Bindable.</param>
 		/// <param name="oldvalue">Oldvalue.</param>
 		/// <param name="newvalue">Newvalue.</param>
-		private static void OnItemsSourceChanged(BindableObject bindable, IEnumerable oldvalue, IEnumerable newvalue)
+		private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
 		{
 			try
 			{
+				var items = newValue as IList<string>;
 				var picker = bindable as DropDownPicker;
 				picker.Items.Clear();
-				if (newvalue != null)
+				if (items != null)
 				{
-					foreach (var item in newvalue)
+					foreach (var item in items)
 					{
 						picker.Items.Add (item.ToString());
 					}

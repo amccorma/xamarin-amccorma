@@ -14,7 +14,6 @@ namespace TopAlert.Droid
 		private AnimatorSet _Set;
 		private LinearLayout _Layout;
 		private ObjectAnimator _fadeOut;
-		private bool _IsInit = false;
 		private  Int32 _Delay = 0;
 		private CancellationTokenSource _Token;
 
@@ -118,7 +117,7 @@ namespace TopAlert.Droid
 
 			var id = Xamarin.Forms.Forms.Context.Resources.GetIdentifier ("alertborder", "drawable", Xamarin.Forms.Forms.Context.PackageName);
 			Android.Graphics.Drawables.GradientDrawable drawable = 
-				Xamarin.Forms.Forms.Context.Resources.GetDrawable (id).JavaCast<Android.Graphics.Drawables.GradientDrawable>();
+				Xamarin.Forms.Forms.Context.Resources.GetDrawable (id, Android.App.Application.Context.Theme).JavaCast<Android.Graphics.Drawables.GradientDrawable>();
 
 
 			var text = submain.FindViewById<TextView> (Resource.Id.textView1);

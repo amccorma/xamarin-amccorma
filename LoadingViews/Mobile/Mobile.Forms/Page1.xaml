@@ -1,43 +1,42 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<common:BasePage xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-	xmlns:common="clr-namespace:mobile.models.Controls;assembly=mobile.models"
 	x:Class="mobile.pages.Page1">
-	<common:BasePage.ToolbarItems>
-		<ToolbarItem Text="Load" Command="{Binding ShowLoadingPanel}"></ToolbarItem>
-		<ToolbarItem Text="Error" Command="{Binding ShowErrorPanel}"></ToolbarItem>
-		<ToolbarItem Text="Hide" Command="{Binding HideAll}"></ToolbarItem>
-		<ToolbarItem Text="Disabled" Command="{Binding DisabledPanel}"></ToolbarItem>
-	</common:BasePage.ToolbarItems>
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Load" Clicked="ShowLoadingPanel"></ToolbarItem>
+		<ToolbarItem Text="Blank" Clicked="ShowBlankPanel"></ToolbarItem>
+		<ToolbarItem Text="Hide" Clicked="HideAll"></ToolbarItem>
+		<ToolbarItem Text="Disabled" Clicked="DisabledPanel"></ToolbarItem>
+	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 
       <StackLayout>
-    	<Button Text="Push page" Command="{Binding PushPage}"></Button>
+    	<Button Text="Push page" Clicked="PushPage"></Button>
         <Label Text="There should be a loading here. abcdefgf" 
-        BackgroundColor="Red"
-        TextColor="White"         	
-        	FontSize="14"
-        	HorizontalOptions="Start"
-        	FontAttributes="None"
-        	 x:Name="lbl1" />
+	        BackgroundColor="Red"
+	        TextColor="White"         	
+	        	FontSize="14"
+	        	HorizontalOptions="Start"
+	        	FontAttributes="None"
+	        	 x:Name="lbl1" />
 
        <Label Text="There should be a loading here. abcdefgf more text here" 
-        BackgroundColor="Red"
-        TextColor="White"         	
-        	FontSize="14"
-        	HorizontalOptions="Start"
-        	FontAttributes="None" 
-        	x:Name="lbl2" />
+	        BackgroundColor="Red"
+	        TextColor="White"         	
+	        	FontSize="14"
+	        	HorizontalOptions="Start"
+	        	FontAttributes="None" 
+	        	x:Name="lbl2" />
 
 
-        	        <Label Text="There should be a loading here." 
-        BackgroundColor="Red"
-        TextColor="White"         	
-        	FontSize="14"
-        	HorizontalOptions="Start"
-        	FontAttributes="None" x:Name="lbl3" />
+      <Label Text="There should be a loading here." 
+	        BackgroundColor="Red"
+	        TextColor="White"         	
+	        	FontSize="14"
+	        	HorizontalOptions="Start"
+	        	FontAttributes="None" x:Name="lbl3" />
 
    </StackLayout>
 
 	</ContentPage.Content>
-</common:BasePage>
+</ContentPage>

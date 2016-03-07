@@ -7,17 +7,17 @@ using Android.Util;
 using Android.Graphics;
 using Android.App;
 using Xamarin.Forms.Platform.Android;
-using mobile.models.Overlay;
 using overlay.mobile.droid;
+using mobile.pages.Overlay;
 
-namespace PSEA.Mobile.Droid.Overlays
+namespace overlay.mobile.droid
 {
 	internal class LoadingFragment : OverLayFragments
 	{	
 		public static LoadingFragment NewInstance(OverlayDetails details)
 		{
 			var detailsFrag = new LoadingFragment { Arguments = new Bundle() };
-         detailsFrag.ViewDetails = details;
+         	detailsFrag.ViewDetails = details;
 			return detailsFrag;
 		}
 
@@ -28,10 +28,10 @@ namespace PSEA.Mobile.Droid.Overlays
 				return null;
 			}		
 
-			var view = inflater.Inflate(Resource.Layout.LoadingLayout, null);
+			var view = inflater.Inflate(overlay.mobile.droid.Resource.Layout.LoadingLayout, null);
+
 			var activity = Xamarin.Forms.Forms.Context as Activity;
          	SetView(view, activity);         
-			var prog = view.FindViewById (Resource.Id.progressBar1);
 			return view;
 		}
 	}

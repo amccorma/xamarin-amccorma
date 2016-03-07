@@ -11,16 +11,16 @@ namespace Masked.Controls
 
 		public delegate void InValid(object sender, string prop, string message);
 		public delegate void Valid(object sender, bool IsValid);
-		public event InValid OnValidationError;
-		public event Valid OnValid;
+		//public event InValid OnValidationError;
+		//public event Valid OnValid;
 		//		public Task ValidatorTask;
 		//		public CancellationToken token;
 
 		private string CV_defaultMask = "{\\d:(\\d)?}";
 		private string CV_defaultOneMask = "{\\d:}";
+
 		public static readonly BindableProperty LastTextProperty =
-			BindableProperty.Create<MyEntry, string>(
-				p => p.LastText, "");
+			BindableProperty.Create ("LastText", typeof(string), typeof(MyEntry), "");
 
 		/// <summary>
 		/// The font property
@@ -34,14 +34,14 @@ namespace Masked.Controls
 		/// </summary>
 		public static readonly BindableProperty FontProperty =
 			BindableProperty.Create("Font", typeof(Font), typeof(MyEntry), new Font());
-
+		
 		/// <summary>
 		/// The XAlign property
 		/// </summary>
 		public static readonly BindableProperty XAlignProperty =
 			BindableProperty.Create("XAlign", typeof(TextAlignment), typeof(MyEntry),
 				TextAlignment.Start);
-
+		
 		/// <summary>
 		/// The HasBorder property
 		/// </summary>
@@ -54,53 +54,39 @@ namespace Masked.Controls
 		public static readonly BindableProperty PlaceholderTextColorProperty =
 			BindableProperty.Create("PlaceholderTextColor", typeof(Color), typeof(MyEntry), Color.Default);
 
-		/// <summary>
-		/// 
-		/// </summary>
 		public static readonly BindableProperty CharacterMatchProperty =
-			BindableProperty.Create<MyEntry, string>(
-				p => p.CharacterMatch, "");
+			BindableProperty.Create ("CharacterMatch", typeof(string), typeof(MyEntry), "");
 
 		public static readonly BindableProperty TextLengthProperty =
-			BindableProperty.Create<MyEntry, Int32>(
-				p => p.TextLength, -1);
+			BindableProperty.Create ("TextLength", typeof(Int32), typeof(MyEntry), -1);
 
 		public static readonly BindableProperty SelectionEndProperty =
-			BindableProperty.Create<MyEntry, Int32>(
-				p => p.SelectionEnd, -1);
+			BindableProperty.Create ("SelectionEnd", typeof(Int32), typeof(MyEntry), -1);
 
 		public static readonly BindableProperty SetSelectionProperty =
-			BindableProperty.Create<MyEntry, SelectionPoint>(
-				p => p.SetSelection, new SelectionPoint(-1));
+			BindableProperty.Create ("SetSelection", typeof(SelectionPoint), typeof(MyEntry), new SelectionPoint(-1));
 
 		public static readonly BindableProperty SelectionStartProperty =
-			BindableProperty.Create<MyEntry, Int32>(
-				p => p.SelectionStart, -1);
+			BindableProperty.Create ("SelectionStart", typeof(Int32), typeof(MyEntry), -1);
 
 		public static readonly BindableProperty MaskProperty =
-			BindableProperty.Create<MyEntry, List<MaskRules>>(
-				p => p.Mask, null);
-
+			BindableProperty.Create ("Mask", typeof(List<MaskRules>), typeof(MyEntry), null);
+		
 		//		public static readonly BindableProperty MaxLengthProperty =
 		//			BindableProperty.Create<MyEntry, Int32>(
 		//				p => p.MaxLength, -1);
-
 		public static readonly BindableProperty LockedProperty =
-			BindableProperty.Create<MyEntry, bool>(
-				p => p.Locked, false);
+			BindableProperty.Create ("Locked", typeof(bool), typeof(MyEntry), false);
 
 		public static readonly BindableProperty DeleteProperty =
-			BindableProperty.Create<MyEntry, bool>(
-				p => p.Delete, false);
+			BindableProperty.Create ("Delete", typeof(bool), typeof(MyEntry), false);
 
 		public static readonly BindableProperty FormatCharactersProperty =
-			BindableProperty.Create<MyEntry, string>(
-				p => p.FormatCharacters, "");
+			BindableProperty.Create ("FormatCharacters", typeof(string), typeof(MyEntry), "");
 
 		public static readonly BindableProperty RawTextProperty =
-			BindableProperty.Create<MyEntry, string>(
-				p => p.RawText, "");
-
+			BindableProperty.Create ("RawText", typeof(string), typeof(MyEntry), "");
+		
 		public List<MaskRules> Mask
 		{
 			get { return (List<MaskRules>)GetValue(MaskProperty); }

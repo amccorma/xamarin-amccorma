@@ -71,7 +71,7 @@ namespace FrameBorder.Droid
 					// no padding
 					border2.SetLayerInset (0, 0, 0, 0, 0);
 				} else {
-					shadowLayer.SetStroke(SourceView.ShadowRadius, SourceView.ShadowColor.ToAndroid ());
+					shadowLayer.SetStroke((int)SourceView.ShadowRadius, SourceView.ShadowColor.ToAndroid ());
 					shadowLayer.SetCornerRadius (SourceView.Radius);
 				}
 
@@ -87,9 +87,9 @@ namespace FrameBorder.Droid
 				} else {
 					BorderLayer.SetStroke (SourceView.StrokeThickness, SourceView.OutlineColor.ToAndroid ());
 				}
-					
+
 				BorderLayer.SetCornerRadius (SourceView.Radius);
-		
+
 				var MainLayer = border2.FindDrawableByLayerId (Resource.Id.MainLayer).Mutate () as GradientDrawable;
 				MainLayer.SetColor (SourceView.BackgroundColor.ToAndroid ());
 				MainLayer.SetCornerRadius (SourceView.Radius);
@@ -109,10 +109,10 @@ namespace FrameBorder.Droid
 
 					// border layer. padding=ShadowRadius, if border turned on
 					var rect = new Rect (
-						SourceView.ShadowBorders.Left == 0 ? 0 : SourceView.ShadowRadius,
-						SourceView.ShadowBorders.Top == 0 ? 0 : SourceView.ShadowRadius,
-						SourceView.ShadowBorders.Right == 0 ? 0 : SourceView.ShadowRadius,
-						SourceView.ShadowBorders.Bottom == 0 ? 0 : SourceView.ShadowRadius);
+						SourceView.ShadowBorders.Left == 0 ? 0 : (int)SourceView.ShadowRadius,
+						SourceView.ShadowBorders.Top == 0 ? 0 : (int)SourceView.ShadowRadius,
+						SourceView.ShadowBorders.Right == 0 ? 0 : (int)SourceView.ShadowRadius,
+						SourceView.ShadowBorders.Bottom == 0 ? 0 : (int)SourceView.ShadowRadius);
 
 					rect.Left = rect.Left < 0 ? 0 : rect.Left;
 					rect.Top = rect.Top < 0 ? 0 : rect.Top;

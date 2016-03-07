@@ -9,8 +9,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace VideoSamples.Droid
 {
-	// Theme="@style/MyTheme.Base",
-	[Activity(Label = "VideoSamples",  MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity(Label = "VideoSamples", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity // global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

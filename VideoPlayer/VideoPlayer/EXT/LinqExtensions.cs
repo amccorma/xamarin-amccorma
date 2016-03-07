@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 public static class LinqExtensions
 {
-
 	public static T FirstOrDefaultFromMany<T>(this IEnumerable<T> source, Func<T, IEnumerable<T>> childrenSelector, Predicate<T> condition)
 	{
 		if (source == null || !source.Any ())

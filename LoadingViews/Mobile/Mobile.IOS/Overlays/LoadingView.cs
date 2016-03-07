@@ -5,7 +5,7 @@ using System.Text;
 using Foundation;
 using UIKit;
 using CoreGraphics;
-using mobile.models.Overlay;
+using mobile.pages.Overlay;
 
 namespace mobile.app.ios.Overlays
 {

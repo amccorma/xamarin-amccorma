@@ -42,6 +42,11 @@ namespace VideoSamples
 		{
 			return string.Format ("[VideoData: At={0}, Duration={1}, State={2}]", At, Duration, State);
 		}
+
+		public override int GetHashCode ()
+		{
+			return ToString ().GetHashCode ();
+		}
 	}
 }
 

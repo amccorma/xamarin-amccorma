@@ -3,10 +3,10 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="iOSMaskedEdit/ViewController.cs">
     <Files>
       <File FileName="iOSMaskedEdit/Mask/MaskRules.cs" Line="1" Column="1" />
-      <File FileName="iOSMaskedEdit/Mask/Control/MaskEdit.cs" Line="17" Column="47" />
+      <File FileName="iOSMaskedEdit/Mask/Control/MaskEdit.cs" Line="1" Column="1" />
       <File FileName="iOSMaskedEdit/Mask/Control/TextHolder.cs" Line="1" Column="1" />
       <File FileName="iOSMaskedEdit/Exts.cs" Line="1" Column="1" />
-      <File FileName="iOSMaskedEdit/ViewController.cs" Line="12" Column="12" />
+      <File FileName="iOSMaskedEdit/ViewController.cs" Line="12" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
