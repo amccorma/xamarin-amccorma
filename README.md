@@ -1,5 +1,9 @@
 Updates
 -----------------------------------------------------------------------
+3-8-2016:
+
+	Masked Edit - Android, iOS, Forms - Bug Fix in Regular Expression.  
+	http://forums.xamarin.com/discussion/comment/184478#Comment_184478	
 
 3-7-2016:
 

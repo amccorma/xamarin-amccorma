@@ -83,10 +83,24 @@ namespace Masked
 					new MaskRules { Start = 10, End = 20, Mask = "{0:}"}
 				});
 
-
+			var editTextUsuario = new MyEntry ();
+			editTextUsuario.Text = "";
+			editTextUsuario.FormatCharacters = ".-/";
+			editTextUsuario.Mask = new System.Collections.Generic.List<MaskRules>(
+				new[] {
+					new MaskRules { Start = 0, End = 3, Mask = ""},
+					new MaskRules { Start = 4, End = 6, Mask = "{0:3}.{3:}"},
+					new MaskRules { Start = 6, End = 9, Mask = "{0:3}.{3:3}.{6:}"},
+					new MaskRules { Start = 9, End = 11, Mask = "{0:3}.{3:3}.{6:3}-{9:2}"},
+					new MaskRules { Start = 11, End = 12, Mask = "{0:2}.{2:3}.{5:3}/{8:4}"},
+					new MaskRules { Start = 12, End = 14, Mask = "{0:2}.{2:3}.{5:3}/{8:4}{12:2}"}
+			});
 
 			this.Content = new StackLayout {
 				Children = {
+					new Label  { Text = "editTextUsuario" },
+					editTextUsuario,
+
 					new Label { Text = "Normal Entry" },
 					entry,
 					new Label { 

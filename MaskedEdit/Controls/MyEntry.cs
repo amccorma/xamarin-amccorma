@@ -16,8 +16,8 @@ namespace Masked.Controls
 		//		public Task ValidatorTask;
 		//		public CancellationToken token;
 
-		private string CV_defaultMask = "{\\d:(\\d)?}";
-		private string CV_defaultOneMask = "{\\d:}";
+		private string CV_defaultMask = "{\\d+:(\\d+)?}";
+		private string CV_defaultOneMask = "{\\d+:}";
 
 		public static readonly BindableProperty LastTextProperty =
 			BindableProperty.Create ("LastText", typeof(string), typeof(MyEntry), "");
@@ -294,7 +294,8 @@ namespace Masked.Controls
 						}
 						else
 						{
-							if (e.NewTextValue.Length > e.OldTextValue.Length)
+							var oldLen = String.IsNullOrEmpty(e.OldTextValue) ? 0 : e.OldTextValue.Length;
+							if (e.NewTextValue.Length > oldLen)
 							{
 								adjustedStart++;
 							}

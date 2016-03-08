@@ -180,10 +180,10 @@ namespace FrameBorder
 					BackgroundColor = Color.Gray,
 					Padding = new Thickness(5, 5, 3, 0),
 					Children = {
-						Frame1,
-						Frame2,
-						Frame3,
-						Frame4,
+					//	Frame1,
+					//	Frame2,
+					//	Frame3,
+					//	Frame4,
 						Frame5
 					}
 				}

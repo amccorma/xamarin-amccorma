@@ -13,8 +13,8 @@ namespace iOSMaskedEdit
 	{
 		private bool Locked = false;
 		private string LastText = "";
-		private string CV_defaultMask = "{\\d:(\\d)?}";
-		private string CV_defaultOneMask = "{\\d:}";
+		private string CV_defaultMask = "{\\d+:(\\d+)?}";
+		private string CV_defaultOneMask = "{\\d+:}";
 		private bool _FirstLoad = false;
 
 		public EventHandler<string> OnError;

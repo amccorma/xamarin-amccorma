@@ -1,12 +1,27 @@
 ﻿<Properties StartupItem="MaskedEditAndroid.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MainActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Mask/MaskProperties.cs">
     <Files>
-      <File FileName="Mask/Control/MaskEdit.cs" Line="174" Column="1" />
       <File FileName="Mask/SelectionPoint.cs" Line="1" Column="1" />
-      <File FileName="Exts.cs" Line="5" Column="5" />
+      <File FileName="Exts.cs" Line="1" Column="1" />
       <File FileName="MainActivity.cs" Line="105" Column="1" />
+      <File FileName="Mask/MaskRules.cs" Line="1" Column="1" />
+      <File FileName="Mask/MaskProperties.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MaskedEditAndroid" expanded="True">
+            <Node name="MaskedEditAndroid" expanded="True">
+              <Node name="Mask" expanded="True">
+                <Node name="Control" expanded="True" />
+                <Node name="MaskProperties.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
