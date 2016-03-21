@@ -96,8 +96,24 @@ namespace Masked
 					new MaskRules { Start = 12, End = 14, Mask = "{0:2}.{2:3}.{5:3}/{8:4}{12:2}"}
 			});
 
+			// +(99) (999) 999-9999"
+			var editSample4 = new MyEntry ();
+			editSample4.Text = "";
+			editSample4.Keyboard = Keyboard.Numeric;
+			editSample4.FormatCharacters = "+ )(-";
+			editSample4.Mask = new System.Collections.Generic.List<MaskRules>(
+				new[] {
+					new MaskRules { Start = 0, End = 11, Mask = "{0:11}"},
+					new MaskRules { Start = 11, End = 12, Mask = "+({0:2}) ({2:3}) {5:3}-{8:4}"},
+				});
+			
+			//
+
 			this.Content = new StackLayout {
 				Children = {
+					new Label  { Text = "+(99) (999) 999-9999" },
+					editSample4,
+
 					new Label  { Text = "editTextUsuario" },
 					editTextUsuario,
 
