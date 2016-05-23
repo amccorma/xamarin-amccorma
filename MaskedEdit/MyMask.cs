@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Masked.Controls;
 using Masked.Library;
+using System.Diagnostics;
 
 namespace Masked
 {

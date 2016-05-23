@@ -86,7 +86,37 @@ namespace Masked.Controls
 
 		public static readonly BindableProperty RawTextProperty =
 			BindableProperty.Create ("RawText", typeof(string), typeof(MyEntry), "");
-		
+
+		/// <summary>
+		/// Use this Property to set the Text after the Page has been Rendered.
+		/// Setting the text property in a ViewModel cause an infinite loop
+		/// </summary>
+		public static readonly BindableProperty TextUpdateProperty =
+			BindableProperty.Create ("TextUpdate", typeof(string), typeof(MyEntry), "", propertyChanged: TextUpChanged);
+
+		static void TextUpChanged(BindableObject bindable, object oldValue, object newValue)
+		{
+			MyEntry ctrl = (MyEntry)bindable;
+			if (newValue != null && String.IsNullOrEmpty (newValue.ToString()) == false) {
+				var txt = newValue.ToString ();
+				ctrl.TextUpdate = "";
+				ctrl.LastText = "";
+				ctrl.SelectionStart = 0;
+				ctrl.BeforeChars = "";
+				ctrl.Text = txt;
+				ctrl.ApplyTextChangeMask (ctrl.Text, txt);
+			}
+		}
+		public string TextUpdate
+		{
+			get { 
+				return (string)GetValue(TextUpdateProperty); 
+			}
+			set { 
+				SetValue(TextUpdateProperty, value); 
+			}
+		}
+
 		public List<MaskRules> Mask
 		{
 			get { return (List<MaskRules>)GetValue(MaskProperty); }
@@ -204,115 +234,94 @@ namespace Masked.Controls
 
 			this.TextChanged += (object sender, TextChangedEventArgs e) =>
 			{
-				if (this.Mask != null)
-				{
-					if (this.Locked == false && (this.LastText != this.Text) && String.IsNullOrEmpty(this.Text) == false)
-					{
-						this.Locked = true;
-
-						if (this.FormatCharacters == null) {
-							this.Locked = false;
-							return;
-						}
-
-						var chars = this.FormatCharacters.ToCharArray ();
-						Int32 adjustedStart = 0;
-						this.Locked = true;
-						var start = this.SelectionStart;
-						var text = this.Text.Replace(this.FormatCharacters.ToCharArray(), "");
-						var len = text.Length;
-						var middle = false;
-						if (Delete && start > 0)
-						{
-							adjustedStart = adjustedStart - 1;
-							BeforeChars = this.Text.Substring(0, start - 1).Replace(chars, "");
-						}
-						else
-						{
-							if (start != this.Text.Length - 1)
-							{
-								middle = true;
-								if (start > this.Text.Length -1)
-								{
-									start = this.Text.Length;
-									BeforeChars = this.Text;
-								}
-								else
-								{
-									BeforeChars = this.Text.Substring(0, start + 1).Replace(chars, "");
-								}
-							}
-						}
-
-						// check MaxLength for Mask
-						if (this.MaxLengthFromMask <= 0)
-						{
-							// check length of last Mask and set MaxLength of not set already
-							// this will set a MaxLength value to stop the mask
-							this.MaxLengthFromMask = this.Mask.Last ().End;
-						}
-
-						var finalText = "";
-						var rule = this.Mask.FirstOrDefault(r => r.End >= len);
-						if (rule == null)
-						{
-							// no rules found. get last rule
-							rule = this.Mask.Last();
-						}
-
-						
-						if (rule.Mask != "")
-						{
-							var temp = ApplyMask(text, rule);
-							if (!Delete)
-							{
-								if (middle)
-								{
-									adjustedStart = 1;
-								}
-								else
-								{
-									if (temp.Length > e.OldTextValue.Length)
-									{
-										adjustedStart = temp.Length - e.OldTextValue.Length;
-									}
-									else
-									{
-										adjustedStart = 0;
-										start = temp.Length;
-									}
-								}
-							}
-							finalText = temp;
-							//var next = temp[start + adjustedStart-1];
-							this.LastText = temp;
-						}
-						else if (rule.Mask == "" && this.Delete)
-						{
-							finalText = text;
-							this.LastText = text;
-						}
-						else
-						{
-							var oldLen = String.IsNullOrEmpty(e.OldTextValue) ? 0 : e.OldTextValue.Length;
-							if (e.NewTextValue.Length > oldLen)
-							{
-								adjustedStart++;
-							}
-							else
-							{
-								adjustedStart--;
-							}
-							finalText = this.Text.Replace (chars, "");
-						}
-
-						this.RawText = this.Text.Replace (chars, "");
-						var pt = new SelectionPoint(start + adjustedStart);
-						pt.Text = finalText;
-						SetSelection = pt;
-					}
-				}
+				ApplyTextChangeMask(e.OldTextValue, e.NewTextValue);
 			};
+		}
+
+		public void ApplyTextChangeMask(string oldText, string newText)
+		{
+			if (this.Mask != null) {
+				if (this.Locked == false && (this.LastText != this.Text) && String.IsNullOrEmpty (this.Text) == false) {
+					this.Locked = true;
+
+					if (this.FormatCharacters == null) {
+						this.Locked = false;
+						return;
+					}
+
+					var chars = this.FormatCharacters.ToCharArray ();
+					Int32 adjustedStart = 0;
+					this.Locked = true;
+					var start = this.SelectionStart;
+					var text = this.Text.Replace (this.FormatCharacters.ToCharArray (), "");
+					var len = text.Length;
+					var middle = false;
+					if (Delete && start > 0) {
+						adjustedStart = adjustedStart - 1;
+						BeforeChars = this.Text.Substring (0, start - 1).Replace (chars, "");
+					} else {
+						if (start != this.Text.Length - 1) {
+							middle = true;
+							if (start > this.Text.Length - 1) {
+								start = this.Text.Length;
+								BeforeChars = this.Text;
+							} else {
+								BeforeChars = this.Text.Substring (0, start + 1).Replace (chars, "");
+							}
+						}
+					}
+
+					// check MaxLength for Mask
+					if (this.MaxLengthFromMask <= 0) {
+						// check length of last Mask and set MaxLength of not set already
+						// this will set a MaxLength value to stop the mask
+						this.MaxLengthFromMask = this.Mask.Last ().End;
+					}
+
+					var finalText = "";
+					var rule = this.Mask.FirstOrDefault (r => r.End >= len);
+					if (rule == null) {
+						// no rules found. get last rule
+						rule = this.Mask.Last ();
+					}
+
+
+					if (rule.Mask != "") {
+						var temp = ApplyMask (text, rule);
+						if (!Delete) {
+							if (middle) {
+								adjustedStart = 1;
+							} else {
+								if (temp.Length > oldText.Length) {
+									adjustedStart = temp.Length - oldText.Length;
+								} else {
+									adjustedStart = 0;
+									start = temp.Length;
+								}
+							}
+						}
+						finalText = temp;
+						//var next = temp[start + adjustedStart-1];
+						this.LastText = temp;
+					} else if (rule.Mask == "" && this.Delete) {
+						finalText = text;
+						this.LastText = text;
+					} else {
+						var oldLen = String.IsNullOrEmpty (oldText) ? 0 : oldText.Length;
+						if (newText.Length > oldLen) {
+							adjustedStart++;
+						} else {
+							adjustedStart--;
+						}
+						finalText = this.Text.Replace (chars, "");
+					}
+
+					this.RawText = this.Text.Replace (chars, "");
+					var pt = new SelectionPoint (start + adjustedStart);
+					pt.Text = finalText;
+					SetSelection = pt;
+				}
+			}
 		}
 
 

@@ -130,6 +130,7 @@ namespace Masked.iOS.Controls
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			base.OnElementPropertyChanged (sender, e);
+
 			if (e.PropertyName == "SetSelection") {
 				pt = source.SetSelection;
 				if (pt != null && source.FormatCharacters != null) {

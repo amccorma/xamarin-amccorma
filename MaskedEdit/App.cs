@@ -7,7 +7,10 @@ namespace Masked
 	{
 		public App()
 		{	
-			this.MainPage = new NavigationPage (new MyMask ());
+			//this.MainPage = new NavigationPage (new MyMask ());
+
+			// MVVM Samples
+			this.MainPage = new NavigationPage (new Page1 ());
 		}
 	}
 }
