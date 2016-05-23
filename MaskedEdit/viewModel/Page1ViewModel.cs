@@ -12,7 +12,8 @@ namespace Masked
 		public Page1ViewModel ()
 		{
 			// ok to set text initial
-			this.Text1 = "10*02019";
+			//this.Text1 = "10*02019";
+
 		}
 
 		public Xamarin.Forms.Command ButtonClick {

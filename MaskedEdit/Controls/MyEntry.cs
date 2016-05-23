@@ -244,6 +244,8 @@ namespace Masked.Controls
 				if (this.Locked == false && (this.LastText != this.Text) && String.IsNullOrEmpty (this.Text) == false) {
 					this.Locked = true;
 
+					oldText = oldText ?? "";
+
 					if (this.FormatCharacters == null) {
 						this.Locked = false;
 						return;

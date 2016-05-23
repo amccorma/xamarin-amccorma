@@ -1,5 +1,4 @@
-﻿<Properties StartupItem="Android\Masked.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.10.71.34.101:5555" />
+﻿<Properties StartupItem="Android/Masked.Android.csproj">
   <MonoDevelop.Ide.Workbench ActiveDocument="Controls\MyEntry.cs">
     <Files>
       <File FileName="IOS\Controls\MyEntryRenderer.cs" Line="133" Column="4" />
@@ -11,8 +10,8 @@
       <File FileName="Android\Controls\MyEntryRenderer.cs" Line="246" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Masked.Android PreferredExecutionTarget="Android.Nexus 4 (Lollipop)" />
 </Properties>
