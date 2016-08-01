@@ -1,6 +1,7 @@
 Updates
 -----------------------------------------------------------------------
 8-1-2016:
+
 	Fix for Marquee Label for Forms and iOS Xamarin.  
 	Source code updated for latest Xamarin releases. Test samples.  
 	To Download. Go to the folder and save the archive.zip file.
