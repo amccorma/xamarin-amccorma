@@ -32,6 +32,8 @@ namespace FormsiOS
 			if (view != null) {
 				if (this.Control == null) {
 					var c = new MarqueeBinding.MarqueeLabel();
+                    			c.Font = Font.SystemFontOfSize(view.FontSize, view.FontAttributes).ToUIFont();
+                    			c.TextColor = view.TextColor.ToUIColor();
 					SetNativeControl (c);
 				}
 
@@ -133,7 +135,8 @@ namespace FormsiOS
 				if (!string.IsNullOrWhiteSpace (view.Text)) {
 					var formattedString = view.FormattedText ?? view.Text;
 
-					Control.AttributedText = formattedString.ToAttributed (view.Font, view.TextColor);
+					Control.AttributedText = formattedString
+                        			.ToAttributed(Font.SystemFontOfSize(view.FontSize, view.FontAttributes), view.TextColor);
 
 					LayoutSubviews ();
 
@@ -146,7 +149,8 @@ namespace FormsiOS
 
 				var formattedPlaceholder = view.FormattedPlaceholder ?? view.Placeholder;
 
-				Control.AttributedText = formattedPlaceholder.ToAttributed (view.Font, view.TextColor);
+				Control.AttributedText = formattedPlaceholder
+                    			.ToAttributed(Font.SystemFontOfSize(view.FontSize, view.FontAttributes), view.TextColor);
 
 				LayoutSubviews ();
 			}
