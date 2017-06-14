@@ -1,0 +1,33 @@
+﻿***************************************************************
+Any format can be sent to the application
+
+***************************************************************
+
+***************************************************************
+Basic format
+***************************************************************
+var GCM = new
+{
+    data = new
+    {
+        message = alertMsg,
+        title = title,
+    }                
+};
+***************************************************************
+any format
+***************************************************************
+var GCM = new
+{
+    data = new
+    {
+        message = alertMsg,
+        title = title,
+        KeyValue = "[any string you like]",
+        KeyValue2 = "[any string you like]",
+    }                
+};
+
+var GCMJson = JsonConvert.SerializeObject(GCM)
+
+

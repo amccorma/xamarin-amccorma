@@ -1,5 +1,13 @@
 Updates
 -----------------------------------------------------------------------
+6-14-2017:
+
+	Added Notification Sample for iOS and Android for Xamarin Forms, Xamarin iOS and Xamarin Android.
+	-- Search for the TODO items in the source and modify to you needed.
+	-- add all required permissions to iOS
+	-- look at MainActivity for the required permissions to add to your manifest
+	
+
 8-1-2016:
 
 	Fix for Marquee Label for Forms and iOS Xamarin.  
@@ -19,8 +27,19 @@ Updates
 	Fixing Bindings, removed BindableProperty.Create<> with BindableProperty.Create()
 	Fixed Android Video Player Bug.  Video would not play
 	Updated LoadingViews
-		
 	
+		
+Xamarin Forms Notification
+-----------------------------------------------------------------------
+
+could be easily modified to Xamarin iOS or Xamarin Android.
+download the zip file in the NotificationSample form.
+
+follow the "TODO" items and change to your notification handling.
+
+code in: /NotificationSample folder
+zip file in: /NotificationSample/Archive.zip
+
 
 Links to Other Projects
 -----------------------------------------------------------------------
