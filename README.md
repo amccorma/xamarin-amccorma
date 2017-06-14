@@ -40,6 +40,8 @@ follow the "TODO" items and change to your notification handling.
 code in: /NotificationSample folder
 zip file in: /NotificationSample/Archive.zip
 
+I give credit to anyone code I may have included from other projects.  
+I learned from others to get my solution working.
 
 Links to Other Projects
 -----------------------------------------------------------------------
