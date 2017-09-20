@@ -1,0 +1,82 @@
+﻿***************************************************************
+APNS documentation:  (Apple Push Notification Service)
+	https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1 
+
+	https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/TheNotificationPayload.html
+
+***************************************************************
+
+***************************************************************
+Default formats
+***************************************************************
+    // Apple Developer Sandbox
+    var APNS_SANDBOX = new
+    {
+        aps = new Dictionary<string, object>
+        {
+            { "content-available", "1" },
+            {  "alert", new
+                {
+                    body = payload.Body,
+                    title = payload.Title
+                }
+            },
+            { "badge", 1 }                    
+        },
+    };
+
+    var APNS = new
+    {
+        aps = new Dictionary<string, object>
+        {
+            { "content-available", "1" },
+            {  "alert", new
+                {
+                    body = payload.Body,
+                    title = payload.Title,
+                }
+            },
+            { "badge", 1 }                    
+        },
+    };
+
+    //iOS 10: Subtitle
+    //var APNS10 = new
+    //{
+    //    aps = new
+    //    {
+    //        alert = new Dictionary<string, string>
+    //        {
+    //             { "title", payload.Title },
+    //             { "body",   payload.Body },
+    //             { "subtitle", ""}
+    //        },
+    //        badge = 1
+    //    },
+    //};
+
+
+    var APNS_SANDBOXJSON = JsonConvert.SerializeObject(APNS_SANDBOX);
+
+	var APNSJSON = JsonConvert.SerializeObject(APNS);
+
+***************************************************************
+	add parameters only. Will only work if app is active.
+***************************************************************
+
+    var APNS_SANDBOX = new
+    {
+        aps = new Dictionary<string, object>
+        {
+            { "content-available", "1" },
+            {  "alert", new
+                {
+                    body = payload.Body,
+                    title = payload.Title
+                }
+            },
+            { "badge", 1 }                    
+        },
+        KeyValue = "[any string you like]",
+        KeyValue2 = "[any string you like]",
+    };
