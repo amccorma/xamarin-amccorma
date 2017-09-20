@@ -14,6 +14,13 @@
 *.dll
 
 *.dll
+/VideoPlayer/packages
+/VideoPlayer/VideoPlayer/bin/Debug
+/VideoPlayer/VideoPlayer/obj/Debug
+/VideoPlayer/VideoPlayer.Android/bin/Debug
+/VideoPlayer/VideoPlayer.Android/obj/Debug
+/VideoPlayer/VideoPlayer.iOS/obj/iPhone/Debug
+
 NotificationSample/.DS_Store
 NotificationSample/Droid/.DS_Store
 NotificationSample/Plugins/ShortcutBadger/.DS_Store
@@ -24,4 +31,3 @@ NotificationSample/packages/.DS_Store
 NotificationSample/NotificationSample/.DS_Store
 NotificationSample/iOS/.DS_Store
 NotificationSample/Plugins/.DS_Store
-.DS_Store

@@ -1,12 +1,11 @@
 ﻿using System;
-using MonoTouch.MediaPlayer;
-using MonoTouch.Foundation;
-using VideoSamples.Controls;
 using System.Threading;
 using System.Threading.Tasks;
-using MonoTouch.UIKit;
+using Foundation;
+using MediaPlayer;
+using VideoSamples.Controls;
 
-namespace VideoSamples.iOS
+namespace VideoSamples.iOS.Controls
 {
 	public class MyMPMoviePlayerController : MPMoviePlayerController
 	{
@@ -19,59 +18,55 @@ namespace VideoSamples.iOS
 
 		public MyMPMoviePlayerController (MyVideoPlayer Parent)
 		{
-			this.ParentElement = Parent;
+			ParentElement = Parent;
 
-			NSNotificationCenter.DefaultCenter.AddObserver (this, 
-				new MonoTouch.ObjCRuntime.Selector("LoadChangedCallback:"),
-				MPMoviePlayerController.LoadStateDidChangeNotification,
-				null
-			);
+		    NSNotificationCenter.DefaultCenter.AddObserver(LoadStateDidChangeNotification, LoadChangedCallback);
 
-			this._Token = new CancellationTokenSource ();
+            _Token = new CancellationTokenSource ();
 
 			Task.Run (async() => {
-				while(true && this._Token.Token.IsCancellationRequested == false)
+				while(true && _Token.Token.IsCancellationRequested == false)
 				{
-					await Task.Delay(TimeSpan.FromMilliseconds(200), this._Token.Token);
+					await Task.Delay(TimeSpan.FromMilliseconds(200), _Token.Token);
 
-					var t = this.CurrentPlaybackTime;
-					var d = this.PlayableDuration;
+					var t = CurrentPlaybackTime;
+					var d = PlayableDuration;
 
 					// is there a better way to calculate the end of video???
-					if (this.PlayableDuration > 1.000 && (Math.Abs(t - d) <= 0.0001 * double.Epsilon))
+					if (PlayableDuration > 1.000 && (Math.Abs(t - d) <= 0.0001 * double.Epsilon))
 					{
-						this.ParentElement.State = VideoSamples.Library.VideoState.ENDED;
-						this.ParentElement.Info = new VideoData
+						ParentElement.State = Library.VideoState.ENDED;
+						ParentElement.Info = new VideoData
 						{
-							State = VideoSamples.Library.VideoState.ENDED,
+							State = Library.VideoState.ENDED,
 							At = t,
 							Duration = d
 						};
-						this._EndOfVideo = true;
+						_EndOfVideo = true;
 					}
 					else
 					{
-						this._EndOfVideo = false;
+						_EndOfVideo = false;
 
-						if (this.PlaybackState == MPMoviePlaybackState.Paused)
+						if (PlaybackState == MPMoviePlaybackState.Paused)
 						{
-							this.ParentElement.State = VideoSamples.Library.VideoState.PAUSE;
+							ParentElement.State = Library.VideoState.PAUSE;
 						}
-						else if (this.PlaybackState == MPMoviePlaybackState.Stopped)
+						else if (PlaybackState == MPMoviePlaybackState.Stopped)
 						{
-							this.ParentElement.State = VideoSamples.Library.VideoState.STOP;
+							ParentElement.State = Library.VideoState.STOP;
 
 						}
-						else if (this.PlaybackState == MPMoviePlaybackState.Playing)
+						else if (PlaybackState == MPMoviePlaybackState.Playing)
 						{
-							this.ParentElement.State = VideoSamples.Library.VideoState.PLAY;
+							ParentElement.State = Library.VideoState.PLAY;
 						}
 
-						if (this.PlayableDuration > 1.000)
+						if (PlayableDuration > 1.000)
 						{
-							this.ParentElement.Info = new VideoData
+							ParentElement.Info = new VideoData
 							{
-								State = this.ParentElement.State,
+								State = ParentElement.State,
 								At = (double.IsNaN(t) ? -1 : t),
 								Duration = d
 							};
@@ -79,14 +74,14 @@ namespace VideoSamples.iOS
 					}
 				}
 
-			}, this._Token.Token);
+			}, _Token.Token);
 		}
 
 		[Export("LoadChangedCallback:")]
 		public void LoadChangedCallback(NSObject o)
 		{			
-			if (this.ErrorLog != null) {
-				System.Diagnostics.Debug.WriteLine (this.ErrorLog.Description);
+			if (ErrorLog != null) {
+				System.Diagnostics.Debug.WriteLine (ErrorLog.Description);
 				ParentElement.HasError = true;
 			}
 		}
@@ -98,30 +93,30 @@ namespace VideoSamples.iOS
 				// may get error:
 				// App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.
 				// need to modify Info.plist or use https
-				this.SourceType = MPMovieSourceType.Streaming;
+				SourceType = MPMovieSourceType.Streaming;
 			} else {
-				this.SourceType = MPMovieSourceType.File;
+				SourceType = MPMovieSourceType.File;
 			}
-			this.ContentUrl = url;
+			ContentUrl = url;
 		}
 
 		protected internal MyVideoPlayer ParentElement
 		{
 			get {
-				return this._ParentElement.Target as MyVideoPlayer;
+				return _ParentElement.Target as MyVideoPlayer;
 			}
 			set {
-				this._ParentElement = new WeakReference (value);
+				_ParentElement = new WeakReference (value);
 			}
 		}
 
 		protected override void Dispose (bool disposing)
 		{
-			NSNotificationCenter.DefaultCenter.RemoveObserver (MPMoviePlayerController.LoadStateDidChangeNotification);
+			NSNotificationCenter.DefaultCenter.RemoveObserver (LoadStateDidChangeNotification);
 
 
-			this._Token.Cancel ();
-			this._Token.Dispose ();
+			_Token.Cancel ();
+			_Token.Dispose ();
 
 			base.Dispose (disposing);
 		}

@@ -1,6 +1,5 @@
-﻿using System;
+﻿using VideoSamples.Library;
 using Xamarin.Forms;
-using VideoSamples.Library;
 
 namespace VideoSamples.Controls
 {
@@ -10,10 +9,6 @@ namespace VideoSamples.Controls
 
 		public event Tap OnTap;
 
-		public MyVideoPlayer ()
-		{
-
-		}
 
 		public enum ScreenOrientation
 		{
@@ -24,9 +19,7 @@ namespace VideoSamples.Controls
 		public void FireTap(bool IsDoubleTap)
 		{
 			var handler = this.OnTap;
-			if (handler != null) {
-				handler (this, IsDoubleTap);
-			}
+		    handler?.Invoke (this, IsDoubleTap);
 		}
 
 		/// <summary>
