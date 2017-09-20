@@ -20,3 +20,14 @@
 /VideoPlayer/VideoPlayer.Android/bin/Debug
 /VideoPlayer/VideoPlayer.Android/obj/Debug
 /VideoPlayer/VideoPlayer.iOS/obj/iPhone/Debug
+
+NotificationSample/.DS_Store
+NotificationSample/Droid/.DS_Store
+NotificationSample/Plugins/ShortcutBadger/.DS_Store
+NotificationSample/Plugins/Notifications/PushNotification.Plugin.iOSUnified/.DS_Store
+NotificationSample/Plugins/Notifications/MyNotification.Plugin.Android/.DS_Store
+NotificationSample/Plugins/Notifications/.DS_Store
+NotificationSample/packages/.DS_Store
+NotificationSample/NotificationSample/.DS_Store
+NotificationSample/iOS/.DS_Store
+NotificationSample/Plugins/.DS_Store
