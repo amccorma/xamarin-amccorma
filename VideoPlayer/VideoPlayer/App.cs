@@ -11,9 +11,9 @@ namespace VideoSamples
 		public App()
         {
 			if (Device.OS == TargetPlatform.Android) {
-				this.MainPage = new NavigationPage (new AndroidVideoPlayer ());
+				MainPage = new NavigationPage (new AndroidVideoPlayer ());
 			} else {
-				this.MainPage = new NavigationPage (new iOSVideoPlayer ());
+				MainPage = new NavigationPage (new iOSVideoPlayer ());
 			}
         }
     }

@@ -14,3 +14,9 @@
 *.dll
 
 *.dll
+/VideoPlayer/packages
+/VideoPlayer/VideoPlayer/bin/Debug
+/VideoPlayer/VideoPlayer/obj/Debug
+/VideoPlayer/VideoPlayer.Android/bin/Debug
+/VideoPlayer/VideoPlayer.Android/obj/Debug
+/VideoPlayer/VideoPlayer.iOS/obj/iPhone/Debug

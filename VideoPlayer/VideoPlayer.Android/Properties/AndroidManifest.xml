@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="VideoSamples.Droid" android:versionCode="1" android:versionName="1">
-	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="23" />
-	<application android:label="VideoSamples" android:icon="@drawable/icon">
-	</application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="VideoSamples.Droid" android:versionCode="1" android:versionName="1" android:installLocation="auto">
+	<uses-sdk />
+	<application android:label="VideoSamples"></application>
 	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>

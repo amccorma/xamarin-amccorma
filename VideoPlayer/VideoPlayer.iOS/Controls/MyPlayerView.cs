@@ -1,14 +1,11 @@
 ﻿using System;
-using MonoTouch.UIKit;
-using MonoTouch.AVFoundation;
-using MonoTouch.Foundation;
-using System.Drawing;
-using Xamarin.Forms.Platform.iOS;
-using MonoTouch.MediaPlayer;
+using CoreGraphics;
+using Foundation;
+using MediaPlayer;
+using UIKit;
 using VideoSamples.Controls;
-using System.Linq;
 
-namespace VideoSamples.iOS
+namespace VideoSamples.iOS.Controls
 {
 	public class MyPlayerView : UIView
 	{
@@ -19,35 +16,38 @@ namespace VideoSamples.iOS
 
 		public MyPlayerView (MyVideoPlayer Parent)
 		{
-			this.BackgroundColor = UIColor.Clear;
+			BackgroundColor = UIColor.Clear;
 
-			this._MoviePlayer = new MyMPMoviePlayerController (Parent);	
+			_MoviePlayer = new MyMPMoviePlayerController (Parent);	
 
 			// add to subview
-			this.AddSubview (this._MoviePlayer.View);
+			AddSubview (_MoviePlayer.View);
 		}
 
-		public override void Draw (RectangleF rect)
-		{
-			base.Draw (rect);
+	    public override void Draw(CGRect rect)
+	    {
+	        base.Draw(rect);
 
-			var screenRect = UIScreen.MainScreen.Bounds;
-			var w = screenRect.Size.Width;
-			var h = screenRect.Size.Height;
+	        var screenRect = UIScreen.MainScreen.Bounds;
+	        var w = screenRect.Size.Width;
+	        var h = screenRect.Size.Height;
 
-			if (this._UsingFullHeight) {
-				// screen - top bar (nav + statusbar)
-				rect.Height = h - TopBarSize();
-			}
-			if (this._UsingFullWidth) {
-				rect.Width = w;
-			}
+	        if (_UsingFullWidth)
+	        {
+	            // screen - top bar (nav + statusbar)
+	            rect.Height = h - TopBarSize();
+	        }
+	        if (_UsingFullWidth)
+	        {
+	            rect.Width = w;
+	        }
 
-			this._MoviePlayer.View.Frame = rect;
-			this.Frame = rect;
-		}
+	        _MoviePlayer.View.Frame = rect;
+	        Frame = rect;
 
-		private Int32 TopBarSize()
+	    }
+
+        private Int32 TopBarSize()
 		{
 			var s = 0;
 			var h = 0;
@@ -71,18 +71,18 @@ namespace VideoSamples.iOS
 		protected internal void UpdateFrame(MyVideoPlayer source)
 		{
 			UIApplication.SharedApplication.InvokeOnMainThread (() => {
-				this._UsingFullWidth = false;
-				this._UsingFullHeight = false;
+				_UsingFullWidth = false;
+				_UsingFullHeight = false;
 
 				var screenRect = UIScreen.MainScreen.Bounds;
 				var w = screenRect.Size.Width;
 				var h = screenRect.Size.Height;
 
 				// update frame
-				var f = this.Frame;
+				var f = Frame;
 				if (source.ContentWidth <= 0) {
 					f.Width = w;
-					this._UsingFullWidth = true;
+					_UsingFullWidth = true;
 				}
 				else
 				{
@@ -91,40 +91,40 @@ namespace VideoSamples.iOS
 
 				if (source.ContentHeight <= 0) {
 					f.Height = h;
-					this._UsingFullHeight = true;
+					_UsingFullHeight = true;
 				} else {
 					f.Height = Convert.ToSingle (source.ContentHeight);
 				}
 
 
-				this.Frame = f;
-				this.SetNeedsDisplay ();
+				Frame = f;
+				SetNeedsDisplay ();
 			});
 		}
 
 		protected internal void Start()
 		{
-			if (this._MoviePlayer.PlaybackState == MPMoviePlaybackState.Paused) {
+			if (_MoviePlayer.PlaybackState == MPMoviePlaybackState.Paused) {
 				// handle pause
-				this._MoviePlayer.Play ();
+				_MoviePlayer.Play ();
 			} else {
-				this._MoviePlayer.PrepareToPlay ();
+				_MoviePlayer.PrepareToPlay ();
 			}
 		}
 
 		protected internal void Stop()
 		{			
-			this._MoviePlayer.Stop ();
+			_MoviePlayer.Stop ();
 		}
 
 		protected internal void Pause()
 		{
-			this._MoviePlayer.Pause ();
+			_MoviePlayer.Pause ();
 		}
 
 		protected internal void SeekTo(double pos)
 		{
-			this._MoviePlayer.CurrentPlaybackTime = pos;
+			_MoviePlayer.CurrentPlaybackTime = pos;
 		}
 
 		/// <summary>
@@ -137,9 +137,9 @@ namespace VideoSamples.iOS
 			// url starts with http
 			if (String.IsNullOrEmpty (file) == false) {
 				if (file.ToString().ToLower().StartsWith ("http") == false) {
-					this._MoviePlayer.Load (NSUrl.FromFilename (file), false);
+					_MoviePlayer.Load (NSUrl.FromFilename (file), false);
 				} else {
-					this._MoviePlayer.Load (NSUrl.FromString (file), true);
+					_MoviePlayer.Load (NSUrl.FromString (file), true);
 				}
 			}
 		}
@@ -148,9 +148,9 @@ namespace VideoSamples.iOS
 		protected internal bool FullScreen {			
 			set {
 				if (value) {
-					this._MoviePlayer.SetFullscreen (true, true);
+					_MoviePlayer.SetFullscreen (true, true);
 				} else {
-					this._MoviePlayer.SetFullscreen (false, true);
+					_MoviePlayer.SetFullscreen (false, true);
 				}
 			}
 		}
@@ -159,11 +159,11 @@ namespace VideoSamples.iOS
 		{
 			set {
 				if (value) {
-					this._MoviePlayer.View.ClipsToBounds = true;
-					this._MoviePlayer.ScalingMode = MPMovieScalingMode.AspectFill;
+					_MoviePlayer.View.ClipsToBounds = true;
+					_MoviePlayer.ScalingMode = MPMovieScalingMode.AspectFill;
 				} else {
-					this._MoviePlayer.View.ClipsToBounds = false;
-					this._MoviePlayer.ScalingMode = MPMovieScalingMode.None;
+					_MoviePlayer.View.ClipsToBounds = false;
+					_MoviePlayer.ScalingMode = MPMovieScalingMode.None;
 				}
 			}
 		}
@@ -172,16 +172,16 @@ namespace VideoSamples.iOS
 		{
 			set {
 				if (value) {
-					this._MoviePlayer.ControlStyle = MPMovieControlStyle.Embedded;
+					_MoviePlayer.ControlStyle = MPMovieControlStyle.Embedded;
 				} else {
-					this._MoviePlayer.ControlStyle = MPMovieControlStyle.None;
+					_MoviePlayer.ControlStyle = MPMovieControlStyle.None;
 				}
 			}
 		}
 
 		protected override void Dispose (bool disposing)
 		{
-			this._MoviePlayer.Dispose ();
+			_MoviePlayer.Dispose ();
 			base.Dispose (disposing);
 		}
 	}
